@@ -42,7 +42,7 @@ public class HomeScreen extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, ZodiacHoroscope.newInstance());
+        transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
         transaction.commit();
     }
 }
