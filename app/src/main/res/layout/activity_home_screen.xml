@@ -16,10 +16,11 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
+        android:background="#666666"
         app:itemIconTint="@color/nav_item_state_list"
         app:itemTextColor="@color/nav_item_state_list"
         app:menu="@menu/bottom_navigation_items"/>
