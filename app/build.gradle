@@ -31,23 +31,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
-<<<<<<< HEAD
+
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     compile 'com.facebook.android:facebook-android-sdk:4.23.0'
     compile 'com.google.firebase:firebase-auth:10.0.1'
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.google.firebase:firebase-storage:10.0.1'
-=======
     compile 'com.android.support:support-v4:25.3.1'
->>>>>>> 1843a18c4f624039b855abce03ccd2f52b9c5e3b
-    testCompile 'junit:junit:4.12'
+
 }
-
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'
