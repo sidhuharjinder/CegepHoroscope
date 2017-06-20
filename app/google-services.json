@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "291390959212",
+    "firebase_url": "https://cegephoroscope-3dcdb.firebaseio.com",
+    "project_id": "cegephoroscope-3dcdb",
+    "storage_bucket": "cegephoroscope-3dcdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291390959212:android:1c1e9fc842edc850",
+        "android_client_info": {
+          "package_name": "com.hroscope.cegep.cegephoroscope"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291390959212-le7uddg7ef67rsfot5m2js3a4eqke5tm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWN1ZnpGfea5F_Oo5RBIUeMNqCp9ae08c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">CegepHoroscope</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
+
     <string name="facebook_app_id">1895053774079463</string>
-=======
 
     <string name="title_activity_home">HomeActivity</string>
 
@@ -16,9 +15,7 @@
     <string name="hello_blank_fragment">Hello blank fragment 1</string>
     <string name="hello_blank_fragment1">Hello blank fragment 2</string>
     <string name="hello_blank_fragment2">Hello blank fragment 3</string>
-
-
->>>>>>> 1843a18c4f624039b855abce03ccd2f52b9c5e3b
+    
 </resources>
 
 
