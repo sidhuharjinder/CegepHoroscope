@@ -18,7 +18,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
+            android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:text="Horoscopes" />
@@ -33,27 +33,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <ImageButton
+               <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/ariesButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@mipmap/aries" />
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@mipmap/aries"
+                    app:civ_border_width="4dp"
+                    app:civ_border_color="#FFF"/>
+                <!--<ImageButton-->
+                    <!--android:id="@+id/taurusButton"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--app:srcCompat="@mipmap/taurus" />-->
 
-                <ImageButton
-                    android:id="@+id/taurusButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@mipmap/taurus" />
-
-                <ImageButton
-                    android:id="@+id/geminiButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@mipmap/gemini" />
+                <!--<ImageButton-->
+                    <!--android:id="@+id/geminiButton"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--app:srcCompat="@mipmap/gemini" />-->
             </LinearLayout>
         </LinearLayout>
 
