@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
 
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#3D3D3D">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hello"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Helloasdfffsdfasdfsdfsdfsfsdfdsfdsfsdfsdfd\n\n\n\n\n\n\n\n\n\nsfdsfsd.nfdsfsdfsdfasdfsdfdsfs\ndfdsfdsfdsfdsfdsfafs\nfsdfsfasfasfafasff\nasfasfasfasfasd"/>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">  </LinearLayout>
+
 </LinearLayout>
