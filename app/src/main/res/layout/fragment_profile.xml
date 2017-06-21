@@ -26,7 +26,7 @@
                 android:layout_marginLeft="15dp"
                 android:src="@drawable/user"
                 app:civ_border_width="4dp"
-                app:civ_border_color="#FFF"/>
+                app:civ_border_color="#fff"/>
 
 
             <!--<ImageView-->
@@ -41,6 +41,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="#434343"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -53,9 +54,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
                     android:ems="10"
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:inputType="text"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="50dp"
@@ -68,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#434343"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <ImageView
@@ -81,8 +86,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
                 <ImageView
                     android:id="@+id/EditDate"
                     android:layout_width="50dp"
@@ -95,21 +103,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#434343"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/zodSign"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/calendar" />
+                    android:src="@mipmap/taurus" />
                 <EditText
                     android:id="@+id/zodiac"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:inputType="text"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -117,20 +129,24 @@
                 android:layout_height="50dp"
                 android:background="#434343"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/chineseSign"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/friends" />
+                    android:src="@mipmap/rat" />
                 <EditText
                     android:id="@+id/chineseHoroscope"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    android:textColor="#fff"/>
             </LinearLayout>
 
             <LinearLayout
@@ -138,6 +154,7 @@
                 android:layout_height="50dp"
                 android:background="#434343"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/friendsimage"
@@ -152,10 +169,10 @@
                     android:ems="10"
                     android:text="Friends"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="30dp"
                     android:textColor="#ffffff"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
+                    android:textSize="20sp"
+
                     android:background="@color/trans"
                     android:inputType="date" />
                 <ImageView
