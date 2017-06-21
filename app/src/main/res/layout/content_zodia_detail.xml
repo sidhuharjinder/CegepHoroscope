@@ -11,12 +11,13 @@
     <com.hroscope.cegep.cegephoroscope.PagerContainer
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
+        android:background="#3D3D3D"
         android:layout_height="match_parent">
 
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp" />
+            android:layout_margin="20dp" />
 
     </com.hroscope.cegep.cegephoroscope.PagerContainer>
 </RelativeLayout>
