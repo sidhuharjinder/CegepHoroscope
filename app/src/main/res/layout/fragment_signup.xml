@@ -41,7 +41,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/roundedbutton"
+            android:background="@drawable/rbuttonfacebook"
             android:gravity="center"
             android:text="Facebook"
             android:textColor="#ffffff"
