@@ -5,13 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.hroscope.cegep.cegephoroscope.ZodiacHoroscope">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#3D3D3D"
-        android:layout_gravity="center_vertical"
-
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -35,7 +34,8 @@
 
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/ariesButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
@@ -44,7 +44,8 @@
                     app:civ_border_color="#FFF"
                     app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/taurusButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
@@ -53,7 +54,8 @@
                     app:civ_border_color="#FFF"
                     app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/geminiButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
