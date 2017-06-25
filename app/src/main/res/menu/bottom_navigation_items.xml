@@ -6,10 +6,10 @@
         android:title="@string/item_1"/>
     <item
         android:id="@+id/action_item2"
-        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:icon="@mipmap/aries"
         android:title="@string/item_2"/>
     <item
         android:id="@+id/action_item3"
-        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:icon="@drawable/user"
         android:title="@string/item_3"/>
 </menu>
