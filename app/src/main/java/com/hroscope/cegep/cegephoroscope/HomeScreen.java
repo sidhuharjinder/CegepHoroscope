@@ -32,7 +32,7 @@ public class HomeScreen extends AppCompatActivity {
                                 selectedFragment = ChineseHoroscope.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = Profile.newInstance();
+                                selectedFragment = SignupFragment.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -45,7 +45,7 @@ public class HomeScreen extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
+        transaction.replace(R.id.frame_layout, ZodiacHoroscope.newInstance());
         transaction.commit();
 
     }
