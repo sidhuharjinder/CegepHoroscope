@@ -18,10 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Horoscopes"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Horoscopes" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +35,7 @@
 
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/ariesButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
@@ -45,8 +44,7 @@
                     app:civ_border_color="#FFF"
                     app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/taurusButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
@@ -55,8 +53,7 @@
                     app:civ_border_color="#FFF"
                     app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/geminiButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
@@ -76,31 +73,31 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="35dp"
-                    android:text="Aries" />
+                    android:layout_weight="1"
+                    android:text="Aries"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="25dp"
-                    android:text="Taurus" />
+                    android:layout_weight="1"
+                    android:text="Taurus"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
                     android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Gemini" />
+                    android:layout_weight="1"
+                    android:text="Gemini"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -116,33 +113,32 @@
                 android:layout_height="65dp"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/cancerButtonButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/cancer"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/leoButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/leo"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/virgoButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/virgo"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,31 +150,31 @@
                     android:id="@+id/textCancer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="35dp"
-                    android:text="Cancer" />
+                    android:layout_weight="1"
+                    android:text="Cancer"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textLeo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="10dp"
-                    android:text="Leo" />
+                    android:layout_weight="1"
+                    android:text="Leo"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textVirgo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
                     android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Virgo" />
+                    android:layout_weight="1"
+                    android:text="Virgo"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -193,33 +189,32 @@
                 android:layout_height="65dp"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/libraButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/libra"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/scorpioButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/scorpio"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/sagittariusButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/sagittarius"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -231,31 +226,31 @@
                     android:id="@+id/textLibra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="35dp"
-                    android:text="Libra" />
+                    android:layout_weight="1"
+                    android:text="Libra"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textScorpio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="35dp"
-                    android:text="Scorpio" />
+                    android:layout_weight="1"
+                    android:text="Scorpio"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textSagittarius"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
                     android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Sagittarius" />
+                    android:layout_weight="1"
+                    android:text="Sagittarius"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -270,33 +265,32 @@
                 android:layout_height="65dp"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/capricornButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/capricorn"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/aquariusButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/aquarius"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/piscesButton"
                     android:layout_width="96dp"
                     android:layout_height="65dp"
                     android:layout_marginLeft="15dp"
                     android:src="@mipmap/pisces"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
+                    app:civ_border_color="#FFF"
+                    app:civ_border_width="4dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -308,31 +302,31 @@
                     android:id="@+id/textCapricorn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="25dp"
-                    android:text="Capricorn" />
+                    android:layout_weight="1"
+                    android:text="Capricorn"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textAquarium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
                     android:layout_marginLeft="0dp"
-                    android:text="Aquarius" />
+                    android:layout_weight="1"
+                    android:text="Aquarius"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textPisces"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
                     android:layout_marginLeft="5dp"
-                    android:textSize="20sp"
-                    android:text="Pisces" />
+                    android:layout_weight="1"
+                    android:text="Pisces"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
