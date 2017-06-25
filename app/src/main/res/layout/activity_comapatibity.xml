@@ -65,81 +65,300 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/ariesButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/aries"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Aries"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/taurusButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/taurus"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textTaurus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Taurus"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/geminiButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/gemini"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textGemini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Gemini"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/ariesButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/aries"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/taurusButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/taurus"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/cancerButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/geminiButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/gemini"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                        android:src="@mipmap/cancer"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textCancer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Cancer"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/leoButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/leo"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textLeo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Leo"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/virgoButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/virgo"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textVirgo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Virgo"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
 
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/textView5"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Aries" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="25dp"
-                    android:text="Taurus" />
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/libraButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-                <TextView
-                    android:id="@+id/textView3"
+                        android:src="@mipmap/libra"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textLibra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Libra"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Gemini" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/scorpioButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/scorpio"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textScorpio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Scorpio"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/sagittariusButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/sagittarius"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textSagittarius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sagittarius"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -152,229 +371,97 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cancerButtonButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/cancer"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/leoButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/leo"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/virgoButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/virgo"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textCancer"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Cancer" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textLeo"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/capricornButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/capricorn"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textCapricorn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Capricon"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Leo" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textVirgo"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/aquariusButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/aquarius"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textAquarius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aquarius"
+                        android:textColor="#fff"
+
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Virgo" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_height="90dp"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/piscesButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
+                        android:src="@mipmap/pisces"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/libraButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/libra"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/scorpioButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/scorpio"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/sagittariusButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/sagittarius"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/textPisces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pisces"
+                        android:textColor="#fff"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
+                        android:textSize="20sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textLibra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Libra" />
-
-                <TextView
-                    android:id="@+id/textScorpio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Scorpio" />
-
-                <TextView
-                    android:id="@+id/textSagittarius"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Sagittarius" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/capricornButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/capricorn"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/aquariusButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/aquarius"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/piscesButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/pisces"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textCapricorn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="25dp"
-                    android:text="Capricorn" />
-
-                <TextView
-                    android:id="@+id/textAquarium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="0dp"
-                    android:text="Aquarius" />
-
-                <TextView
-                    android:id="@+id/textPisces"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="20sp"
-                    android:text="Pisces" />
             </LinearLayout>
 
         </LinearLayout>
+
+
     </LinearLayout>
 
 </FrameLayout>
