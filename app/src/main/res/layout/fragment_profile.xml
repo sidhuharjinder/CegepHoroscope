@@ -161,7 +161,7 @@
                     android:id="@+id/friendsimage"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/friends" />
+                    android:src="@mipmap/friends" />
                 <TextView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
