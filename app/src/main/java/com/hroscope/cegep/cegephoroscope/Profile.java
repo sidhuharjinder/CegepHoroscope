@@ -38,6 +38,14 @@ public class Profile extends Fragment {
                 startActivity(intent);
             }
         });
+        LinearLayout linearFriend = (LinearLayout) view.findViewById(R.id.linearFriend);
+        linearFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),FriendList.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
