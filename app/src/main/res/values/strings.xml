@@ -7,9 +7,9 @@
     <string name="title_activity_home">HomeActivity</string>
 
 
-    <string name="item_1">Item 1</string>
-    <string name="item_2">Item 2</string>
-    <string name="item_3">Item 3</string>
+    <string name="item_1">Horoscope</string>
+    <string name="item_2">Chinese</string>
+    <string name="item_3">Profile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment 1</string>
