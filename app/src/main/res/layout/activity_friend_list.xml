@@ -71,29 +71,24 @@
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/editText2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-
                     android:background="@color/trans"
-                    android:text="Name"
+                    android:text="Parth Desai"
                     android:textColor="#fff"
-
                     android:textSize="20sp"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
                     android:background="@color/trans"
-                    android:text="Name"
+                    android:text="Rat"
                     android:textColor="#fff"
-
                     android:textSize="20sp"/>
             </LinearLayout>
         </LinearLayout>
@@ -127,29 +122,24 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
-                <EditText
+                <TextView
                     android:id="@+id/editTextName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-
                     android:background="@color/trans"
-                    android:text="Name"
+                    android:text="Pardeep"
                     android:textColor="#fff"
-
                     android:textSize="20sp"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/editTextDOB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
                     android:background="@color/trans"
                     android:text="Name"
                     android:textColor="#fff"
-
                     android:textSize="20sp"/>
             </LinearLayout>
 
