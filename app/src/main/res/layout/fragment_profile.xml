@@ -116,6 +116,13 @@
                     android:text="Taurus"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -141,6 +148,13 @@
                     android:text="Rat"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -169,6 +183,13 @@
 
                     android:background="@color/trans"
                     android:inputType="date" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
         </LinearLayout>
