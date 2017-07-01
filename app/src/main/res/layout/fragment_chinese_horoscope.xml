@@ -193,7 +193,7 @@
                         android:text="Dragon"
                         android:textColor="#fff"
 
-                        android:textSize="15sp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
