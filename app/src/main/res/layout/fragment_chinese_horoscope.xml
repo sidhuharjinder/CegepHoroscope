@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#3D3D3D"
-        android:layout_gravity="center_vertical"
+        android:gravity="center"
 
         android:orientation="vertical">
 
@@ -19,85 +19,308 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+
             android:text="Chinese Horoscopes" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/ratButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/rat"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Rat"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/oxButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/ox"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textOx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ox"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/tigerButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/tiger"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textTiger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tiger"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/ratButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/rat"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/oxButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/ox"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/rabbitButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/tigerButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/tiger"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="4dp" />
+                        android:src="@mipmap/rabbit"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textRabbit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Rabbit"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/dragonButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/dragon"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textDragon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dragon"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/SnakeButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/snake"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textSnake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Snake"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
 
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/textRat"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="45dp"
-                    android:text="Rat" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textOx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Ox" />
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/horseButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-                <TextView
-                    android:id="@+id/textTiger"
+                        android:src="@mipmap/horse"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textHorse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Horse"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="25dp"
-                    android:textSize="20sp"
-                    android:text="Tiger" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/goatButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/goat"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textGoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Goat"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/monkeyButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/monkey"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textMonkey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Monkey"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -110,226 +333,92 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/rabbitButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/rabbit"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dragonButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/dragon"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/snakeButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/snake"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textRabbit"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Rabbit" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/texDragon"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/roosterButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/rooster"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textRooster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Rooster"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Dragon" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textSnake"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/dogButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
+
+                        android:src="@mipmap/dog"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
+
+                    <TextView
+                        android:id="@+id/textDog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dog"
+                        android:textColor="#fff"
+
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Snake" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pigButton"
+                        android:layout_width="96dp"
+                        android:layout_height="65dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
+                        android:src="@mipmap/pig"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="4dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/horseButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/horse"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/goatButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/goat"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/monkeyButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/monkey"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/textPig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Snake"
+                        android:textColor="#fff"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textHorse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Horse" />
-
-                <TextView
-                    android:id="@+id/textGoat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="35dp"
-                    android:text="Goat" />
-
-                <TextView
-                    android:id="@+id/textMonkey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Monkey" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/roosterButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/rooster"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/dogButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/dog"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/pigButton"
-                    android:layout_width="96dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@mipmap/pig"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textRooster"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="25dp"
-                    android:text="Rooster" />
-
-                <TextView
-                    android:id="@+id/textDog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="0dp"
-                    android:text="Dog" />
-
-                <TextView
-                    android:id="@+id/textPig"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="20sp"
-                    android:text="Pig" />
             </LinearLayout>
 
         </LinearLayout>

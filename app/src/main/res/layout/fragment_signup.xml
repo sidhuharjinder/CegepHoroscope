@@ -31,60 +31,57 @@
             android:gravity="center"
             android:text="Sign In by"
             android:textColor="#ffffff"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/facebook_button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rbuttonfacebook"
             android:gravity="center"
             android:text="Facebook"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
         <Button
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/rbuttonphone"
             android:gravity="center"
             android:text="Phone Number"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
         <Button
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/rbuttonemail"
             android:gravity="center"
             android:text="Email Login"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-
-
-            <Button
-                android:id="@+id/google"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/rbreset"
-                android:gravity="center"
-                android:text="Google+"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/googlePlus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rbuttongoogleplus"
+            android:gravity="center"
+            android:text="Google +"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
 
 

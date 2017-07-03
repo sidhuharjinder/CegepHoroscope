@@ -60,13 +60,6 @@
                     android:inputType="text"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-
-                    app:srcCompat="@drawable/pencil" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,6 +93,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/zondicLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#434343"
@@ -111,7 +105,7 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/taurus" />
-                <EditText
+                <TextView
                     android:id="@+id/zodiac"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,9 +113,16 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:inputType="text"
+                    android:text="Aries"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -136,7 +137,7 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/rat" />
-                <EditText
+                <TextView
                     android:id="@+id/chineseHoroscope"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,9 +145,16 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:inputType="text"
+                    android:text="Rat"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -156,11 +164,12 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <ImageButton
+                <ImageView
                     android:id="@+id/friendsimage"
+
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/friends" />
+                    android:src="@mipmap/friends" />
                 <TextView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
@@ -176,11 +185,12 @@
                     android:background="@color/trans"
                     android:inputType="date" />
                 <ImageView
-                    android:id="@+id/EditFreinds"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/pencil" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
         </LinearLayout>

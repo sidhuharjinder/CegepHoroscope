@@ -17,21 +17,6 @@ public class HomeScreen extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.navigation);
 
-      /*  try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.hroscope.cegep.cegephoroscope",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
-*/
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener
@@ -47,7 +32,7 @@ public class HomeScreen extends AppCompatActivity {
                                 selectedFragment = ChineseHoroscope.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = ForgotPasswordFragment.newInstance();
+                                selectedFragment = Profile.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
