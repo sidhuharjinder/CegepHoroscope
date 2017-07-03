@@ -1,4 +1,4 @@
-package com.hroscope.cegep.cegephoroscope;
+package com.hroscope.cegep.cegephoroscope.Email_SignIn;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -17,6 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.hroscope.cegep.cegephoroscope.ForgotPasswordFragment;
+import com.hroscope.cegep.cegephoroscope.Fragment_Email_SignIn_Profile;
+import com.hroscope.cegep.cegephoroscope.R;
+import com.hroscope.cegep.cegephoroscope.RegisterFragment;
+import com.hroscope.cegep.cegephoroscope.Validation;
 
 /**
  * Created by SACHIN on 6/22/2017.

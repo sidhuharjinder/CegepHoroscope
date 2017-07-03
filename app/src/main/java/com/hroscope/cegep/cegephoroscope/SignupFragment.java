@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.SigInFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
