@@ -1,11 +1,11 @@
 package com.hroscope.cegep.cegephoroscope;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 public class HomeScreen extends AppCompatActivity {
@@ -17,6 +17,21 @@ public class HomeScreen extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.navigation);
 
+      /*  try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.hroscope.cegep.cegephoroscope",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+*/
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener
@@ -32,7 +47,7 @@ public class HomeScreen extends AppCompatActivity {
                                 selectedFragment = ChineseHoroscope.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = Profile.newInstance();
+                                selectedFragment = ForgotPasswordFragment.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

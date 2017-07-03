@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hroscope.cegep.cegephoroscope.Profile">
+    tools:context="com.hroscope.cegep.cegephoroscope.ForgotPasswordFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

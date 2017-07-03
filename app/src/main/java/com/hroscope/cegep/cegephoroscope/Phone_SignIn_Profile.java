@@ -8,16 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ZodiacHoroscope extends Fragment {
 
-    public static ZodiacHoroscope newInstance() {
-        ZodiacHoroscope fragment = new ZodiacHoroscope();
+public class Phone_SignIn_Profile extends Fragment {
+    private View view;
+
+    public static Phone_SignIn_Profile newInstance() {
+        Phone_SignIn_Profile fragment = new Phone_SignIn_Profile();
         return fragment;
     }
-    public ZodiacHoroscope() {
+
+    public Phone_SignIn_Profile() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,8 @@ public class ZodiacHoroscope extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_zodiac_horoscope, container, false);
+        view= inflater.inflate(R.layout.fragment_facebook_signin_profile, container, false);
+        return view;
     }
 
 }

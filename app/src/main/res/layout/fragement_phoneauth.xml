@@ -1,0 +1,191 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerVertical="true"
+    tools:context="com.hroscope.cegep.cegephoroscope.SignupFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3D3D3D"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/logo" />
+
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="desc_firebase_lockup" />
+
+                <TextView
+                    android:id="@+id/title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="phone_title_text" />
+
+                <TextView
+                    android:id="@+id/status"
+                    style="@style/AlertDialog.AppCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="signed_out" />
+
+                <TextView
+                    android:id="@+id/detail"
+                    style="@style/AlertDialog.AppCompat.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Firebase User ID: 123456789abc" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="-250dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:id="@+id/phone_auth_fields"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="2.0">
+
+                        <EditText
+                            android:id="@+id/field_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:hint="Phone no with country code"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp"
+                            android:textColorHint="#ffffff"
+                            android:inputType="phone" />
+
+                        <EditText
+                            android:id="@+id/field_verification_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:hint="One time password"
+                            android:textColorHint="#ffffff"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginBottom="10dp"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="3.0">
+
+                        <Button
+
+                            android:id="@+id/button_start_verification"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:text="Send Password"
+                            android:layout_marginLeft="40dp"
+                           android:layout_marginRight="40dp"
+                           android:layout_marginBottom="10dp"
+                            android:background="@drawable/rbuttonemail"/>
+
+                        <Button
+
+                            android:id="@+id/button_verify_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:text="Verify Password"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp"
+                            android:background="@drawable/rbuttonphone"/>
+
+                        <Button
+
+                            android:id="@+id/button_resend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:text="Resend Password"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp"
+                            android:background="@drawable/rbuttonfacebook"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/signed_in_buttons"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone"
+                    android:weightSum="1.0">
+
+                    <Button
+                        android:id="@+id/sign_out_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="Sign Out" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

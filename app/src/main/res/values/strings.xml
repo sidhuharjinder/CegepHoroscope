@@ -3,6 +3,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="facebook_app_id">1895053774079463</string>
+    <string name="fb_login_protocol_scheme">fb1895053774079463</string>
+    <string name="com_facebook_loginview_log_in_button">LOGIN</string>
+    <string name="com_facebook_loginview_log_out_button">LOGOUT</string>
 
     <string name="title_activity_home">HomeActivity</string>
 
@@ -16,6 +19,14 @@
     <string name="hello_blank_fragment1">Hello blank fragment 2</string>
     <string name="hello_blank_fragment2">Hello blank fragment 3</string>
     <string name="title_activity_zodia_detail">ZodiaDetail</string>
+    <string name="status_sign_in_failed">Sign In Failed</string>
+
+
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
 
 </resources>
 
