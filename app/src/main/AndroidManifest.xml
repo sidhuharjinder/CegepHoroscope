@@ -25,24 +25,11 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity
+       <!-- <activity
             android:name=".ZodiaDetail"
             android:label="@string/title_activity_zodia_detail"
             android:theme="@style/AppTheme.NoActionBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-
-            <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER">
-             </category>
-             </intent-filter>
-        </activity>
+        </activity>-->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -53,23 +40,10 @@
         <activity android:name=".FacebookLoginActivity"></activity>
         <activity android:name=".GoogleLoginActivity"></activity>
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".FriendList">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".EditandDeleteFriend">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+        <activity android:name=".FriendList"></activity>
+       <!-- <activity android:name=".EditandDeleteFriend"></activity>-->
     </application>
 
 </manifest>

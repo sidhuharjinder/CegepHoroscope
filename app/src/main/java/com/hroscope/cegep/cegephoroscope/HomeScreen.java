@@ -32,7 +32,7 @@ public class HomeScreen extends AppCompatActivity {
                                 selectedFragment = ChineseHoroscope.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = Profile.newInstance();
+                              //  selectedFragment = Profile.newInstance();
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

@@ -74,10 +74,7 @@ public class Fragment_Email_SignIn_Profile extends Fragment implements View.OnCl
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
-
-
-
-
+    
     public static Fragment_Email_SignIn_Profile newInstance() {
 
         Fragment_Email_SignIn_Profile fragment = new Fragment_Email_SignIn_Profile();

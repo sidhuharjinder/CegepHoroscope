@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3D3D3D"
-    tools:context="com.hroscope.cegep.cegephoroscope.EditandDeleteFriend">
+    android:background="#3D3D3D">
+    <!--tools:context="com.hroscope.cegep.cegephoroscope.EditandDeleteFriend"-->
 
     <LinearLayout
         android:layout_width="match_parent"

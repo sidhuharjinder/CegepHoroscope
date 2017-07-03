@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Button;
 
 
 /**
@@ -35,7 +33,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     public void initializeButtons()
     {
         facebook_login_button =(Button) view.findViewById(R.id.facebook_button);
-        google_login_button =(Button) view.findViewById(R.id.google);
+        google_login_button =(Button) view.findViewById(R.id.googlePlus);
 
         email_login_button =(Button)view.findViewById(R.id.email);
         phone_login_Button =(Button)view.findViewById(R.id.phoneNumber);
