@@ -1,4 +1,4 @@
-package com.hroscope.cegep.cegephoroscope;
+package com.hroscope.cegep.cegephoroscope.Email_SignIn;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -37,6 +37,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hroscope.cegep.cegephoroscope.R;
+import com.hroscope.cegep.cegephoroscope.SignupFragment;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -52,7 +54,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by SACHIN on 6/30/2017.
  */
 
-public class Fragment_Email_SignIn_Profile extends Fragment implements View.OnClickListener{
+public class Email_Signin_Profile extends Fragment implements View.OnClickListener{
     private CircleImageView profile;
     private ImageButton button_gallary,button_capture,button_upload;
     private View view;
@@ -75,15 +77,15 @@ public class Fragment_Email_SignIn_Profile extends Fragment implements View.OnCl
     private SimpleDateFormat dateFormatter;
 
     
-    public static Fragment_Email_SignIn_Profile newInstance() {
+    public static Email_Signin_Profile newInstance() {
 
-        Fragment_Email_SignIn_Profile fragment = new Fragment_Email_SignIn_Profile();
+        Email_Signin_Profile fragment = new Email_Signin_Profile();
         return fragment;
     }
 
 
 
-    public Fragment_Email_SignIn_Profile() {
+    public Email_Signin_Profile() {
         // Required empty public constructor
     }
 

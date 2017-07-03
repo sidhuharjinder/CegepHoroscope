@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hroscope.cegep.cegephoroscope.Email_SignIn.SigInFragment;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
 
 
 /**
@@ -75,7 +75,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         }
         if(view== email_login_button)
         {
-            Fragment fragment = new SigInFragment();
+            Fragment fragment = new Email_Sigin_Fragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 

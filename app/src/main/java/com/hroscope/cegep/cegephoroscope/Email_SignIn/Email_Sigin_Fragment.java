@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hroscope.cegep.cegephoroscope.ForgotPasswordFragment;
-import com.hroscope.cegep.cegephoroscope.Fragment_Email_SignIn_Profile;
 import com.hroscope.cegep.cegephoroscope.R;
 import com.hroscope.cegep.cegephoroscope.RegisterFragment;
 import com.hroscope.cegep.cegephoroscope.Validation;
@@ -27,7 +26,7 @@ import com.hroscope.cegep.cegephoroscope.Validation;
  * Created by SACHIN on 6/22/2017.
  */
 
-public class SigInFragment extends Fragment implements View.OnClickListener{
+public class Email_Sigin_Fragment extends Fragment implements View.OnClickListener{
     private View view;
     Validation vr=new Validation();
     private Button buttonLogin;
@@ -41,12 +40,12 @@ public class SigInFragment extends Fragment implements View.OnClickListener{
 
 
 
-    public static SigInFragment newInstance() {
-        SigInFragment fragment = new SigInFragment();
+    public static Email_Sigin_Fragment newInstance() {
+        Email_Sigin_Fragment fragment = new Email_Sigin_Fragment();
         return fragment;
     }
 
-    public SigInFragment() {
+    public Email_Sigin_Fragment() {
 
     }
 
@@ -58,7 +57,7 @@ public class SigInFragment extends Fragment implements View.OnClickListener{
 
         firebaseAuth = FirebaseAuth.getInstance();
        if (firebaseAuth.getCurrentUser() != null) {
-            Fragment fragment = new Fragment_Email_SignIn_Profile();
+            Fragment fragment = new Email_Signin_Profile();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
         }
@@ -126,7 +125,7 @@ public class SigInFragment extends Fragment implements View.OnClickListener{
 
                                     Toast.LENGTH_SHORT).show();
 
-                            Fragment fragment = new Fragment_Email_SignIn_Profile();
+                            Fragment fragment = new Email_Signin_Profile();
                             FragmentManager fragmentManager = getFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
                         }
