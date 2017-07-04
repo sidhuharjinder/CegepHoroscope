@@ -26,9 +26,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,53 +51,51 @@ import java.util.Locale;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 
 /**
  * Created by SACHIN on 6/30/2017.
  */
 
-public class Email_Signin_Profile extends Fragment implements View.OnClickListener{
+public class Email_Signin_Profile_Fragment extends Fragment implements View.OnClickListener{
     private CircleImageView profile;
-    private ImageButton button_gallary,button_capture,button_upload;
     private View view;
-
     private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile;
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
+    private ImageButton button_gallary,button_capture,button_upload;
     private static final int PICK_IMAGE_REQUEST = 111,CAPTURE_IMG_REQUEST=120;
     Uri filePath;
     ProgressDialog pd;
     FirebaseStorage storage;
     StorageReference storageRef;
     FirebaseDatabase database;
+
     DatabaseReference databaseReference;
     String userUID,birthdate,updated_email;
-
-   // private EditText fromDateEtxt;
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
+    FirebaseUser user;
+
 
     
-    public static Email_Signin_Profile newInstance() {
+    public static Email_Signin_Profile_Fragment newInstance() {
 
-        Email_Signin_Profile fragment = new Email_Signin_Profile();
+        Email_Signin_Profile_Fragment fragment = new Email_Signin_Profile_Fragment();
         return fragment;
     }
 
 
+    public Email_Signin_Profile_Fragment() {
 
-    public Email_Signin_Profile() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_email_signin_profile, container, false);
-
         setControlls();
 
         if (firebaseAuth.getCurrentUser() != null) {
@@ -102,14 +103,7 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
             storageRef.child("Email_Registration").child(userUID).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-
-                  /*  Glide.with(getActivity())
-                            .using(new FirebaseImageLoader())
-                            .load(storageRef).override(600, 200).fitCenter()
-                            .into(profile);*/
                     Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(profile);
-
-
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -119,16 +113,14 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
                 }
             });
 
-
         }
-        setProfileData();
+        ReadFirebase_setProfileData();
         setDataTime();
 
         return view;
     }
 
-    public void setControlls()
-    {
+    public void setControlls() {
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         firebaseAuth= FirebaseAuth.getInstance();
         userUID=firebaseAuth.getCurrentUser().getUid();
@@ -136,7 +128,6 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
         storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
          database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Registration_Data").child(userUID);
-
 
 
         update_profile=(ImageView)view.findViewById(R.id.update);
@@ -187,21 +178,21 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Uploading....");
 
-
     }
 
-    private void updateData() {
+    private void updateData_loadTofirebase() {
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Updating....");
         birthdate=dateOfBirth.getText().toString();
         updated_email=currentUserEmail.getText().toString();
 
+        //update Firebase data storage
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
-                dataSnapshot.getRef().child("user_name").setValue(updated_email);
+
                 pd.dismiss();
                 Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
@@ -211,14 +202,20 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
                 Log.d("User", databaseError.getMessage());
             }
         });
+
+        //update Email in firebase authentication Section
+        user = firebaseAuth.getCurrentUser();
+        user.updateEmail(updated_email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User email address updated.");
+                        }
+                    }
+                });
     }
 
-    public void editeduploadTofirebase()
-    {
-
-
-      //  databaseReference.child("first_name").setValue(updated_email);
-    }
 
     private void setDataTime() {
      //   fromDateEtxt.setOnClickListener(this);
@@ -229,7 +226,8 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
                 dateOfBirth.setGravity(Gravity.LEFT);
-                dateOfBirth.setText(dateFormatter.format(newDate.getTime()));
+              dateFormatter.format(newDate.getTime());
+                dateOfBirth.setText( dateFormatter.format(newDate.getTime()));
 
             }
 
@@ -237,7 +235,7 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
 
     }
 
-    public void setProfileData()
+    public void ReadFirebase_setProfileData()
     {
         //set email addess
         String current_userEmail=firebaseAuth.getCurrentUser().getEmail();
@@ -253,6 +251,25 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
         initials.setText(nameInitial.toUpperCase());
+        //Birthdate
+
+       //Retrieve all set of data from firebase
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
+
+                dateOfBirth.setText(user.date_of_birth);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.addValueEventListener(postListener);
 
     }
 
@@ -308,6 +325,7 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
 
     }
 
+    //Profile Picture Method
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -428,17 +446,17 @@ public class Email_Signin_Profile extends Fragment implements View.OnClickListen
         }
         if(view==update_profile)
         {
-         updateData();
+         updateData_loadTofirebase();
           /*  Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
             pd = new ProgressDialog(getActivity());
 
 
-            birthdate=dateOfBirth.getText().toString();
-           // databaseReference.child("date_of_birth").setValue(birthdate);
+            date_of_birth=dateOfBirth.getText().toString();
+           // databaseReference.child("date_of_birth").setValue(date_of_birth);
 
             updated_email=currentUserEmail.getText().toString();
 
-            databaseReference.child("date_of_birth").setValue(birthdate);
+            databaseReference.child("date_of_birth").setValue(date_of_birth);
             databaseReference.child("user_name").setValue(updated_email);*/
 
 

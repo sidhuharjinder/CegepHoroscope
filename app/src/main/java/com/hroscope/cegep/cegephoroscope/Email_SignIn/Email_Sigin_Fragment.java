@@ -30,15 +30,10 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
     private View view;
     Validation vr=new Validation();
     private Button buttonLogin;
-
     private EditText editTextemail,editTextPassword;
     private TextView textViewNo_member,textViewForgot_passsword;
-
     private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
-
-
 
     public static Email_Sigin_Fragment newInstance() {
         Email_Sigin_Fragment fragment = new Email_Sigin_Fragment();
@@ -52,24 +47,22 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.email_signin, container, false);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-       if (firebaseAuth.getCurrentUser() != null) {
-            Fragment fragment = new Email_Signin_Profile();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
-        }
+        view=inflater.inflate(R.layout.email_signin, container, false);
         setControlls();
 
 
+       if (firebaseAuth.getCurrentUser() != null) {
+            Fragment fragment = new Email_Signin_Profile_Fragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+        }
+
         return view;
-
-
     }
 
     private void setControlls() {
+        firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(getActivity());
         buttonLogin = (Button)view.findViewById(R.id.button_login);
         editTextemail = (EditText)view.findViewById(R.id.email_id);
@@ -86,28 +79,18 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
 
     private void SignInUser()
     {
-
         final String email= editTextemail.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
-
-
        if(!vr.validationSignin(editTextemail,editTextPassword)) {
             onSignupFailed();
             return;
         }
-
 
      /*  if(TextUtils.isEmpty(email))
         {
             Toast.makeText(getActivity(),"Please enter email",Toast.LENGTH_SHORT).show();
             return;
         }
-
-        if(TextUtils.isEmpty(password))
-        {
-            Toast.makeText(getActivity(),"Please enter password",Toast.LENGTH_SHORT).show();
-
-            return;
         }*/
 
         //if validation is ok
@@ -122,14 +105,11 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Login Successfull",
-
                                     Toast.LENGTH_SHORT).show();
-
-                            Fragment fragment = new Email_Signin_Profile();
+                            Fragment fragment = new Email_Signin_Profile_Fragment();
                             FragmentManager fragmentManager = getFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
                         }
-
 
                         else
                         {
@@ -138,18 +118,10 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
                             buttonLogin.setEnabled(true);
 
                         }
-
                         progressDialog.dismiss();
-
 
                     }
                 });
-
-
-
-
-
-
 
     }
 
@@ -185,7 +157,6 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
         }
-
 
     }
 }
