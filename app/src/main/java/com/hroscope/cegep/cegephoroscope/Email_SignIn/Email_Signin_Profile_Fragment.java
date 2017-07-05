@@ -67,6 +67,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private FirebaseAuth firebaseAuth;
     private ImageButton button_gallary,button_capture,button_upload;
     private static final int PICK_IMAGE_REQUEST = 111,CAPTURE_IMG_REQUEST=120;
+   int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
     ProgressDialog pd;
     FirebaseStorage storage;
@@ -194,6 +195,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         //Get date wise zodiac Sign
         if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
             zodiac_sign_name="Capricorn";
+
         else if ((month ==  01 && day >= 20 && day <= 31) || (month ==  2 && day >= 01 && day <= 17))
             zodiac_sign_name="Aquarius";
         else if ((month ==  02 && day >= 18 && day <= 29) || (month ==  3 && day >= 01 && day <= 19))
@@ -225,6 +227,9 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             if(year==i)
             {
                 chi_zodiac_sign_name=chinese_zodiac_name[count];
+                if(count==0) {
+                  chinese_img=R.mipmap.monkey;
+                }
 
             }
             count++;
@@ -246,27 +251,6 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
                 regZodSign.setText(zodiac_sign_name);
                 chiZodSign.setText(chi_zodiac_sign_name);
-
-
-
-
-                /*String useruid=firebaseAuth.getCurrentUser().getUid();
-                StorageReference databaseReference = storageRef.child("Email_Registration").child(useruid).child("image.jpg");
-                UploadTask uploadTask = databaseReference.putFile(filePath);
-                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        pd.dismiss();
-                        Toast.makeText(getActivity(), "Upload successful", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        pd.dismiss();
-                        Toast.makeText(getActivity(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
                 pd.dismiss();
                 Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
@@ -276,6 +260,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 Log.d("User", databaseError.getMessage());
             }
         });
+
+
 
         //update Email in firebase authentication Section
         user = firebaseAuth.getCurrentUser();
@@ -340,7 +326,9 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
 
 
-               dateOfBirth.setText(user.date_of_birth);
+                dateOfBirth.setText(user.date_of_birth);
+                regZodSign.setText(user.zodiac_sign);
+                chiZodSign.setText(user.chinese_zodiac_sign);
 
             }
 
