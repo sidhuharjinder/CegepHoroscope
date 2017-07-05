@@ -78,7 +78,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
     FirebaseUser user;
-   String zodiac_sign_name;
+   String zodiac_sign_name,chi_zodiac_sign_name;
 
 
     
@@ -189,6 +189,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
+        int year=Integer.parseInt(birthdate.substring(6,10));
 
         //Get date wise zodiac Sign
         if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
@@ -216,6 +217,23 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         else if ((month == 11 && day >= 22 && day <= 30) || (month == 12 && day >= 01 && day <= 21))
             zodiac_sign_name="Sagittarius";
 
+        //Get Chinese Zodiac Sign
+      String[] chinese_zodiac_name={"Monkey","Rooster","Dog","Pig","Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Sheep"};
+        int count=0;
+      for(int i=1920;i<=year;i++)
+        {
+            if(year==i)
+            {
+                chi_zodiac_sign_name=chinese_zodiac_name[count];
+
+            }
+            count++;
+            if(count>11)
+                count=0;
+        }
+
+
+
 
         //update Firebase data storage
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -224,7 +242,10 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
                 dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
                 dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
+                dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
+
                 regZodSign.setText(zodiac_sign_name);
+                chiZodSign.setText(chi_zodiac_sign_name);
 
 
 
