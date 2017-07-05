@@ -46,7 +46,6 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -79,8 +78,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
     FirebaseUser user;
-    private int birth_month;
-    Date store_date;
+   String zodiac_sign_name;
 
 
     
@@ -189,72 +187,47 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         birthdate=dateOfBirth.getText().toString();
         updated_email=currentUserEmail.getText().toString();
 
+        int day=Integer.parseInt(birthdate.substring(0,2));
+        int month= Integer.parseInt(birthdate.substring(3,5));
+
+        //Get date wise zodiac Sign
+        if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
+            zodiac_sign_name="Capricorn";
+        else if ((month ==  01 && day >= 20 && day <= 31) || (month ==  2 && day >= 01 && day <= 17))
+            zodiac_sign_name="Aquarius";
+        else if ((month ==  02 && day >= 18 && day <= 29) || (month ==  3 && day >= 01 && day <= 19))
+            zodiac_sign_name="Pisces";
+        else if ((month ==  03 && day >= 20 && day <= 31) || (month ==  4 && day >= 01 && day <= 19))
+            zodiac_sign_name="Aries";
+        else if ((month ==  04 && day >= 20 && day <= 30) || (month ==  5 && day >= 01 && day <= 20))
+            zodiac_sign_name="Taurus";
+        else if ((month ==  05 && day >= 21 && day <= 31) || (month ==  6 && day >= 01 && day <= 20))
+            zodiac_sign_name="Gemini";
+        else if ((month ==  06 && day >= 21 && day <= 30) || (month ==  7 && day >= 01 && day <= 22))
+            zodiac_sign_name="Cancer";
+        else if ((month ==  07 && day >= 23 && day <= 31) || (month ==  8 && day >= 01 && day <= 22))
+            zodiac_sign_name="Leo";
+        else if ((month ==  8 && day >= 23 && day <= 31) || (month ==  9 && day >= 01 && day <= 22))
+            zodiac_sign_name="Virgo";
+        else if ((month ==  9 && day >= 23 && day <= 30) || (month == 10 && day >= 01 && day <= 22))
+            zodiac_sign_name="Libra";
+        else if ((month == 10 && day >= 23 && day <= 31) || (month == 11 && day >= 01 && day <= 21))
+            zodiac_sign_name="Scorpio";
+        else if ((month == 11 && day >= 22 && day <= 30) || (month == 12 && day >= 01 && day <= 21))
+            zodiac_sign_name="Sagittarius";
+
+
         //update Firebase data storage
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
+                dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
+                regZodSign.setText(zodiac_sign_name);
 
 
-                int day=Integer.parseInt(birthdate.substring(0,2));
-                int month= Integer.parseInt(birthdate.substring(3,5));
 
-                if      ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
-                       regZodSign.setText("Capricorn");
-                else if ((month ==  01 && day >= 20 && day <= 31) || (month ==  2 && day >= 01 && day <= 17))
-                    regZodSign.setText("Aquarius");
-                else if ((month ==  02 && day >= 18 && day <= 29) || (month ==  3 && day >= 01 && day <= 19))
-                    regZodSign.setText("Pisces");
-                else if ((month ==  03 && day >= 20 && day <= 31) || (month ==  4 && day >= 01 && day <= 19))
-                    regZodSign.setText("Aries");
-                else if ((month ==  04 && day >= 20 && day <= 30) || (month ==  5 && day >= 01 && day <= 20))
-                    regZodSign.setText("Taurus");
-                else if ((month ==  05 && day >= 21 && day <= 31) || (month ==  6 && day >= 01 && day <= 20))
-                    regZodSign.setText("Gemini");
-                else if ((month ==  06 && day >= 21 && day <= 30) || (month ==  7 && day >= 01 && day <= 22))
-                    regZodSign.setText("Cancer");
-                else if ((month ==  07 && day >= 23 && day <= 31) || (month ==  8 && day >= 01 && day <= 22))
-                    regZodSign.setText("Leo");
-                else if ((month ==  8 && day >= 23 && day <= 31) || (month ==  9 && day >= 01 && day <= 22))
-                    regZodSign.setText("Virgo");
-                else if ((month ==  9 && day >= 23 && day <= 30) || (month == 10 && day >= 01 && day <= 22))
-                    regZodSign.setText("Libra");
-                else if ((month == 10 && day >= 23 && day <= 31) || (month == 11 && day >= 01 && day <= 21))
-                    regZodSign.setText("Scorpio");
-                else if ((month == 11 && day >= 22 && day <= 30) || (month == 12 && day >= 01 && day <= 21))
-                    regZodSign.setText("Sagittarius");
-
-             /*   birth_month= Integer.parseInt(birthdate.substring(3,5));
-                switch(birth_month)
-                {
-                    case 1:
-
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
-                    case 12:
-                        break;
-
-                }*/
 
                 /*String useruid=firebaseAuth.getCurrentUser().getUid();
                 StorageReference databaseReference = storageRef.child("Email_Registration").child(useruid).child("image.jpg");
