@@ -79,7 +79,9 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
     FirebaseUser user;
+    String nme;
    String zodiac_sign_name,chi_zodiac_sign_name;
+            String zod_name="",chi_name="";
 
 
     
@@ -238,8 +240,6 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         }
 
 
-
-
         //update Firebase data storage
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -302,6 +302,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
     public void ReadFirebase_setProfileData()
     {
+
         //set email addess
         String current_userEmail=firebaseAuth.getCurrentUser().getEmail();
         String split_email = current_userEmail.substring(0, current_userEmail.indexOf("@"));
@@ -318,17 +319,49 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         initials.setText(nameInitial.toUpperCase());
         //Birthdate
 
-       //Retrieve all set of data from firebase
+       //retrieve zodiac image from firebase
+
+
+        //Retrieve all set of data from firebase
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
-
-
                 dateOfBirth.setText(user.date_of_birth);
-                regZodSign.setText(user.zodiac_sign);
+
+               regZodSign.setText(user.zodiac_sign);
                 chiZodSign.setText(user.chinese_zodiac_sign);
+                //using those string variable for child name to get zod and chinese zod sign image from database
+                zod_name=user.zodiac_sign.toLowerCase();
+                chi_name=user.chinese_zodiac_sign.toLowerCase();
+
+                //load appropriate image to zodiac sign imageview
+                storageRef.child("Signs").child("Zodiac_Signs").child(zod_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(regZodiac);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // File not found
+                    }
+                });
+
+                //load appropriate image to Chinese zodiac sign imageview
+                storageRef.child("Signs").child("Chinese_Signs").child(chi_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(ChiZodiac);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // File not found
+                    }
+                });
+
 
             }
 
@@ -338,6 +371,14 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             }
         };
         databaseReference.addValueEventListener(postListener);
+
+        //load appropriate image into imageview
+
+           // storageRef.child("Signs").child("Zodiac_Sign").child("aries.png")
+
+
+
+
 
     }
 

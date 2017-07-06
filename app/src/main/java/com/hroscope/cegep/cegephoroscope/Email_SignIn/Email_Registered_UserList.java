@@ -22,18 +22,29 @@ public class Email_Registered_UserList {
     public String zodiac_sign;
     public String chinese_zodiac_sign;
 
+    public String getSign_name() {
+        return sign_name;
+    }
+
+    public void setSign_name(String sign_name) {
+        this.sign_name = sign_name;
+    }
+
+    public String sign_name;
+
 
     public Email_Registered_UserList() {
         // Default constructor required for calls to DataSnapshot.getValue(Email_Registered_UserList.class)
     }
 
-    public Email_Registered_UserList(String first_name, String Last_name, String Email, String date,String zodiac_sign,String chinese_zodiac_sign) {
+    public Email_Registered_UserList(String first_name, String Last_name, String Email, String date,String zodiac_sign,String chinese_zodiac_sign,String sign_name) {
         this.first_name = first_name;
         this.Last_name = Last_name;
         this.Email = Email;
         this.date_of_birth = date;
         this.zodiac_sign=zodiac_sign;
         this.chinese_zodiac_sign=chinese_zodiac_sign;
+        this.sign_name=sign_name;
     }
 
     // [START post_to_map]
