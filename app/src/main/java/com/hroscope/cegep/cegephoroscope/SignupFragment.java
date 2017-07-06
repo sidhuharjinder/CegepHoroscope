@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.login.widget.LoginButton;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
 
 
@@ -22,6 +23,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     private Button email_login_button, phone_login_Button;
     public Button facebook_login_button;
     private Button google_login_button;
+    public LoginButton facebook_login;
     private TextView register;
 
     public static SignupFragment newInstance() {
@@ -30,10 +32,12 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     }
     public SignupFragment() {
 
+
     }
 
     public void initializeButtons()
     {
+       facebook_login=(LoginButton)view.findViewById(R.id.facebook_login);
         facebook_login_button =(Button) view.findViewById(R.id.facebook_button);
         google_login_button =(Button) view.findViewById(R.id.googlePlus);
 
@@ -66,7 +70,11 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         if(view== facebook_login_button)
         {
-            startActivity(new Intent(getActivity(), FacebookLoginActivity.class));
+            Fragment fragment = new FacebookFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
+           // startActivity(new Intent(getActivity(), FacebookLoginActivity.class));
 
         }
         if(view== google_login_button)

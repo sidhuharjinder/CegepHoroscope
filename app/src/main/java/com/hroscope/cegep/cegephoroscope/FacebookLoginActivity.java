@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class FacebookLoginActivity extends AppCompatActivity {
 
     LoginButton loginButton;
+    SignupFragment frg=new SignupFragment();
+
 
     TextView textView;
     private CallbackManager callbackManager;
@@ -41,7 +43,9 @@ public class FacebookLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.continue_facebook);
+
+
+       // setContentView(R.layout.continue_facebook);
 
           if(getIntent().hasExtra("logout"))
           {
@@ -61,7 +65,11 @@ public class FacebookLoginActivity extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         callbackManager=CallbackManager.Factory.create();
        // textView=(TextView)findViewById(R.id.status);
-        loginButton=(LoginButton)findViewById(R.id.facebook_login);
+       // loginButton=(LoginButton)findViewById(R.id.facebook_login);
+
+        SignupFragment fg=new SignupFragment();
+        loginButton = fg.facebook_login;
+        loginButton.findViewById(R.id.facebook_login);
 
     }
 

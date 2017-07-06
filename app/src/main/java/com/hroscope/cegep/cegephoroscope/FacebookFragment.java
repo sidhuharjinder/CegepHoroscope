@@ -1,5 +1,6 @@
 package com.hroscope.cegep.cegephoroscope;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -43,7 +44,7 @@ public class FacebookFragment extends Fragment {
 
     boolean clicked=false;
     private FirebaseAuth.AuthStateListener firebaseauthlistener;
-    FacebookProfileFragment fba=new FacebookProfileFragment();
+    Fb_Profile_Fragment fba=new Fb_Profile_Fragment();
 
     private View view;
 
@@ -68,13 +69,13 @@ public class FacebookFragment extends Fragment {
         {
             LoginManager.getInstance().logOut();
 
-            Toast.makeText(getActivity(), " I Am in If Get Intent", Toast.LENGTH_LONG).show();
+
 
         }
 
         setcontrolls();
         LoginFacebook();
-        Toast.makeText(getActivity(), " I Am in After Login facebook method", Toast.LENGTH_LONG).show();
+
         return view;
     }
 
@@ -83,11 +84,14 @@ public class FacebookFragment extends Fragment {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
 
+
         firebaseAuth=FirebaseAuth.getInstance();
         callbackManager=CallbackManager.Factory.create();
         // textView=(TextView)findViewById(R.id.status);
         loginButton=(LoginButton)view.findViewById(R.id.facebook_login);
-        Toast.makeText(getActivity(), " I Am in Set Controlls", Toast.LENGTH_LONG).show();
+
+        //with set fragment it goes to fragment by default OnActivityResult redirect to activity
+        loginButton.setFragment(this);
 
     }
 
@@ -95,14 +99,14 @@ public class FacebookFragment extends Fragment {
     {
         // loginButton.setReadPermissions(Arrays.asList("email"));
         loginButton.setReadPermissions("email","public_profile");
-        Toast.makeText(getActivity(), " I Am insside Login Facebook", Toast.LENGTH_LONG).show();
+
      // if(fba.clicked) {
             loginButton.setLoginBehavior(LoginBehavior.WEB_ONLY);
 
 
 
 
-     //  }
+     // }
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -132,7 +136,7 @@ public class FacebookFragment extends Fragment {
                 {
                     Log.d(",","onAuthStateChanged_signed_in"+firebaseuser.getUid());
 
-                    Fragment fragment = new Phone_SignIn_Profile();
+                    Fragment fragment = new Fb_Profile_Fragment();
                     FragmentManager fragmentManager = getFragmentManager();
 
                     fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
@@ -144,7 +148,7 @@ public class FacebookFragment extends Fragment {
                    // finish();
                     Toast.makeText(getActivity(), "Facebook Login Successfull", Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(getActivity(), " I Am in auth listenr", Toast.LENGTH_LONG).show();
+
 
                 }
 
@@ -188,26 +192,18 @@ public class FacebookFragment extends Fragment {
                     Log.v(",","signInWithCredential",task.getException());
                     Toast.makeText(getActivity(),"Authentication Successful",Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(getActivity(), " I Am in If success facebook token", Toast.LENGTH_LONG).show();
+
                 }
             }
         });
 
 
     }
-  /*  @Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try {
-            for (Fragment fragment : getFragmentManager().getFragments()) {
-                fragment.onActivityResult(requestCode, resultCode, data);
-                Log.d("Activity", "ON RESULT CALLED");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("ERROR", e.toString());
-        }
-    }*/
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
 
 
 }

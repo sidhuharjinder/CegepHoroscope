@@ -59,7 +59,6 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
         Uri photo= Uri.parse(bundle.getString("photo"));
 
 
-
         facebook_logout=(LoginButton)view.findViewById(R.id.fb);
       //  google_logout=(Button)view.findViewById(R.id.google_signout) ;
         username=(TextView)view.findViewById(R.id.username);
@@ -67,13 +66,13 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
         faebookimage=(ImageView)view.findViewById(R.id.facebook_profile);
 
 
-        username.setText(name);
+       username.setText(name);
         emailTextview.setText(email_address);
         Picasso.with(getActivity()).load(photo).resize(250,280).into(faebookimage);
 
 
     //  Bundle bundle = this.getArguments();
-     //   String myValue = getArguments().getString("name");
+        String myValue = getArguments().getString("name");
 
 
        // emailTextview.setText("smart.san");

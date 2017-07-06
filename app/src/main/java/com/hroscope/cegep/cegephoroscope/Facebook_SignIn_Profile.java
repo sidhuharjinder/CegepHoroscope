@@ -28,6 +28,7 @@ public class Facebook_SignIn_Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_email_signin_profile, container, false);
+
         return view;
     }
 }
