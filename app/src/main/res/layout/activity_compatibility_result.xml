@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hroscope.cegep.cegephoroscope.Comapatibity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3D3D3D"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+
+            android:text="Compatibility Overview" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ariesCompatibilityButton"
+                android:layout_width="96dp"
+                android:layout_height="65dp"
+
+                android:src="@mipmap/aries"
+                app:civ_border_color="#FFF"
+                app:civ_border_width="4dp" />
+
+            <TextView
+                android:id="@+id/compatibilitytextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="And"
+
+                android:textSize="17sp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/tauruscompatibilityButton"
+                android:layout_width="96dp"
+                android:layout_height="65dp"
+
+                android:src="@mipmap/taurus"
+                app:civ_border_color="#FFF"
+                app:civ_border_width="4dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="283dp"
+
+                android:gravity="center"
+                android:text="In an Aries and Taurus match, we have the Cardinal Fire Sign of Aries paired with the Fixed Earth Sign of Taurus. This go one of a few ways, and it will all depend on the commitments of the individuals, to the union as whole.Aries is ruled by Mars,and Taurus is ruled by Venus, the lover.So in this match we have both the Lover and the Fighter and balance will be necessary from both parties in order to make it work."
+                android:textColor="#fff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+</FrameLayout>

@@ -113,7 +113,7 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:text="Taurus"
+                    android:text="Aries"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
                 <ImageView
