@@ -186,6 +186,7 @@
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/zodSign"
                     android:layout_width="50dp"
@@ -202,6 +203,15 @@
                     android:inputType="text"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/forwardzodiac"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+
+                    android:layout_weight="1"
+                    android:src="@mipmap/next" />
             </LinearLayout>
 
             <LinearLayout
@@ -211,6 +221,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/chineseSign"
                     android:layout_width="50dp"
@@ -227,6 +238,14 @@
                     android:inputType="text"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
+
+                <ImageView
+                    android:id="@+id/forwardchinese"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@mipmap/next" />
             </LinearLayout>
 
             <LinearLayout
@@ -236,11 +255,13 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <ImageButton
+
+                <ImageView
                     android:id="@+id/friendsimage"
+
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/friends" />
+                    android:src="@mipmap/friends" />
                 <TextView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
@@ -255,6 +276,7 @@
 
                     android:background="@color/trans"
                     android:inputType="date" />
+
                 <ImageView
                     android:id="@+id/EditFreinds"
                     android:layout_width="50dp"

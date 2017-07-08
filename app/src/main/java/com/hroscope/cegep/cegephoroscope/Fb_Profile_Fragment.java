@@ -144,6 +144,7 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
                     photo=firebaseuser.getPhotoUrl();
 
 
+
                     username.setText(firebaseuser.getDisplayName());
                     emailTextview.setText(firebaseuser.getEmail());
 
@@ -171,6 +172,9 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
 
         return view;
     }
+
+
+
 
 
 

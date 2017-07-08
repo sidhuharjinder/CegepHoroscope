@@ -61,7 +61,7 @@ import static android.content.ContentValues.TAG;
 public class Email_Signin_Profile_Fragment extends Fragment implements View.OnClickListener{
     private CircleImageView profile;
     private View view;
-    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile;
+    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
@@ -143,6 +143,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         ChiZodiac=(ImageView)view.findViewById(R.id.chineseSign);
         friendImg=(ImageView)view.findViewById(R.id.friendsimage);
         EditFriend=(ImageView)view.findViewById(R.id.EditFreinds);
+        forward_zodiac=(ImageView)view.findViewById(R.id.forwardzodiac);
+        forward_chinese=(ImageView)view.findViewById(R.id.forwardchinese);
         currentUserEmail =(EditText)view.findViewById(R.id.email);
 
         dateOfBirth=(EditText)view.findViewById(R.id.dateOfBirth);
@@ -174,6 +176,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         regZodiac.setOnClickListener(this);
         ChiZodiac.setOnClickListener(this);
         friendImg.setOnClickListener(this);
+        forward_zodiac.setOnClickListener(this);
+        forward_chinese.setOnClickListener(this);
         EditFriend.setOnClickListener(this);
         update_profile.setOnClickListener(this);
         update_profile.setVisibility(view.INVISIBLE);
@@ -546,6 +550,16 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
         }
         if(view==friendImg)
+        {
+
+        }
+
+        if(view==forward_zodiac)
+        {
+
+        }
+
+        if(view==forward_chinese)
         {
 
         }

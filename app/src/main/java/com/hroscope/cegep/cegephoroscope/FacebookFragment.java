@@ -41,7 +41,7 @@ public class FacebookFragment extends Fragment {
     TextView textView;
     private CallbackManager callbackManager;
     private FirebaseAuth firebaseAuth;
-
+    String Birthday;
     boolean clicked=false;
     private FirebaseAuth.AuthStateListener firebaseauthlistener;
     Fb_Profile_Fragment fba=new Fb_Profile_Fragment();
@@ -97,8 +97,9 @@ public class FacebookFragment extends Fragment {
 
     private void LoginFacebook()
     {
-        // loginButton.setReadPermissions(Arrays.asList("email"));
-        loginButton.setReadPermissions("email","public_profile");
+        //loginButton.setReadPermissions(Arrays.asList("email"));
+       // loginButton.setReadPermissions(Arrays.asList("user_birthday"));
+        loginButton.setReadPermissions("email","user_birthday","public_profile");
 
      // if(fba.clicked) {
             loginButton.setLoginBehavior(LoginBehavior.WEB_ONLY);
@@ -113,7 +114,7 @@ public class FacebookFragment extends Fragment {
                 Log.d("TAG","Facebook Login Successful"+loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
 
-                Toast.makeText(getActivity(), " I Am in register call back", Toast.LENGTH_LONG).show();
+
             }
 
             @Override
@@ -136,6 +137,7 @@ public class FacebookFragment extends Fragment {
                 {
                     Log.d(",","onAuthStateChanged_signed_in"+firebaseuser.getUid());
 
+
                     Fragment fragment = new Fb_Profile_Fragment();
                     FragmentManager fragmentManager = getFragmentManager();
 
@@ -144,6 +146,8 @@ public class FacebookFragment extends Fragment {
                    // Intent in=new Intent(F.this,FacebookProfileActivity.class);
                     String email=firebaseuser.getEmail();
                     String name=firebaseuser.getDisplayName();
+                     //  firebaseuser.getBirthday();
+
                   //  startActivity(in);
                    // finish();
                     Toast.makeText(getActivity(), "Facebook Login Successfull", Toast.LENGTH_LONG).show();
@@ -204,6 +208,10 @@ public class FacebookFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
+
 
 
 }
