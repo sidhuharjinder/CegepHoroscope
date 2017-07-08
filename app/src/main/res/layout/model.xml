@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imageView1"
+                android:id="@+id/friend_profile"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="2dp"
@@ -44,7 +44,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/nameTxt"
+                android:id="@+id/friend_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/trans"
@@ -57,7 +57,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/friend_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
