@@ -485,7 +485,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         if(view==profile)
         {
             button_gallary.setVisibility(view.VISIBLE);
-            button_capture.setVisibility(view.VISIBLE);
+            button_capture.setVisibility(view.INVISIBLE);
 
 
         }
