@@ -282,7 +282,9 @@
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/pencil" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/next" />
+
             </LinearLayout>
 
         </LinearLayout>

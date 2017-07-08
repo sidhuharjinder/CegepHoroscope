@@ -40,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hroscope.cegep.cegephoroscope.Friends_List.Friend_ListFragment;
 import com.hroscope.cegep.cegephoroscope.R;
 import com.hroscope.cegep.cegephoroscope.SignupFragment;
 import com.squareup.picasso.Picasso;
@@ -565,6 +566,9 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         }
         if(view==EditFriend)
         {
+            Fragment fragment = new Friend_ListFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
         }
         if(view==update_profile)
