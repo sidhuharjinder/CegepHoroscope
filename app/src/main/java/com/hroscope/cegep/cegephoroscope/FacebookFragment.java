@@ -97,17 +97,12 @@ public class FacebookFragment extends Fragment {
 
     private void LoginFacebook()
     {
-        //loginButton.setReadPermissions(Arrays.asList("email"));
-       // loginButton.setReadPermissions(Arrays.asList("user_birthday"));
+
         loginButton.setReadPermissions("email","user_birthday","public_profile");
 
-     // if(fba.clicked) {
+      if(fba.clicked) {
             loginButton.setLoginBehavior(LoginBehavior.WEB_ONLY);
-
-
-
-
-     // }
+      }
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
