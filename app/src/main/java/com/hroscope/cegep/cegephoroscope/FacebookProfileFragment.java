@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.facebook.login.widget.LoginButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by SACHIN on 6/24/2017.
@@ -26,8 +27,8 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
 
     private FirebaseAuth firebaseAuth;
     private Button facebook_logout,google_logout;
-    private TextView username, emailTextview;
-    private ImageView faebookimage;
+    private EditText User_name;
+    private CircleImageView faebookimage;
     Uri facebook_profile;
     String email_address,displayname;
     String sdata;
@@ -51,7 +52,7 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
     {
 
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fbprofile, container, false);
+        view= inflater.inflate(R.layout.fragment_email_signin_profile, container, false);
 
          Bundle bundle=getArguments();
         String name=bundle.getString("name");
@@ -61,13 +62,13 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
 
         facebook_logout=(LoginButton)view.findViewById(R.id.fb);
       //  google_logout=(Button)view.findViewById(R.id.google_signout) ;
-        username=(TextView)view.findViewById(R.id.username);
-        emailTextview =(TextView)view.findViewById(R.id.email);
-        faebookimage=(ImageView)view.findViewById(R.id.facebook_profile);
+
+        User_name =(EditText) view.findViewById(R.id.email);
+        faebookimage=(CircleImageView) view.findViewById(R.id.rabbitButton);
 
 
-       username.setText(name);
-        emailTextview.setText(email_address);
+       User_name.setText(name);
+
         Picasso.with(getActivity()).load(photo).resize(250,280).into(faebookimage);
 
 

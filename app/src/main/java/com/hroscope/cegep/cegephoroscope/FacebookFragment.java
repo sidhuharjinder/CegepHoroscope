@@ -65,11 +65,12 @@ public class FacebookFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.continue_facebook, container, false);
 
-        if(getActivity().getIntent().hasExtra("logout"))
+        Bundle bundle=getArguments();
+        boolean val=bundle.getBoolean("logout");
+
+        if(val)
         {
             LoginManager.getInstance().logOut();
-
-
 
         }
 
@@ -82,9 +83,6 @@ public class FacebookFragment extends Fragment {
     private void setcontrolls()
     {
         FacebookSdk.sdkInitialize(getApplicationContext());
-
-
-
         firebaseAuth=FirebaseAuth.getInstance();
         callbackManager=CallbackManager.Factory.create();
         // textView=(TextView)findViewById(R.id.status);

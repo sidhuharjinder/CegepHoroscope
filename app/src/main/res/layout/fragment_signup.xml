@@ -39,13 +39,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:paddingBottom="18sp"
         android:paddingLeft="40sp"
         android:paddingRight="40sp"
         android:paddingTop="18sp"
         android:textSize="20sp" />
-        <Button
+     <!--   <Button
             android:id="@+id/facebook_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -57,6 +57,7 @@
             android:text="Facebook"
             android:textColor="#ffffff"
             android:textSize="18sp" />
+            -->
         <Button
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"

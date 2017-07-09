@@ -127,7 +127,7 @@ public class FacebookProfileActivity extends AppCompatActivity{
                     email_address=firebaseuser.getEmail();
                     photo=firebaseuser.getPhotoUrl();
 
-                    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,createFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,createFragment()).commit();
                     username.setText(firebaseuser.getDisplayName());
                     email.setText(firebaseuser.getEmail());
 
