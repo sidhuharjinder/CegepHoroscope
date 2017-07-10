@@ -295,6 +295,8 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
             if(count>11)
                 count=0;
         }
+        zodiacName.setText(zodiac_sign_name);
+        chineseZodName.setText(chi_zodiac_sign_name);
 
         //update Firebase data storage
         databaseReference.child(UniqueID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -306,8 +308,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
                 dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
 
-                zodiacName.setText(zodiac_sign_name);
-                chineseZodName.setText(chi_zodiac_sign_name);
+
                 pd.dismiss();
                 Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
@@ -447,6 +448,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 dateOfBirth.setError(null);
                 upload(uniqueID);
                 updateData_loadTofirebase(uniqueID);
+
 
             }
 

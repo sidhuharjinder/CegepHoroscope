@@ -41,7 +41,8 @@ public class FriendList extends ListFragment{
 
 
 
-
+     String []User={"Friend List Empty"};
+    int[]images={R.drawable.user};
    // int[] images= {R.mipmap.capricorn,R.mipmap.aquarius,R.mipmap.pisces,R.mipmap.aries,R.mipmap.taurus,
           //  R.mipmap.gemini,R.mipmap.cancer,R.mipmap.leo,R.mipmap.virgo,R.mipmap.libra,
            // R.mipmap.scorpio,R.mipmap.sagittarius};
@@ -55,17 +56,19 @@ public class FriendList extends ListFragment{
         ReadFirebase_SetFriendList();
 
         //MAP
-     /*   HashMap<String, String> map=new HashMap<String, String>();
+       /* HashMap<String, String> map=new HashMap<String, String>();
         //FILL
-        for(int i=0;i<players.length;i++)
+        for(int i=0;i<User.length;i++)
         {
             map=new HashMap<String, String>();
-            map.put("Player", players[i]);
+            map.put("name", User[i]);
+          //  map.put("date", User[i]);
             map.put("Image", Integer.toString(images[i]));
+
             data.add(map);
         }
         //KEYS IN MAP
-        String[] from={"Player","Image"};
+        String[] from={"name","Image"};
         //IDS OF VIEWS
         int[] to={R.id.friend_name,R.id.friend_profile};
         //ADAPTER
@@ -108,54 +111,83 @@ public class FriendList extends ListFragment{
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    Log.v(TAG,"key"+ childDataSnapshot.getKey()); //displays the key for the node
-                    Log.v(TAG,"name"+ childDataSnapshot.child("Name").getValue());
-                   // Toast.makeText(getActivity(), childDataSnapshot.child("Name").getValue().toString() , Toast.LENGTH_SHORT).show();//gives the value for given keyname
-                    //Toast.makeText(getActivity(), childDataSnapshot.getKey().toString() , Toast.LENGTH_SHORT).show();
-                   //
+            public void onDataChange(final DataSnapshot dataSnapshot) {
 
 
-                   storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child( childDataSnapshot.getKey()).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
 
-                            String zodnm=childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
-                            HashMap<String, String> map=new HashMap<String, String>();
+
+                    for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                        Log.v(TAG, "key" + childDataSnapshot.getKey()); //displays the key for the node
+                        Log.v(TAG, "name" + childDataSnapshot.child("Name").getValue());
+                        // Toast.makeText(getActivity(), childDataSnapshot.child("Name").getValue().toString() , Toast.LENGTH_SHORT).show();//gives the value for given keyname
+                        //Toast.makeText(getActivity(), childDataSnapshot.getKey().toString() , Toast.LENGTH_SHORT).show();
+                        //
+
+                        if(childDataSnapshot.hasChild("date_of_birth")) {
+                            // String zodnm = childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
+                            HashMap<String, String> map = new HashMap<String, String>();
                             //FILL
-                            map=new HashMap<String, String>();
+                            map = new HashMap<String, String>();
                             map.put("Name", childDataSnapshot.child("Name").getValue().toString());
-                            map.put("Date",childDataSnapshot.child("date_of_birth").getValue().toString() );
+                            map.put("Date", childDataSnapshot.child("date_of_birth").getValue().toString());
                             data.add(map);
 
 
                             //KEYS IN MAP
-                            String[] from={"Name","Date"};
+                            String[] from = {"Name", "Date"};
 
                             //IDS OF VIEWS
-                            int[] to={R.id.friend_name,R.id.friend_birthdate};
+                            int[] to = {R.id.friend_name, R.id.friend_birthdate};
                             //ADAPTER
-                            adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from,to);
+                            adapter = new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
                             setListAdapter(adapter);
-                            //
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // File not found
-                        }
-                    });
+
+                            storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child(childDataSnapshot.getKey()).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
 
 
+                                    //
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // File not found
+                                }
+                            });
+                        }
+                        else
+                        {
+                            HashMap<String, String> map=new HashMap<String, String>();
+                            //FILL
+                            for(int i=0;i<User.length;i++)
+                            {
+                                map=new HashMap<String, String>();
+                                map.put("name", User[i]);
+                                //  map.put("date", User[i]);
+                                map.put("Image", Integer.toString(images[i]));
+
+                                data.add(map);
+                            }
+                            //KEYS IN MAP
+                            String[] from={"name","Image"};
+                            //IDS OF VIEWS
+                            int[] to={R.id.friend_name,R.id.friend_profile};
+                            //ADAPTER
+                            adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
+                            setListAdapter(adapter);
+                        }
+
+
+            }
 
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled (DatabaseError databaseError){
 
-            }
+                }
+
+
         });
 
     }

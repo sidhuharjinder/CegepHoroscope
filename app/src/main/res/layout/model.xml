@@ -49,12 +49,13 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans"
                 android:ems="10"
-
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:textColor="#fff"
-
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <EditText
                 android:id="@+id/friend_birthdate"
@@ -63,10 +64,12 @@
                 android:ems="10"
                 android:inputType="date"
                 android:background="@color/trans"
-                android:text="Name"
                 android:textColor="#fff"
-
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
         </LinearLayout>
     </LinearLayout>
 
