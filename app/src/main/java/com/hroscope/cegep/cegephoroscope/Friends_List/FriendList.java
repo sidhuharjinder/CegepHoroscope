@@ -44,6 +44,7 @@ public class FriendList extends ListFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setControlls();
+
         ReadFirebase_SetFriendList();
 
         //MAP

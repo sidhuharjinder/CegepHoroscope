@@ -109,7 +109,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(profile);
-
+                   //
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -243,7 +243,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             if(count>11)
                 count=0;
         }
-
+        regZodSign.setText(zodiac_sign_name);
+        chiZodSign.setText(chi_zodiac_sign_name);
 
         //update Firebase data storage
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -253,9 +254,6 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
                 dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
                 dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
-
-                regZodSign.setText(zodiac_sign_name);
-                chiZodSign.setText(chi_zodiac_sign_name);
                 pd.dismiss();
                 Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
@@ -333,19 +331,20 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
-                dateOfBirth.setText(user.date_of_birth);
-
-               regZodSign.setText(user.zodiac_sign);
+               if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
+                {
+                    dateOfBirth.setText(user.date_of_birth);
+                regZodSign.setText(user.zodiac_sign);
                 chiZodSign.setText(user.chinese_zodiac_sign);
                 //using those string variable for child name to get zod and chinese zod sign image from database
-                zod_name=user.zodiac_sign.toLowerCase();
-                chi_name=user.chinese_zodiac_sign.toLowerCase();
+                zod_name = user.zodiac_sign.toLowerCase();
+                chi_name = user.chinese_zodiac_sign.toLowerCase();
 
                 //load appropriate image to zodiac sign imageview
-                storageRef.child("Signs").child("Zodiac_Signs").child(zod_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(regZodiac);
+                        Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(regZodiac);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -355,10 +354,10 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 });
 
                 //load appropriate image to Chinese zodiac sign imageview
-                storageRef.child("Signs").child("Chinese_Signs").child(chi_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                storageRef.child("Signs").child("Chinese_Signs").child(chi_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(ChiZodiac);
+                        Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(ChiZodiac);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -366,7 +365,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                         // File not found
                     }
                 });
-
+            }
 
             }
 
