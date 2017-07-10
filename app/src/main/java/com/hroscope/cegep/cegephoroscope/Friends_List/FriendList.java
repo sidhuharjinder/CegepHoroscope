@@ -1,9 +1,7 @@
 package com.hroscope.cegep.cegephoroscope.Friends_List;
 
 import android.app.ListFragment;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -112,6 +108,29 @@ public class FriendList extends ListFragment{
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren()==false)
+                {
+
+                    HashMap<String, String> map=new HashMap<String, String>();
+                    //FILL
+                    for(int i=0;i<User.length;i++)
+                    {
+                        map=new HashMap<String, String>();
+                        map.put("name", User[i]);
+                        //  map.put("date", User[i]);
+                        map.put("Image", Integer.toString(images[i]));
+
+                        data.add(map);
+                    }
+                    //KEYS IN MAP
+                    String[] from={"name","Image"};
+                    //IDS OF VIEWS
+                    int[] to={R.id.friend_name,R.id.friend_profile};
+                    //ADAPTER
+                    adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
+                    setListAdapter(adapter);
+
+                }
 
 
 
@@ -142,7 +161,7 @@ public class FriendList extends ListFragment{
                             adapter = new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
                             setListAdapter(adapter);
 
-                            storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child(childDataSnapshot.getKey()).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                         /*   storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child(childDataSnapshot.getKey()).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
 
@@ -154,7 +173,7 @@ public class FriendList extends ListFragment{
                                 public void onFailure(@NonNull Exception exception) {
                                     // File not found
                                 }
-                            });
+                            });*/
                         }
                         else
                         {

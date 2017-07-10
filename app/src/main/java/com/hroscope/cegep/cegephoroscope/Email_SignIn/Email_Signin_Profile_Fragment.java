@@ -572,7 +572,15 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         }
         if(view==update_profile)
         {
-         updateData_loadTofirebase();
+            String date_of_birth=dateOfBirth.getText().toString();
+            if (date_of_birth.isEmpty()) {
+
+
+                dateOfBirth.setError("Choose your Birthdate");
+            }
+            else {
+                updateData_loadTofirebase();
+            }
           /*  Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
             pd = new ProgressDialog(getActivity());
 
