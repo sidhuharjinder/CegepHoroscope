@@ -1,7 +1,9 @@
 package com.hroscope.cegep.cegephoroscope.Friends_List;
 
 import android.app.ListFragment;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,9 +39,12 @@ public class FriendList extends ListFragment{
     String userUID,birthdate,updated_email;
     static String FriendUniqueID;
 
-    String[] players={"Ander Herera","Diego Costa","Juan Mata","David De Gea","Thibaut Courtouis","Van Persie","Oscar"};
 
-    int[] images={R.mipmap.monkey, R.mipmap.monkey,R.mipmap.monkey,R.mipmap.monkey,R.mipmap.monkey,R.mipmap.monkey,R.mipmap.monkey};
+
+
+   // int[] images= {R.mipmap.capricorn,R.mipmap.aquarius,R.mipmap.pisces,R.mipmap.aries,R.mipmap.taurus,
+          //  R.mipmap.gemini,R.mipmap.cancer,R.mipmap.leo,R.mipmap.virgo,R.mipmap.libra,
+           // R.mipmap.scorpio,R.mipmap.sagittarius};
     ArrayList<HashMap<String, String>> data=new ArrayList<HashMap<String,String>>();
     SimpleAdapter adapter;
     @Override
@@ -90,6 +97,8 @@ public class FriendList extends ListFragment{
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Registration_Data").child("Users_Friend_List").child(userUID);
 
+
+
     }
 
     public void ReadFirebase_SetFriendList()
@@ -101,30 +110,46 @@ public class FriendList extends ListFragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     Log.v(TAG,"key"+ childDataSnapshot.getKey()); //displays the key for the node
                     Log.v(TAG,"name"+ childDataSnapshot.child("Name").getValue());
                    // Toast.makeText(getActivity(), childDataSnapshot.child("Name").getValue().toString() , Toast.LENGTH_SHORT).show();//gives the value for given keyname
                     //Toast.makeText(getActivity(), childDataSnapshot.getKey().toString() , Toast.LENGTH_SHORT).show();
                    //
 
-                    HashMap<String, String> map=new HashMap<String, String>();
-                    //FILL
 
-                        map=new HashMap<String, String>();
-                        map.put("Name", childDataSnapshot.child("Name").getValue().toString());
-                       map.put("Date",childDataSnapshot.child("date_of_birth").getValue().toString() );
-                        data.add(map);
+                   storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child( childDataSnapshot.getKey()).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
 
-                    //KEYS IN MAP
+                            String zodnm=childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
+                            HashMap<String, String> map=new HashMap<String, String>();
+                            //FILL
+                            map=new HashMap<String, String>();
+                            map.put("Name", childDataSnapshot.child("Name").getValue().toString());
+                            map.put("Date",childDataSnapshot.child("date_of_birth").getValue().toString() );
+                            data.add(map);
 
-                    String[] from={"Name","Date"};
 
-                    //IDS OF VIEWS
-                    int[] to={R.id.friend_name,R.id.friend_birthdate};
-                    //ADAPTER
-                    adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from,to);
-                    setListAdapter(adapter);
+                            //KEYS IN MAP
+                            String[] from={"Name","Date"};
+
+                            //IDS OF VIEWS
+                            int[] to={R.id.friend_name,R.id.friend_birthdate};
+                            //ADAPTER
+                            adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from,to);
+                            setListAdapter(adapter);
+                            //
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // File not found
+                        }
+                    });
+
+
+
                 }
             }
             @Override
@@ -134,6 +159,10 @@ public class FriendList extends ListFragment{
         });
 
     }
+
+
+
+
 
 
 

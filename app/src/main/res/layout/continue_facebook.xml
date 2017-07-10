@@ -41,5 +41,17 @@
             android:paddingTop="18sp"
             android:textSize="20sp" />
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/googlebutton"
+            android:layout_width="match_parent"
+
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="115dp"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            >
+        </com.google.android.gms.common.SignInButton>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

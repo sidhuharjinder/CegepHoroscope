@@ -65,11 +65,12 @@ public class FacebookFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.continue_facebook, container, false);
 
-        if(getActivity().getIntent().hasExtra("logout"))
+        Bundle bundle=getArguments();
+        boolean val=bundle.getBoolean("logout");
+
+        if(val)
         {
             LoginManager.getInstance().logOut();
-
-
 
         }
 
@@ -82,9 +83,6 @@ public class FacebookFragment extends Fragment {
     private void setcontrolls()
     {
         FacebookSdk.sdkInitialize(getApplicationContext());
-
-
-
         firebaseAuth=FirebaseAuth.getInstance();
         callbackManager=CallbackManager.Factory.create();
         // textView=(TextView)findViewById(R.id.status);
@@ -97,17 +95,12 @@ public class FacebookFragment extends Fragment {
 
     private void LoginFacebook()
     {
-        //loginButton.setReadPermissions(Arrays.asList("email"));
-       // loginButton.setReadPermissions(Arrays.asList("user_birthday"));
+
         loginButton.setReadPermissions("email","user_birthday","public_profile");
 
-     // if(fba.clicked) {
+      if(fba.clicked) {
             loginButton.setLoginBehavior(LoginBehavior.WEB_ONLY);
-
-
-
-
-     // }
+      }
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

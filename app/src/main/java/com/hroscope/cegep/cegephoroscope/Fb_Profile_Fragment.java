@@ -11,8 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
@@ -22,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -39,8 +40,8 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
     static boolean clicked=false;
     private FirebaseAuth firebaseAuth;
     private Button facebook_logout,google_logout;
-    private TextView username, emailTextview;
-    private ImageView faebookimage;
+    private EditText username, emailTextview;
+    private CircleImageView faebookimage;
     public static String name;
 
     public static Uri photo;
@@ -71,15 +72,14 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
     {
 
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fbprofile, container, false);
+        view= inflater.inflate(R.layout.fragment_facebook_signin_profile, container, false);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         firebaseAuth=FirebaseAuth.getInstance();
         facebook_logout=(LoginButton)view.findViewById(R.id.fb);
          // google_logout=(Button) view.findViewById(R.id.google_signout) ;
-        username=(TextView)view.findViewById(R.id.username);
-        emailTextview =(TextView)view.findViewById(R.id.email);
-        faebookimage=(ImageView)view.findViewById(R.id.facebook_profile);
+        username=(EditText) view.findViewById(R.id.email);
+        faebookimage=(CircleImageView) view.findViewById(R.id.rabbitButton);
 
 
         facebook_logout.setOnClickListener(new View.OnClickListener() {
@@ -134,34 +134,25 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
                         Log.d("TAG",userInfo.getProviderId());
                     }
 
-                /*    Bundle bundle=new Bundle();
-                    bundle.putString("name", "Sachin");
-                    //set Fragmentclass Arguments
-                    FacebookProfileFragment fragobj=new FacebookProfileFragment();
-                    fragobj.setArguments(bundle);*/
                     name=firebaseuser.getDisplayName();
-                    email_address=firebaseuser.getEmail();
+                  //  email_address=firebaseuser.getEmail();
                     photo=firebaseuser.getPhotoUrl();
 
 
 
                     username.setText(firebaseuser.getDisplayName());
-                    emailTextview.setText(firebaseuser.getEmail());
 
-
-
-                    //  FacebookLoginActivity fbl=new FacebookLoginActivity();
-                    /// username.setText(fbl.personname);
-                    //email.setText(personEmail);
-                      Picasso.with(getActivity()).load(photo).resize(250,280).into(faebookimage);
+                      Picasso.with(getActivity()).load(photo).resize(400,100).centerInside().into(faebookimage);
 
 
                 }
                 else if(firebaseuser==null){
 
+
                     Fragment fragment = new SignupFragment();
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
                 }
             }
 

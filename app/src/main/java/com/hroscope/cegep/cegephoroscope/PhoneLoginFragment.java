@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -194,6 +195,9 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = task.getResult().getUser();
                             updateUI(signIn_success, user);
+
+
+
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
@@ -277,11 +281,15 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
         } else {
 
             mPhoneNumberViews.setVisibility(View.GONE);
-            mSignedInViews.setVisibility(View.VISIBLE);
+          //  mSignedInViews.setVisibility(View.VISIBLE);
+
             enableViews(mPhoneNumberField, mVerificationField);
             mPhoneNumberField.setText(null);
             mVerificationField.setText(null);
             mStatusText.setText("signed_in");
+            Fragment fragment = new Phone_SignIn_Profile();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
         }
     }
