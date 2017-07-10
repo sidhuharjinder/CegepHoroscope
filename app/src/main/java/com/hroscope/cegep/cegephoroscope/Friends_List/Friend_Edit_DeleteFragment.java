@@ -4,11 +4,14 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -247,6 +250,15 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         birthdate=dateOfBirth.getText().toString();
         updated_email=name.getText().toString();
 
+        String nameInitial=updated_email.substring(0,1);
+        initials.setGravity(Gravity.CENTER);
+        initials.setTextSize(40);
+        initials.setTextColor(Color.rgb(255,255,255));
+        //make initial Bold
+        final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+        initials.setText(nameInitial.toUpperCase());
+
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
         int year=Integer.parseInt(birthdate.substring(6,10));
@@ -319,7 +331,8 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 pd.dismiss();
             }
         });
-          pd.dismiss();
+
+
     }
 
     private void setDataTime() {
