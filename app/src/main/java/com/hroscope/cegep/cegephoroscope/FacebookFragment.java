@@ -65,14 +65,14 @@ public class FacebookFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.continue_facebook, container, false);
 
-        Bundle bundle=getArguments();
-        boolean val=bundle.getBoolean("logout");
 
-        if(val)
+        if(getActivity().getIntent().hasExtra("logout"))
         {
             LoginManager.getInstance().logOut();
+            firebaseAuth.signOut();
 
         }
+
 
         setcontrolls();
         LoginFacebook();
@@ -186,8 +186,9 @@ public class FacebookFragment extends Fragment {
                 Log.d(",","signInWithCredentialonComplete"+task.isSuccessful());
                 if(task.isSuccessful())
                 {
+                  //  Toast.makeText(getActivity(),"Authentication Successful",Toast.LENGTH_SHORT).show();
                     Log.v(",","signInWithCredential",task.getException());
-                    Toast.makeText(getActivity(),"Authentication Successful",Toast.LENGTH_SHORT).show();
+                 //
 
 
                 }

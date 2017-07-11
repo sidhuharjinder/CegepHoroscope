@@ -37,7 +37,7 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
 
     private View view;
     private Context context;
-    static boolean clicked=false;
+    static boolean clicked=false,logoutclick=true;
     private FirebaseAuth firebaseAuth;
     private Button facebook_logout,google_logout;
     private EditText username, emailTextview;
@@ -88,11 +88,14 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
 
                 firebaseAuth.signOut();
                 LoginManager.getInstance().logOut();
+                Fragment fragment = new SignupFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
                 // LoginManager.getInstance().logOut();
 
                 clicked=true;
-
+                logoutclick=false;
 
             }
         });
@@ -149,9 +152,7 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
                 else if(firebaseuser==null){
 
 
-                    Fragment fragment = new SignupFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
 
                 }
             }
