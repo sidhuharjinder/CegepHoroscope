@@ -21,30 +21,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="-150dp"
-
-            app:srcCompat="@drawable/logo" />
-
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="90dp"
+            android:clickable="true"
+            android:visibility="invisible"
             android:paddingBottom="18sp"
             android:paddingLeft="40sp"
             android:paddingRight="40sp"
             android:paddingTop="18sp"
             android:textSize="20sp" />
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
+            android:layout_height="100dp"
+
+            app:srcCompat="@drawable/loading" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PLEASE WAIT"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            />
+
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googlebutton"
             android:layout_width="match_parent"
-
+            android:visibility="invisible"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="115dp"

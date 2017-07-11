@@ -15,6 +15,8 @@ import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
+import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.FacebookFragment;
+import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.Fb_Profile_Fragment;
 
 
 /**
@@ -80,7 +82,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
 
         return view;
     }
-    
+
     @Override
     public void onClick(View view) {
         if(view== facebook_login_button)

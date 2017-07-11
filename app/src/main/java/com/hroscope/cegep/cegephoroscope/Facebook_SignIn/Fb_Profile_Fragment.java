@@ -1,4 +1,4 @@
-package com.hroscope.cegep.cegephoroscope;
+package com.hroscope.cegep.cegephoroscope.Facebook_SignIn;
 
 import android.content.Context;
 import android.net.Uri;
@@ -20,6 +20,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.hroscope.cegep.cegephoroscope.R;
+import com.hroscope.cegep.cegephoroscope.SignupFragment;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -95,7 +97,7 @@ public class Fb_Profile_Fragment extends Fragment // implements FragmentCommunic
                 // LoginManager.getInstance().logOut();
 
                 clicked=true;
-                logoutclick=false;
+
 
             }
         });

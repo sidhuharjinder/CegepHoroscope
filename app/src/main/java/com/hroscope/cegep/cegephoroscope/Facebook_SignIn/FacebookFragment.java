@@ -1,4 +1,4 @@
-package com.hroscope.cegep.cegephoroscope;
+package com.hroscope.cegep.cegephoroscope.Facebook_SignIn;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.hroscope.cegep.cegephoroscope.R;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -96,11 +97,13 @@ public class FacebookFragment extends Fragment {
     private void LoginFacebook()
     {
 
+
         loginButton.setReadPermissions("email","user_birthday","public_profile");
 
       if(fba.clicked) {
             loginButton.setLoginBehavior(LoginBehavior.WEB_ONLY);
       }
+        loginButton.callOnClick();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
