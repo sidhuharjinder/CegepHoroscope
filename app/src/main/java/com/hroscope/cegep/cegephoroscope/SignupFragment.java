@@ -1,7 +1,6 @@
 package com.hroscope.cegep.cegephoroscope;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
 import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.FacebookFragment;
 import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.Fb_Profile_Fragment;
+import com.hroscope.cegep.cegephoroscope.GoogleLogin.GoogleFragment;
 
 
 /**
@@ -96,7 +96,9 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         }
         if(view== google_login_button)
         {
-            startActivity(new Intent(getActivity(), GoogleLoginActivity.class));
+            Fragment fragment = new GoogleFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
         }
         if(view== email_login_button)
         {

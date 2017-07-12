@@ -108,7 +108,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference databaseReference = database.getReference("Registration_Data").child(useruid);
                            // databaseReference.child("User_Id").setValue(useruid);
-                            databaseReference.child("first_name").setValue(firstname);
+                            databaseReference.child("fullDetail").setValue(firstname);
                             databaseReference.child("Last_name").setValue(lastname);
                             databaseReference.child("Email").setValue(email);
                             databaseReference.child("phone_no").setValue(phone);

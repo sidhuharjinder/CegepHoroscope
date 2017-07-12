@@ -82,7 +82,10 @@ public class FriendList extends ListFragment{
             public void onItemClick(AdapterView<?> av, View v, int pos,
                                     long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getActivity(), data.get(pos).get("Player"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), data.get(pos).get("Name"), Toast.LENGTH_SHORT).show();
+                HashMap<String, String> mymap = (HashMap<String, String>) data.get(pos);
+
+
             }
         });
     }
@@ -116,19 +119,20 @@ public class FriendList extends ListFragment{
                     for(int i=0;i<User.length;i++)
                     {
                         map=new HashMap<String, String>();
-                        map.put("name", User[i]);
+                        map.put("Name", User[i]);
                         //  map.put("date", User[i]);
-                        map.put("Image", Integer.toString(images[i]));
+                        map.put("Date", Integer.toString(images[i]));
 
                         data.add(map);
                     }
                     //KEYS IN MAP
-                    String[] from={"name","Image"};
+                    String[] from={"Name","Date"};
                     //IDS OF VIEWS
                     int[] to={R.id.friend_name,R.id.friend_profile};
                     //ADAPTER
                     adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
                     setListAdapter(adapter);
+
 
                 }
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.hroscope.cegep.cegephoroscope.zodiacDetail.ZodiaDetail;
+
 
 /**
  * A simple {@link Fragment} subclass.

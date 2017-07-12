@@ -49,13 +49,9 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+               />
 
             <EditText
                 android:id="@+id/friend_birthdate"
