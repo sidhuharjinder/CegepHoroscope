@@ -17,7 +17,7 @@ public class EditandDeleteFriend extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditandDeleteFriend.this,FriendList.class);
+                Intent intent = new Intent(EditandDeleteFriend.this,FriendLIstActivity.class);
                 startActivity(intent);
             }
         });

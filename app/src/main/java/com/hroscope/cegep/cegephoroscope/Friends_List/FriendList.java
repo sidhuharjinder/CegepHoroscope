@@ -1,6 +1,7 @@
 package com.hroscope.cegep.cegephoroscope.Friends_List;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -84,7 +85,10 @@ public class FriendList extends ListFragment{
                 // TODO Auto-generated method stub
                 Toast.makeText(getActivity(), data.get(pos).get("Name"), Toast.LENGTH_SHORT).show();
                 HashMap<String, String> mymap = (HashMap<String, String>) data.get(pos);
-
+                Intent intent = new Intent(getActivity(),Friend_Edit_DeleteFragment.class);
+                intent.putExtra("Id",pos);
+                intent.putExtra("map",data);
+                startActivity(intent);
 
             }
         });
@@ -105,9 +109,6 @@ public class FriendList extends ListFragment{
 
     public void ReadFirebase_SetFriendList()
     {
-
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {

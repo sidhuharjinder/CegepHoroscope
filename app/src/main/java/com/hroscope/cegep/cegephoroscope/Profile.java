@@ -44,7 +44,7 @@ public class Profile extends Fragment {
         linearFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),FriendList.class);
+                Intent intent = new Intent(getActivity(),FriendLIstActivity.class);
                 startActivity(intent);
             }
         });

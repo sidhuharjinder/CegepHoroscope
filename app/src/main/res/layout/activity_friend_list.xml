@@ -47,94 +47,12 @@
 
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.hroscope.cegep.cegephoroscope.Friends_List.FriendList"
+        <ListView
+            android:id="@+id/participants_list"
+            android:dividerHeight="5dp"
+            android:divider="#3D3D3D"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"/>
 
-<<<<<<< HEAD
-                <TextView
-                    android:id="@+id/editText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@color/trans"
-                    android:text="Parth Desai"
-                    android:textColor="#fff"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@color/trans"
-                    android:text="Rat"
-                    android:textColor="#fff"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="99dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/friendPicButton"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@drawable/user"
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="#FFF"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/editTextName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@color/trans"
-                    android:text="Pardeep"
-                    android:textColor="#fff"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:id="@+id/editTextDOB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@color/trans"
-                    android:text="Name"
-                    android:textColor="#fff"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-=======
->>>>>>> Sachin_Fragment
     </LinearLayout>
 </FrameLayout>
