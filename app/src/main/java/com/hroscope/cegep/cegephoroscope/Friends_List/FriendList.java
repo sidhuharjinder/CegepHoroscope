@@ -136,9 +136,6 @@ public class FriendList extends ListFragment{
 
                 }
 
-
-
-
                     for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                         Log.v(TAG, "key" + childDataSnapshot.getKey()); //displays the key for the node
                         Log.v(TAG, "name" + childDataSnapshot.child("Name").getValue());
@@ -146,7 +143,7 @@ public class FriendList extends ListFragment{
                         //Toast.makeText(getActivity(), childDataSnapshot.getKey().toString() , Toast.LENGTH_SHORT).show();
                         //
 
-                        if(childDataSnapshot.hasChild("date_of_birth")) {
+                        if(childDataSnapshot.hasChild("date_of_birth")&&childDataSnapshot.hasChild("zodiac_sign")) {
                             // String zodnm = childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
                             HashMap<String, String> map = new HashMap<String, String>();
                             //FILL

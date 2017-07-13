@@ -34,17 +34,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <com.facebook.login.widget.LoginButton
-        android:id="@+id/facebook_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:paddingBottom="18sp"
-        android:paddingLeft="40sp"
-        android:paddingRight="40sp"
-        android:paddingTop="18sp"
-        android:textSize="20sp" />
         <Button
             android:id="@+id/facebook_button"
             android:layout_width="match_parent"

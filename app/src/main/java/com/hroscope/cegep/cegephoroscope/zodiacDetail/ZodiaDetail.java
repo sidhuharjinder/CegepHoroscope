@@ -68,6 +68,7 @@ public class ZodiaDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zodia_detail);
+
         initializeviews();
         initializeFirebase();
 
@@ -97,7 +98,7 @@ public class ZodiaDetail extends Activity {
     {
         //set data for Today
         //Zodiac Title Text
-        String zodiac_title = getIntent().getStringExtra("text");
+        final String zodiac_title = getIntent().getStringExtra("text");
         todayTitlezod.setGravity(Gravity.CENTER);
         todayTitlezod.setTextSize(30);
         todayTitlezod.setTextColor(Color.rgb(255,255,255));
@@ -112,7 +113,7 @@ public class ZodiaDetail extends Activity {
 
 
 
-       // todayTitlezod.setText(zodiac_title );
+       todayTitlezod.setText(zodiac_title );
 
          todayZodImage.setImageResource(R.mipmap.aries);
 
@@ -122,10 +123,8 @@ public class ZodiaDetail extends Activity {
 
                 ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
 
-                  todayTitlezod.setText(user.summary);
-                Toast.makeText(ZodiaDetail.this, user.summary,
 
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
                 todayzodinfo.setText(user.summary.toString());
 
 
