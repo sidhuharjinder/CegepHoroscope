@@ -3,6 +3,8 @@
     package="com.hroscope.cegep.cegephoroscope">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,46 +26,21 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".ZodiaDetail"
+            android:name=".zodiacDetail.ZodiaDetail"
             android:label="@string/title_activity_zodia_detail"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-
-        </activity>
-        <activity android:name=".Comapatibity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".FriendList">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".EditandDeleteFriend">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".CompatibilityResult"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FacebookProfileActivity" />
+        <activity android:name=".FacebookLoginActivity" />
+        <activity android:name=".GoogleLoginActivity" />
+        <!-- <activity android:name=".EditandDeleteFriend"></activity> -->
+        <activity android:name=".FriendLIstActivity"></activity>
+        <activity android:name=".EditandDeleteFriend"></activity>
     </application>
 
 </manifest>
