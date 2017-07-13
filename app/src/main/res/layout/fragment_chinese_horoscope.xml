@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+
             android:text="Chinese Horoscopes" />
 
         <LinearLayout
@@ -66,7 +66,7 @@
                         android:text="Rat"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -93,7 +93,7 @@
                         android:text="Ox"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,7 +120,7 @@
                         android:text="Tiger"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -166,7 +166,7 @@
                         android:text="Rabbit"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,7 +193,7 @@
                         android:text="Dragon"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -220,7 +220,7 @@
                         android:text="Snake"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
 
@@ -264,7 +264,7 @@
                         android:text="Horse"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -291,7 +291,7 @@
                         android:text="Goat"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -318,7 +318,7 @@
                         android:text="Monkey"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -362,7 +362,7 @@
                         android:text="Rooster"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -389,7 +389,7 @@
                         android:text="Dog"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -416,7 +416,7 @@
                         android:text="Snake"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>

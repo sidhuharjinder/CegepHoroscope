@@ -4,23 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3D3D3D"
-    tools:context="com.hroscope.cegep.cegephoroscope.EditandDeleteFriend">
+    android:background="#3D3D3D">
+    <!--tools:context="com.hroscope.cegep.cegephoroscope.EditandDeleteFriend"-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/rabbitButton"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/user"
-            app:civ_border_width="4dp"
-            app:civ_border_color="#FFF"/>
+            app:civ_border_color="#FFF"
+            app:civ_border_width="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3D3D3D"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="90dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/gallary"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/image_gallery" />
+
+            <ImageButton
+                android:id="@+id/upload"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/upload_image" />
+
+        </LinearLayout>
 
 
         <!--<ImageView-->
@@ -39,24 +68,41 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imageView"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@android:drawable/ic_notification_overlay" />
-            <EditText
-                android:id="@+id/editText3"
+                android:layout_height="40dp"
+                android:layout_marginLeft="-12dp"
+                android:layout_weight="1"
+
+                app:srcCompat="@drawable/filled_circle" />
+
+            <TextView
+                android:id="@+id/initials"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:background="@color/trans"
+                android:text="S"
+                android:textColor="#92dc5b"
+                android:layout_marginTop="-3dp"
+                android:gravity="center"
+                android:layout_marginLeft="-55dp"
+                />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@color/trans"
+                android:ems="10"
+                android:inputType="text"
                 android:text="Name"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:inputType="text" />
+                android:textSize="20sp" />
+
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/editname"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -80,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="17dp"
                 android:ems="10"
                 android:background="@color/trans"
                 android:inputType="date"
@@ -111,7 +157,7 @@
                 android:id="@+id/zodiac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="17dp"
                 android:layout_weight="1"
                 android:background="@color/trans"
                 android:ems="10"
@@ -120,6 +166,14 @@
                 android:textColor="#fff"
 
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/editzod"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+
+                android:src="@mipmap/next" />
         </LinearLayout>
 
         <LinearLayout
@@ -140,13 +194,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="17dp"
                 android:background="@color/trans"
                 android:text="Name"
                 android:textColor="#fff"
 
                 android:textSize="20sp"
                 android:inputType="text" />
+
+            <ImageView
+                android:id="@+id/editchinesezod"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+
+                android:src="@mipmap/next" />
         </LinearLayout>
 
         <LinearLayout

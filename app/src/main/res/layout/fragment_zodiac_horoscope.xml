@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.hroscope.cegep.cegephoroscope.ZodiacHoroscope">
+    tools:context="com.hroscope.cegep.cegephoroscope.zodiacDetail.ZodiacHoroscope">
 
 
     <LinearLayout
@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:background="#3D3D3D"
         android:gravity="center"
+
 
         android:orientation="vertical">
 
@@ -20,8 +21,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="19sp"
+
             android:text="Zodiac Horoscopes" />
 
         <LinearLayout
@@ -67,7 +68,7 @@
                         android:text="Aries"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -94,7 +95,7 @@
                         android:text="Taurus"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -121,7 +122,7 @@
                         android:text="Gemini"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -167,7 +168,7 @@
                         android:text="Cancer"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -194,7 +195,7 @@
                         android:text="Leo"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -221,7 +222,7 @@
                         android:text="Virgo"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
 
@@ -265,7 +266,7 @@
                         android:text="Libra"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -292,7 +293,7 @@
                         android:text="Scorpio"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -319,7 +320,7 @@
                         android:text="Sagittarius"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -363,7 +364,7 @@
                         android:text="Capricon"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -390,7 +391,7 @@
                         android:text="Aquarius"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -417,7 +418,7 @@
                         android:text="Pisces"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>

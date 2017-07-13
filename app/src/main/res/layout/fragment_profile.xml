@@ -113,9 +113,16 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:text="Taurus"
+                    android:text="Aries"
                     android:textColor="#fff"
                     android:textSize="20sp"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -141,6 +148,13 @@
                     android:text="Rat"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -151,8 +165,9 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <ImageButton
+                <ImageView
                     android:id="@+id/friendsimage"
+
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/friends" />
@@ -170,6 +185,13 @@
 
                     android:background="@color/trans"
                     android:inputType="date" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/next"
+                    android:layout_marginRight="20dp"
+
+                    />
             </LinearLayout>
 
         </LinearLayout>
