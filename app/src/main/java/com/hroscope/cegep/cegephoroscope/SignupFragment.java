@@ -1,7 +1,6 @@
 package com.hroscope.cegep.cegephoroscope;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -92,7 +91,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
-           startActivity(new Intent(getActivity(), FacebookFragment.class));
+         //  startActivity(new Intent(getActivity(), FacebookFragment.class));
 
         }
         if(view== google_login_button)
