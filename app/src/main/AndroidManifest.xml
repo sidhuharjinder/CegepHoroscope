@@ -28,7 +28,7 @@
         <activity
             android:name=".zodiacDetail.ZodiaDetail"
             android:label="@string/title_activity_zodia_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -39,8 +39,9 @@
         <activity android:name=".FacebookLoginActivity" />
         <activity android:name=".GoogleLoginActivity" />
         <!-- <activity android:name=".EditandDeleteFriend"></activity> -->
-        <activity android:name=".FriendLIstActivity"></activity>
-        <activity android:name=".EditandDeleteFriend"></activity>
+        <activity android:name=".FriendLIstActivity" />
+        <activity android:name=".EditandDeleteFriend" />
+        <activity android:name=".SaveFriend"></activity>
     </application>
 
 </manifest>

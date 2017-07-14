@@ -52,7 +52,7 @@ public class FriendLIstActivity extends AppCompatActivity  {
         addfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),EditandDeleteFriend.class);
+                Intent intent = new Intent(getApplicationContext(),SaveFriend.class);
                 startActivity(intent);
 
             }

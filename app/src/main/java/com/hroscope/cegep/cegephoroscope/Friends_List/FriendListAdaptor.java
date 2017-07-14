@@ -1,6 +1,7 @@
 package com.hroscope.cegep.cegephoroscope.Friends_List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hroscope.cegep.cegephoroscope.EditandDeleteFriend;
+import com.hroscope.cegep.cegephoroscope.FriendLIstActivity;
 import com.hroscope.cegep.cegephoroscope.R;
 import com.squareup.picasso.Picasso;
 
@@ -37,6 +41,7 @@ public class FriendListAdaptor extends ArrayAdapter<FriendListModel> implements 
         private ImageView profilePicture;
         private TextView name;
         private TextView date;
+        private LinearLayout model_friend_list;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -45,16 +50,26 @@ public class FriendListAdaptor extends ArrayAdapter<FriendListModel> implements 
         final View result;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+            final LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.model, parent, false);
             viewHolder.profilePicture = (ImageView) convertView.findViewById(R.id.friend_profile);
             viewHolder.name = (TextView) convertView.findViewById(R.id.friend_name);
             viewHolder.date = (TextView) convertView.findViewById(R.id.friend_birthdate);
+            viewHolder.model_friend_list=(LinearLayout)convertView.findViewById(R.id.model_friend_list);
             Picasso.with(mContext).load(dataModel.getProfileImage()).into(viewHolder.profilePicture);
+            Log.d("Hello",dataModel.getListdate());
             viewHolder.name.setText(dataModel.getListName());
             viewHolder.date.setText(dataModel.getListdate());
             viewHolder.name.setTextColor(Color.WHITE);
             viewHolder.date.setTextColor(Color.WHITE);
+            viewHolder.model_friend_list.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext,EditandDeleteFriend.class);
+                    intent.putExtra("date",dataModel.getListdate());
+                    mContext.startActivity(intent);
+                }
+            });
         }
         return convertView;
     }

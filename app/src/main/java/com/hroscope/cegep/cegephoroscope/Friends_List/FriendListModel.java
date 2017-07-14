@@ -9,7 +9,7 @@ public class FriendListModel {
     private String name;
     private String date;
 
-    public FriendListModel(String profileImage, String name,String date) {
+    public FriendListModel(String name, String profileImage,String date) {
         this.profileImage = profileImage;
         this.name=name;
         this.date =date;
