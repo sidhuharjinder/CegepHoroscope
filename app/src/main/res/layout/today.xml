@@ -103,7 +103,7 @@
                 android:layout_height="283dp"
 
                 android:gravity="center"
-                android:textColor="#fff"
+                android:textColor="#ffffff"
                 android:textSize="15sp" />
 
         </LinearLayout>

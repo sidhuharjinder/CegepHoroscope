@@ -44,26 +44,24 @@
                 android:layout_marginRight="90dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/button2"
+                <ImageButton
+                    android:id="@+id/gallary"
                     android:layout_width="0dp"
-                    android:layout_marginTop="-2dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/image_gallery" />
+
+                <Button
+                    android:id="@+id/phonesignout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
                     android:layout_weight="1"
                     android:text="Sign Out" />
             </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/signout"
-                android:layout_gravity="center"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:layout_marginTop="-59dp"
-                android:background="#3D3D3D"
-                android:layout_marginLeft="150dp"
-                app:srcCompat="@drawable/email_logout" />
 
 
             <ImageButton

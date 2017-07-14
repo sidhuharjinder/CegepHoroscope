@@ -35,7 +35,9 @@ import com.hroscope.cegep.cegephoroscope.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -52,6 +54,8 @@ public class ZodiaDetail extends Activity {
     public ImageView todayPersonProfile,todayShare,todayZodImage;
     public TextView todayTitlezod,todayzodinfo;
     String zod_name="";
+     static String summary="";
+
 
     View  today,tomorrow;
     PagerContainer mContainer;
@@ -113,6 +117,13 @@ public class ZodiaDetail extends Activity {
 
 
 
+
+
+        //KEYS IN MAP
+
+
+
+
        todayTitlezod.setText(zodiac_title );
 
          todayZodImage.setImageResource(R.mipmap.aries);
@@ -121,13 +132,13 @@ public class ZodiaDetail extends Activity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
-
+                ZodiacTodayList  user = dataSnapshot.getValue(ZodiacTodayList.class);
+               summary=user.summary;
+                setdata(summary);
+                //todayzodinfo.setText(summary);
 
                 Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
-                todayzodinfo.setText(user.summary.toString());
-
-
+                todayzodinfo.setText("Hello");
 
                     //load appropriate image to zodiac sign imageview
                     storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -152,10 +163,22 @@ public class ZodiaDetail extends Activity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("today").addValueEventListener(postListener);
+        databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("today").addListenerForSingleValueEvent(postListener);
+
+
+
+
+
+
 
     }
+    private void setdata(String summary){
+        List lst=new ArrayList();
+        lst.add(summary);
+      //  todayzodinfo.setText(lst.toString());
+        Log.d("XYZ",lst.toString());
 
+    }
     private void initializeviews() {
 
         mContainer = (PagerContainer) findViewById(R.id.pager_container);

@@ -39,9 +39,7 @@ public class FriendList extends ListFragment{
 
      String []User={"Friend List Empty"};
     int[]images={R.drawable.user};
-   // int[] images= {R.mipmap.capricorn,R.mipmap.aquarius,R.mipmap.pisces,R.mipmap.aries,R.mipmap.taurus,
-          //  R.mipmap.gemini,R.mipmap.cancer,R.mipmap.leo,R.mipmap.virgo,R.mipmap.libra,
-           // R.mipmap.scorpio,R.mipmap.sagittarius};
+
     ArrayList<HashMap<String, String>> data=new ArrayList<HashMap<String,String>>();
     SimpleAdapter adapter;
     @Override
@@ -50,26 +48,6 @@ public class FriendList extends ListFragment{
         setControlls();
 
         ReadFirebase_SetFriendList();
-
-        //MAP
-       /* HashMap<String, String> map=new HashMap<String, String>();
-        //FILL
-        for(int i=0;i<User.length;i++)
-        {
-            map=new HashMap<String, String>();
-            map.put("name", User[i]);
-          //  map.put("date", User[i]);
-            map.put("Image", Integer.toString(images[i]));
-
-            data.add(map);
-        }
-        //KEYS IN MAP
-        String[] from={"name","Image"};
-        //IDS OF VIEWS
-        int[] to={R.id.friend_name,R.id.friend_profile};
-        //ADAPTER
-        adapter=new SimpleAdapter(getActivity(), data, R.layout.model, from, to);
-        setListAdapter(adapter);*/
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

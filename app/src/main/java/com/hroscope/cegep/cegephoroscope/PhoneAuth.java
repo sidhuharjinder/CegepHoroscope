@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.hroscope.cegep.cegephoroscope.Phone_SignIn.phProfile;
 
 import java.util.concurrent.TimeUnit;
 
@@ -232,7 +233,7 @@ public class PhoneAuth extends Fragment implements View.OnClickListener {
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = task.getResult().getUser();
 
-                            Fragment fragment = new Phone_SignIn_Profile();
+                            Fragment fragment = new phProfile();
                             FragmentManager fragmentManager = getFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
