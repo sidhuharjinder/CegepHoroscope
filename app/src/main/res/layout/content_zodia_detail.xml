@@ -9,8 +9,9 @@
     <!--tools:context="com.hroscope.cegep.cegephoroscope.zodiacDetail.ZodiaDetail"
     tools:showIn="@layout/activity_zodia_detail"-->
     <LinearLayout
+        android:id="@+id/lvc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,11 +25,10 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-
                 app:srcCompat="@mipmap/connection" />
 
             <TextView
-                android:id="@+id/todaytitlezod"
+                android:id="@+id/titlezod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -42,8 +42,6 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
-
-
                 app:srcCompat="@mipmap/share" />
 
         </LinearLayout>
@@ -54,43 +52,10 @@
             android:layout_height="76dp"
             app:srcCompat="@mipmap/aries" />
 
-        <TextView
-            android:id="@+id/todaydate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="3/21 to 4/19"
-            android:textColor="#fff"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Today"
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/todaydate1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:text="Saturday Jun 03 2017"
-            android:textColor="#fff"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-
-
-
-    </LinearLayout>
+        </LinearLayout>
     <com.hroscope.cegep.cegephoroscope.PagerContainer
-        android:layout_below="@+id/"
+        android:layout_below="@+id/lvc"
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
         android:background="#3D3D3D"
