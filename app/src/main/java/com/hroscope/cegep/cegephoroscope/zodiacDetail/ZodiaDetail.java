@@ -50,12 +50,14 @@ public class ZodiaDetail extends Activity {
 
     //widets for dayone
     public ImageView todayPersonProfile,todayShare,todayZodImage;
+    public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,titlezod,weekdate;
+    public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
+    public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
     String zod_name="";
-    TextView titlezod;
+
     View  dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week;
     PagerContainer mContainer;
     ViewPager pager;
-    static String sdl;
     PagerAdapter adapter;
     int[] mResources = {
             R.layout.dayone,
@@ -71,11 +73,114 @@ public class ZodiaDetail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zodia_detail);
         initializeviews();
-
+        initializeFirebase();
 
     }
 
+   public void initializeFirebase()
+   {
+       firebaseAuth= FirebaseAuth.getInstance();
 
+       storage = FirebaseStorage.getInstance();
+       storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
+       database = FirebaseDatabase.getInstance();
+       databaseReference = database.getReference("Horoscope");
+
+   }
+    public void setContolls()
+    {
+        titlezod = (TextView)findViewById(R.id.titlezod);
+        todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
+        todayShare = (ImageView)findViewById(R.id.todayimgeshare);
+        todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
+        //day one
+        dayOneTitle = (TextView)dayone.findViewById(R.id.dayOneTitle);
+        dayoneInfo = (TextView)dayone.findViewById(R.id.datoneInfo);
+        dayoneDate = (TextView)dayone.findViewById(R.id.dayOneDate);
+        //day Two
+        dayTwoTitle = (TextView)daytwo.findViewById(R.id.daytwoTitle);
+        daytwoInfo = (TextView)daytwo.findViewById(R.id.tdaytwoInfo);
+        daytwoDate = (TextView)daytwo.findViewById(R.id.daytwoDate);
+        //day Three
+        dayThreeTitle = (TextView)daythree.findViewById(R.id.daythreetitle);
+        daythreeInfo = (TextView)daythree.findViewById(R.id.daythreeinfo);
+        daythreeDate = (TextView)daythree.findViewById(R.id.daythreedate);
+        //day four
+        dayFourTitle = (TextView)dayfour.findViewById(R.id.dayfourTitle);
+        dayfourInfo = (TextView)dayfour.findViewById(R.id.dayfourinfo);
+        dayfourDate = (TextView)dayfour.findViewById(R.id.dayfourDate);
+        //day five
+        dayFiveTitle = (TextView)dayfive.findViewById(R.id.dayfiveTitle);
+        dayfiveInfo = (TextView)dayfive.findViewById(R.id.dayfiveinfo);
+        dayfiveDate = (TextView)dayfive.findViewById(R.id.dayfiveDate);
+        //day six
+        daySixTitle = (TextView)daysix.findViewById(R.id.daysixTitle);
+        daysixInfo = (TextView)daysix.findViewById(R.id.daysixinfo);
+        datesixDate = (TextView)daysix.findViewById(R.id.daysixDate);
+        //day seven
+        daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
+        daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
+        daysevenDate = (TextView)dayseven.findViewById(R.id.daysevenDate);
+        //week
+        weektitle= (TextView)dayseven.findViewById(R.id.weekTitle);
+        weekinfo = (TextView)dayseven.findViewById(R.id.weekInfo);
+        weekdate = (TextView)dayseven.findViewById(R.id.weekdate);
+
+    }
+    public void setDataToWidgets()
+    {
+        //set data for Today
+        //Zodiac Title Text
+        final String zodiac_title = getIntent().getStringExtra("text");
+        titlezod.setGravity(Gravity.CENTER);
+        titlezod.setTextSize(30);
+        titlezod.setTextColor(Color.rgb(255,255,255));
+        //make title Bold
+        final SpannableStringBuilder sb = new SpannableStringBuilder(zodiac_title);
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+
+        //curent day
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+        titlezod.setText(zodiac_title );
+        todayZodImage.setImageResource(R.mipmap.aries);
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+
+
+                Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
+                titlezod.setText(user.summary.toString());
+                //load appropriate image to zodiac sign imageview
+                    storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Picasso.with(ZodiaDetail.this).load(uri.toString()).resize(600, 200).centerInside().into(todayZodImage);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // File not found
+                        }
+                    });
+
+
+                }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("dayone").addValueEventListener(postListener);
+
+    }
 
     private void initializeviews() {
 
@@ -95,11 +200,7 @@ public class ZodiaDetail extends Activity {
 
 //Nothing special about this adapter, just throwing up colored views for demo
 
-    public class MyPagerAdapter extends  PagerAdapter {
-
-        public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,weekdate;
-        public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
-        public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
+    private  class MyPagerAdapter extends  PagerAdapter {
 
         Context mContext;
         LayoutInflater mLayoutInflater;
@@ -107,111 +208,6 @@ public class ZodiaDetail extends Activity {
         public MyPagerAdapter(Context context) {
             mContext = context;
             mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-        public void initializeFirebase()
-        {
-            firebaseAuth= FirebaseAuth.getInstance();
-            storage = FirebaseStorage.getInstance();
-            storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
-            database = FirebaseDatabase.getInstance();
-            databaseReference = database.getReference("Horoscope");
-
-        }
-
-        public void setDataToWidgets()
-        {
-            //set data for Today
-            //Zodiac Title Text
-            final String zodiac_title = getIntent().getStringExtra("text");
-            titlezod.setGravity(Gravity.CENTER);
-            titlezod.setTextSize(30);
-            titlezod.setTextColor(Color.rgb(255,255,255));
-            //make title Bold
-            final SpannableStringBuilder sb = new SpannableStringBuilder(zodiac_title);
-            final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-
-            //curent day
-            final SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-            Date d = new Date();
-            String dayOfTheWeek = sdf.format(d);
-            titlezod.setText(zodiac_title );
-            todayZodImage.setImageResource(R.mipmap.aries);
-
-            ValueEventListener postListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
-                    sdl = user.summary.toString();
-                    dayoneInfo.setText(sdl);
-                    Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
-                    //dayoneInfo.setText(user.summary.toString());
-                    // dayoneInfo.setText("Hello");
-                    //load appropriate image to zodiac sign imageview
-//                    storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            Picasso.with(ZodiaDetail.this).load(uri.toString()).resize(600, 200).centerInside().into(todayZodImage);
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception exception) {
-//                            // File not found
-//                        }
-//                    });
-
-
-                }
-
-
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                }
-            };
-            databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("today").addValueEventListener(postListener);
-
-        }
-        public void setContolls()
-        {
-            titlezod = (TextView)findViewById(R.id.titlezod);
-            todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
-            todayShare = (ImageView)findViewById(R.id.todayimgeshare);
-            todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
-            //day one
-            dayOneTitle = (TextView)dayone.findViewById(R.id.dayOneTitle);
-            dayoneInfo = (TextView)dayone.findViewById(R.id.datoneInfo);
-            dayoneDate = (TextView)dayone.findViewById(R.id.dayOneDate);
-            //day Two
-            dayTwoTitle = (TextView)daytwo.findViewById(R.id.daytwoTitle);
-            daytwoInfo = (TextView)daytwo.findViewById(R.id.tdaytwoInfo);
-            daytwoDate = (TextView)daytwo.findViewById(R.id.daytwoDate);
-            //day Three
-            dayThreeTitle = (TextView)daythree.findViewById(R.id.daythreetitle);
-            daythreeInfo = (TextView)daythree.findViewById(R.id.daythreeinfo);
-            daythreeDate = (TextView)daythree.findViewById(R.id.daythreedate);
-            //day four
-            dayFourTitle = (TextView)dayfour.findViewById(R.id.dayfourTitle);
-            dayfourInfo = (TextView)dayfour.findViewById(R.id.dayfourinfo);
-            dayfourDate = (TextView)dayfour.findViewById(R.id.dayfourDate);
-            //day five
-            dayFiveTitle = (TextView)dayfive.findViewById(R.id.dayfiveTitle);
-            dayfiveInfo = (TextView)dayfive.findViewById(R.id.dayfiveinfo);
-            dayfiveDate = (TextView)dayfive.findViewById(R.id.dayfiveDate);
-            //day six
-            daySixTitle = (TextView)daysix.findViewById(R.id.daysixTitle);
-            daysixInfo = (TextView)daysix.findViewById(R.id.daysixinfo);
-            datesixDate = (TextView)daysix.findViewById(R.id.daysixDate);
-            //day seven
-            daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
-            daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
-            daysevenDate = (TextView)dayseven.findViewById(R.id.daysevenDate);
-            //week
-            weektitle= (TextView)dayseven.findViewById(R.id.weekTitle);
-            weekinfo = (TextView)dayseven.findViewById(R.id.weekInfo);
-            weekdate = (TextView)dayseven.findViewById(R.id.weekdate);
-
         }
         @Override
         public int getCount() {
@@ -235,10 +231,7 @@ public class ZodiaDetail extends Activity {
             week = mLayoutInflater.inflate(R.layout.week, container, false);
             View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week};
             setContolls();
-            //dayoneInfo.setText("Hello");
-            initializeFirebase();
             setDataToWidgets();
-            dayoneInfo.setText(sdl);
             container.addView(viewrrr[position]);
 
             return viewrrr[position];
