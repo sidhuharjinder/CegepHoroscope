@@ -50,25 +50,21 @@ public class ZodiaDetail extends Activity {
 
     //widets for today
     public ImageView todayPersonProfile,todayShare,todayZodImage;
-    public TextView todayTitlezod,todayzodinfo;
+    public TextView todayTitlezod,todayzodinfo,tommorrowInfo,weekInfo;
     String zod_name="";
 
-    View  today,tomorrow;
+    View  today,tomorrow,week;
     PagerContainer mContainer;
     ViewPager pager;
     PagerAdapter adapter;
     int[] mResources = {
             R.layout.today,
             R.layout.tomorrow,
-            R.layout.today,
-            R.layout.tomorrow,
-
-    };
+            R.layout.week};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zodia_detail);
-
         initializeviews();
         initializeFirebase();
 
@@ -86,12 +82,13 @@ public class ZodiaDetail extends Activity {
    }
     public void setContolls()
     {
-         todayPersonProfile = (ImageView)today.findViewById(R.id.todaypersonimg);
-        todayShare = (ImageView)today.findViewById(R.id.todayimgeshare);
-        todayZodImage = (ImageView)today.findViewById(R.id.todayzodimage);
-        todayTitlezod=(TextView)today.findViewById(R.id.todaytitlezod);
-        todayzodinfo=(TextView)today.findViewById(R.id.todayzodinfo);
-
+        todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
+        todayShare = (ImageView)findViewById(R.id.todayimgeshare);
+        todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
+        todayTitlezod=(TextView)findViewById(R.id.todaytitlezod);
+        todayzodinfo=(TextView)today.findViewById(R.id.todayInfo);
+        tommorrowInfo=(TextView)tomorrow.findViewById(R.id.tomorrow_info);
+        weekInfo=(TextView)week.findViewById(R.id.weekInfo);
 
     }
     public void setDataToWidgets()
@@ -110,11 +107,7 @@ public class ZodiaDetail extends Activity {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
-
-
-
-       todayTitlezod.setText(zodiac_title );
-
+         todayTitlezod.setText(zodiac_title );
          todayZodImage.setImageResource(R.mipmap.aries);
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -126,10 +119,7 @@ public class ZodiaDetail extends Activity {
 
                 Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
                 todayzodinfo.setText(user.summary.toString());
-
-
-
-                    //load appropriate image to zodiac sign imageview
+                //load appropriate image to zodiac sign imageview
                     storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -197,7 +187,7 @@ public class ZodiaDetail extends Activity {
         public Object instantiateItem(ViewGroup container, int position) {
             today = mLayoutInflater.inflate(R.layout.today, container, false);
             tomorrow = mLayoutInflater.inflate(R.layout.tomorrow, container, false);
-            View viewrrr [] ={today,tomorrow,today,tomorrow};
+            View viewrrr [] ={today,tomorrow,week};
 
 
             setContolls();
