@@ -105,34 +105,35 @@ public class FriendLIstActivity extends AppCompatActivity  {
 
                 }
 
-                for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    Log.v(TAG, "key" + childDataSnapshot.getKey()); //displays the key for the node
-                    Log.v(TAG, "name" + childDataSnapshot.child("Name").getValue());
+
+                    for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                        Log.v(TAG, "key" + childDataSnapshot.getKey()); //displays the key for the node
+                        Log.v(TAG, "name" + childDataSnapshot.child("Name").getValue());
 
 
-                    if(childDataSnapshot.hasChild("date_of_birth")&&childDataSnapshot.hasChild("zodiac_sign")) {
-                        // String zodnm = childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
-                        HashMap<String, String> map = new HashMap<String, String>();
-                        //FILL
-                        map = new HashMap<String, String>();
-                        map.put("Name", childDataSnapshot.child("Name").getValue().toString());
-                        map.put("Date", childDataSnapshot.child("date_of_birth").getValue().toString());
-                        Log.d("Hello",map.toString());
+                        if (childDataSnapshot.hasChild("date_of_birth") && childDataSnapshot.hasChild("zodiac_sign")&&childDataSnapshot.hasChild("Name")&&childDataSnapshot.hasChild("chinese_zodiac_sign")) {
+                            // String zodnm = childDataSnapshot.child("zodiac_sign").getValue().toString().toLowerCase();
+
+                            HashMap<String, String> map = new HashMap<String, String>();
+                            //FILL
+                            map = new HashMap<String, String>();
+                            map.put("Name", childDataSnapshot.child("Name").getValue().toString());
+                            map.put("Date", childDataSnapshot.child("date_of_birth").getValue().toString());
+                            Log.d("Hello", map.toString());
 //                        data.add(map);
 
-                        dataModels.add(new FriendListModel(childDataSnapshot.child("Name").getValue().toString(),null,childDataSnapshot.child("date_of_birth").getValue().toString()));
+                            dataModels.add(new FriendListModel(childDataSnapshot.child("Name").getValue().toString(), null, childDataSnapshot.child("date_of_birth").getValue().toString()));
 
-                    }
-                    else
-                    {
-                        for(int i=0;i<User.length;i++)
-                        {
-                            dataModels.add(new FriendListModel(User[i],Integer.toString(images[i]),null));
 
+                        } else {
+                            for (int i = 0; i < User.length; i++) {
+                                dataModels.add(new FriendListModel(User[i], Integer.toString(images[i]), null));
+
+                            }
+                            // adapter.notifyDataSetChanged();
                         }
-                       // adapter.notifyDataSetChanged();
-                    }
-                    adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
+
 
                 }
 

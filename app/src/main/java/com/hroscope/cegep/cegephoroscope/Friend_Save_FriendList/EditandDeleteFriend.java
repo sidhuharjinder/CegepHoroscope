@@ -402,7 +402,7 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
     public void deleteFirebaseData(String UniqueID)
     {
 
-        databaseReference.child(UniqueID).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(UniqueID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -411,7 +411,7 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
                 dataSnapshot.getRef().child("zodiac_sign").removeValue();
                 dataSnapshot.getRef().child("chinese_zodiac_sign").removeValue();
 
-               // Toast.makeText(EditandDeleteFriend.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+               Toast.makeText(EditandDeleteFriend.this, "Data Deleted", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -559,7 +559,8 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
         {
 
             String uniqueID =   name.getText().toString().concat(dateOfBirth.getText().toString());
-             //   deleteFirebaseData(uniqueID);
+                deleteFirebaseData(uniqueID);
+            startActivity(new Intent(EditandDeleteFriend.this,FriendLIstActivity.class));
         }
 
 

@@ -3,7 +3,6 @@ package com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class FriendListAdaptor extends ArrayAdapter<FriendListModel> implements 
             viewHolder.date = (TextView) convertView.findViewById(R.id.friend_birthdate);
             viewHolder.model_friend_list=(LinearLayout)convertView.findViewById(R.id.model_friend_list);
             Picasso.with(mContext).load(dataModel.getProfileImage()).into(viewHolder.profilePicture);
-            Log.d("Hello",dataModel.getListdate());
+           // Log.d("Hello",dataModel.getListdate());
             viewHolder.name.setText(dataModel.getListName());
             viewHolder.date.setText(dataModel.getListdate());
             viewHolder.name.setTextColor(Color.WHITE);
@@ -65,9 +64,18 @@ public class FriendListAdaptor extends ArrayAdapter<FriendListModel> implements 
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(),EditandDeleteFriend.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("date",dataModel.getListdate());
-                    intent.putExtra("name",dataModel.getListName());
-                    getContext().startActivity(intent);
+                    if(dataModel.getListdate()==null &&dataModel.getListName()==null)
+                    {
+                        intent.putExtra("date","");
+                        intent.putExtra("name","Empty List");
+                        getContext().startActivity(intent);
+
+                    }
+                    else {
+                        intent.putExtra("date", dataModel.getListdate());
+                        intent.putExtra("name", dataModel.getListName());
+                        getContext().startActivity(intent);
+                    }
 
                 }
             });
