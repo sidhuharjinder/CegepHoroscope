@@ -100,7 +100,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aries").child("Daily").child("today");
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child("today").addListenerForSingleValueEvent(postListener);
 
     }
 }

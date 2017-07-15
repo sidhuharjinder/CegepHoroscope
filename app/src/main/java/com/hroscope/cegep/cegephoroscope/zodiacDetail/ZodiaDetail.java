@@ -69,7 +69,7 @@ public class ZodiaDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zodia_detail);
-        initializeviews();
+
 
         titlezod = (TextView)findViewById(R.id.titlezod);
         todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
@@ -77,6 +77,7 @@ public class ZodiaDetail extends Activity {
         todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
          zodiac_title = getIntent().getStringExtra("text");
         zod_info = getIntent().getStringExtra("data");
+        initializeviews();
         titlezod.setGravity(Gravity.CENTER);
         titlezod.setTextSize(30);
         titlezod.setTextColor(Color.rgb(255,255,255));
