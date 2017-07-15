@@ -46,10 +46,12 @@
         <activity android:name=".FacebookLoginActivity"></activity>
         <activity android:name=".GoogleLoginActivity"></activity>
 
-
+        <activity android:name=".Friend_Save_FriendList.FriendLIstActivity"></activity>
 
         <activity android:name=".FriendList"></activity>
-       <!-- <activity android:name=".EditandDeleteFriend"></activity>-->
+       <activity android:name=".Friend_Save_FriendList.EditandDeleteFriend"></activity>
+        <activity android:name=".Friend_Save_FriendList.SaveFriend"></activity>
+
     </application>
 
 </manifest>

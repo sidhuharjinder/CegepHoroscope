@@ -47,18 +47,12 @@
 
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.hroscope.cegep.cegephoroscope.Friends_List.FriendList"
+        <ListView
+            android:id="@+id/participants_list"
+            android:dividerHeight="5dp"
+            android:divider="#3D3D3D"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 </FrameLayout>

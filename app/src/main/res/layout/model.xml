@@ -4,6 +4,7 @@
     android:layout_height="match_parent" >
 
     <LinearLayout
+        android:id="@+id/model_friend_list"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:paddingTop="2dp"
@@ -43,7 +44,7 @@
 
             android:orientation="vertical">
 
-            <EditText
+            <TextView
                 android:id="@+id/friend_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
                 android:textSize="20sp"
                />
 
-            <EditText
+            <TextView
                 android:id="@+id/friend_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

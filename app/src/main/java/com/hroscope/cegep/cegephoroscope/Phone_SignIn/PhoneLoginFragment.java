@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ import com.hroscope.cegep.cegephoroscope.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class phLogFragment extends Fragment implements View.OnClickListener  {
+public class PhoneLoginFragment extends Fragment implements View.OnClickListener  {
 
     private static final String TAG = "PhoneAuthActivity";
     private static final String KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress";
@@ -43,7 +44,7 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    private static String phoneNumber;
+
     private ViewGroup mPhoneNumberViews;
     private ViewGroup mSignedInViews;
     private TextView mStatusText;
@@ -57,12 +58,12 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
     private View view;
 
 
-    public static phLogFragment newInstance() {
-        phLogFragment fragment = new phLogFragment();
+    public static PhoneLoginFragment newInstance() {
+        PhoneLoginFragment fragment = new PhoneLoginFragment();
         return fragment;
     }
 
-    public phLogFragment() {
+    public PhoneLoginFragment() {
 
     }
 
@@ -191,15 +192,12 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "Login Successfull", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Login Successfull",
+                                    Toast.LENGTH_SHORT).show();
                             FirebaseUser user = task.getResult().getUser();
                             updateUI(signIn_success, user);
 
-                        PhoneList ph=new PhoneList();
-                            ph.setPhone_number(user.getPhoneNumber());
 
-                            phoneNumber=user.getPhoneNumber();
-                            Toast.makeText(getContext(), user.getPhoneNumber(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -207,7 +205,8 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
 
                                 mVerificationField.setError("Invalid code.");
                             }
-
+                            Toast.makeText(getContext(), "You are here",
+                                    Toast.LENGTH_SHORT).show();
                             updateUI(signIn_failed);
                         }
                     }
@@ -217,18 +216,6 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
     private void signOut() {
         mAuth.signOut();
         updateUI(initialized);
-    }
-
-    private Fragment createFragment()
-    {
-        Bundle bundle=new Bundle();
-        bundle.putString("phone",phoneNumber);
-
-
-        phProfile facebookProfileFragment=new phProfile();
-        facebookProfileFragment.setArguments(bundle);
-        return facebookProfileFragment;
-
     }
 
     private void updateUI(int uiState) {
@@ -261,21 +248,17 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
             case code_sent:
                 enableViews(mVerifyButton, mResendButton, mPhoneNumberField, mVerificationField);
                 disableViews(mStartButton);
-               // mDetailText.setText("status_code_sent");
-                Toast.makeText(getContext(), "OTP SENT", Toast.LENGTH_SHORT).show();
+                mDetailText.setText("status_code_sent");
                 break;
             case verify_fail:
                 enableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
                         mVerificationField);
-              //  mDetailText.setText("status_verification_failed");
-
-                Toast.makeText(getContext(), "Verification Failed", Toast.LENGTH_SHORT).show();
+                mDetailText.setText("status_verification_failed");
                 break;
             case verify_success:
                 disableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
                         mVerificationField);
-             //   mDetailText.setText("status_verification_succeeded");
-                Toast.makeText(getContext(), "Verification Succeed", Toast.LENGTH_SHORT).show();
+                mDetailText.setText("status_verification_succeeded");
                 if (cred != null) {
                     if (cred.getSmsCode() != null) {
                         mVerificationField.setText(cred.getSmsCode());
@@ -295,23 +278,19 @@ public class phLogFragment extends Fragment implements View.OnClickListener  {
             mPhoneNumberViews.setVisibility(View.VISIBLE);
             mSignedInViews.setVisibility(View.GONE);
 
-           // mStatusText.setText("signed_out");
-            Toast.makeText(getContext(), "Sign Out", Toast.LENGTH_SHORT).show();
+            mStatusText.setText("signed_out");;
         } else {
 
             mPhoneNumberViews.setVisibility(View.GONE);
-            mSignedInViews.setVisibility(View.VISIBLE);
+          //  mSignedInViews.setVisibility(View.VISIBLE);
 
             enableViews(mPhoneNumberField, mVerificationField);
             mPhoneNumberField.setText(null);
             mVerificationField.setText(null);
-            //mStatusText.setText("signed_in");
-            mStatusText.setText(user.getPhoneNumber());
-            Toast.makeText(getContext(), "Logged In", Toast.LENGTH_SHORT).show();
-          // Fragment fragment = new phProfile();
-            //FragmentManager fragmentManager = getFragmentManager();
-            //fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
-            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,createFragment()).commit();
+            mStatusText.setText("signed_in");
+            Fragment fragment = new Phone_SignIn_Profile();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
         }
     }

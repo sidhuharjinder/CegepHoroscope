@@ -3,6 +3,7 @@ package com.hroscope.cegep.cegephoroscope.Facebook_SignIn;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Registered_UserList;
-import com.hroscope.cegep.cegephoroscope.Friends_List.Friend_ListFragment;
+import com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList.FriendLIstActivity;
 import com.hroscope.cegep.cegephoroscope.R;
 import com.hroscope.cegep.cegephoroscope.SignupFragment;
 import com.squareup.picasso.Picasso;
@@ -450,9 +451,10 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
         }
         if(view==EditFriend)
         {
-            Fragment fragment = new Friend_ListFragment();
+           /* Fragment fragment = new Friend_ListFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();*/
+            startActivity(new Intent(getActivity(),FriendLIstActivity.class));
 
         }
         if(view==update_profile)

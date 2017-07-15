@@ -17,6 +17,7 @@ import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
 import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.FacebookFragment;
 import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.Fb_Profile_Fragment;
 import com.hroscope.cegep.cegephoroscope.GoogleLogin.GoogleFragment;
+import com.hroscope.cegep.cegephoroscope.Phone_SignIn.PhoneLoginFragment;
 
 
 /**
