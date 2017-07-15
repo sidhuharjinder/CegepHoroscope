@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hroscope.cegep.cegephoroscope.HomeScreen;
 import com.hroscope.cegep.cegephoroscope.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -87,6 +88,7 @@ public class ZodiacHoroscope extends Fragment implements View.OnClickListener{
 
             Intent intent = new Intent(getActivity(),ZodiaDetail.class);
             intent.putExtra("text", "Aries");
+            intent.putExtra("data", HomeScreen.aries);
             startActivity(intent);
         }
         if(view==taurusButton)

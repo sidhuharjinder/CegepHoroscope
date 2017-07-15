@@ -42,18 +42,14 @@ import static android.content.ContentValues.TAG;
 
 public class ZodiaDetail extends Activity {
    //firebase
-   FirebaseStorage storage;
-    StorageReference storageRef;
-    FirebaseDatabase database;
-    private FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+
 
     //widets for dayone
     public ImageView todayPersonProfile,todayShare,todayZodImage;
     public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,titlezod,weekdate;
     public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
     public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
-    String zod_name="";
+    String zod_info="";
 
     View  dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week;
     PagerContainer mContainer;
@@ -80,6 +76,7 @@ public class ZodiaDetail extends Activity {
         todayShare = (ImageView)findViewById(R.id.todayimgeshare);
         todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
          zodiac_title = getIntent().getStringExtra("text");
+        zod_info = getIntent().getStringExtra("data");
         titlezod.setGravity(Gravity.CENTER);
         titlezod.setTextSize(30);
         titlezod.setTextColor(Color.rgb(255,255,255));
@@ -93,14 +90,13 @@ public class ZodiaDetail extends Activity {
         String dayOfTheWeek = sdf.format(d);
         titlezod.setText(zodiac_title );
         todayZodImage.setImageResource(R.mipmap.aries);
-        initializeFirebase();
-        setDataToWidgets();
+
     }
     private void initializeviews() {
 
         mContainer = (PagerContainer) findViewById(R.id.pager_container);
         pager = mContainer.getViewPager();
-        adapter = new MyPagerAdapter(this);
+        adapter = new MyPagerAdapter(this,zod_info);
         pager.setAdapter(adapter);
         //Necessary or the pager will only have one extra page to show
         // make this at least however many pages you can see
@@ -111,52 +107,53 @@ public class ZodiaDetail extends Activity {
         // clipping on the pager for its children.
         pager.setClipChildren(false);
     }
-    public void initializeFirebase()
-    {
-
-        firebaseAuth= FirebaseAuth.getInstance();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Horoscope");
-
-    }
-    public void setDataToWidgets()
-    {
-        //set data for Today
-        //Zodiac Title Text
-
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
-
-
-                Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
-                dayoneInfo.setText(user.summary.toString());
-            }
-
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("today");
-
-    }
+//    public void initializeFirebase()
+//    {
+//
+//        firebaseAuth= FirebaseAuth.getInstance();
+//        storage = FirebaseStorage.getInstance();
+//        storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
+//        database = FirebaseDatabase.getInstance();
+//        databaseReference = database.getReference("Horoscope");
+//
+//    }
+//    public void setDataToWidgets()
+//    {
+//        //set data for Today
+//        //Zodiac Title Text
+//
+//
+//        ValueEventListener postListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+//
+//
+//                Toast.makeText(ZodiaDetail.this, user.summary,Toast.LENGTH_SHORT).show();
+//                dayoneInfo.setText(user.summary.toString());
+//            }
+//
+//
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//            }
+//        };
+//        databaseReference.child("Zodiac").child(zodiac_title).child("Daily").child("today");
+//
+//    }
 //Nothing special about this adapter, just throwing up colored views for demo
 
     private  class MyPagerAdapter extends  PagerAdapter {
 
         Context mContext;
         LayoutInflater mLayoutInflater;
-
-        public MyPagerAdapter(Context context) {
+        String zod_info;
+        public MyPagerAdapter(Context context,String zod_info) {
             mContext = context;
+            this.zod_info = zod_info;
             mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         @Override
@@ -219,7 +216,7 @@ public class ZodiaDetail extends Activity {
             View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week};
 
             setContolls();
-
+            dayoneInfo.setText(zod_info);
 
             container.addView(viewrrr[position]);
 
