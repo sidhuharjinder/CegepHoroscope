@@ -139,6 +139,9 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 firebaseAuth.signOut();
                 LoginManager.getInstance().logOut();
                 clicked=true;
+                Fragment fragment = new SignupFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
 
             }
@@ -349,9 +352,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 else if(firebaseuser==null){
 
 
-                    Fragment fragment = new SignupFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
 
                 }
 

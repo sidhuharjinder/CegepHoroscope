@@ -18,6 +18,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hroscope.cegep.cegephoroscope.Chinese_Zodiac_Detail.ChineseHoroscope;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Signin_Profile_Fragment;
+import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.FacebookFragment;
+import com.hroscope.cegep.cegephoroscope.Facebook_SignIn.Fb_Profile_Fragment;
+import com.hroscope.cegep.cegephoroscope.Phone_SignIn.PhoneLoginFragment;
+import com.hroscope.cegep.cegephoroscope.Phone_SignIn.Phone_SignIn_Profile;
 import com.hroscope.cegep.cegephoroscope.zodiacDetail.ZodiacHoroscope;
 
 import java.text.SimpleDateFormat;
@@ -142,7 +148,17 @@ public class HomeScreen extends AppCompatActivity {
                                 selectedFragment = ChineseHoroscope.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = Profile.newInstance();
+                                if(Email_Sigin_Fragment.emailLoginStatus)
+                                    selectedFragment = Email_Signin_Profile_Fragment.newInstance();
+
+                                else if(FacebookFragment.facebookLoginStatus)
+                                    selectedFragment = Fb_Profile_Fragment.newInstance();
+
+                                else if(PhoneLoginFragment.phoneLoginStatus)
+                                    selectedFragment = Phone_SignIn_Profile.newInstance();
+                                else
+                                    selectedFragment = Profile.newInstance();
+
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -154,9 +170,35 @@ public class HomeScreen extends AppCompatActivity {
 
 
         //Manually displaying the first fragment - one time only
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
-        transaction.commit();
+        if(Email_Sigin_Fragment.emailLoginStatus) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, Email_Signin_Profile_Fragment.newInstance());
+            transaction.commit();
+        }
+
+        else if(FacebookFragment.facebookLoginStatus)
+        {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, Fb_Profile_Fragment.newInstance());
+            transaction.commit();
+        }
+
+
+        else if(PhoneLoginFragment.phoneLoginStatus)
+        {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, Phone_SignIn_Profile.newInstance());
+            transaction.commit();
+        }
+
+
+        else {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
+            transaction.commit();
+        }
+
+
         initializeFirebase();
         setDataToWidgetsARIES();
         setDataToWidgetsTaurus();
