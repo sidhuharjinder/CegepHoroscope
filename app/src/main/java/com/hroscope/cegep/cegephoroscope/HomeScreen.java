@@ -20,7 +20,9 @@ import com.google.firebase.storage.StorageReference;
 import com.hroscope.cegep.cegephoroscope.Chinese_Zodiac_Detail.ChineseHoroscope;
 import com.hroscope.cegep.cegephoroscope.zodiacDetail.ZodiacHoroscope;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.content.ContentValues.TAG;
 
@@ -168,6 +170,7 @@ public class HomeScreen extends AppCompatActivity {
         setDataToWidgetsCanpricon();
         setDataToWidgetsPisces();
         setDataToWidgetsScorpio();
+        setDatawidgetsChinese();
     }
     public void initializeFirebase()
     {
@@ -181,6 +184,7 @@ public class HomeScreen extends AppCompatActivity {
     }
     public void setDataToWidgetsARIES()
     {
+
         ValueEventListener postListenerCurrent = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -193,7 +197,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aries").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -209,7 +213,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aries").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
                ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -225,7 +229,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aries").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -288,7 +292,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Taurus").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Taurus").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -304,7 +308,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Taurus").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Taurus").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -320,7 +324,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Taurus").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Taurus").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -383,7 +387,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Gemini").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Gemini").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -399,7 +403,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Gemini").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Gemini").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -415,7 +419,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Gemini").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Gemini").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -478,7 +482,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Cancer").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Cancer").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -494,7 +498,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Cancer").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Cancer").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -510,7 +514,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Cancer").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Cancer").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -574,7 +578,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Leo").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Leo").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -590,7 +594,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Leo").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Leo").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -606,7 +610,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Leo").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Leo").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -669,7 +673,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Virgo").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Virgo").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -685,7 +689,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Virgo").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Virgo").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -701,7 +705,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Virgo").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Virgo").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -764,7 +768,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Libra").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Libra").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -780,7 +784,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Libra").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Libra").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -796,7 +800,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Libra").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Libra").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -859,7 +863,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -875,7 +879,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -891,7 +895,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Scorpio").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -954,7 +958,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -970,7 +974,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -986,7 +990,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Sagittarius").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -1050,7 +1054,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -1066,7 +1070,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -1082,7 +1086,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Aquarius").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -1145,7 +1149,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Pisces").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Pisces").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -1161,7 +1165,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Pisces").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Pisces").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -1177,7 +1181,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Pisces").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Pisces").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -1240,7 +1244,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
+        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child(getTodaysDate()).addListenerForSingleValueEvent(postListenerCurrent);
 
         //tomorrow
         ValueEventListener postListenerTomorrow = new ValueEventListener() {
@@ -1256,7 +1260,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child(getTomorrowDate()).addListenerForSingleValueEvent(postListenerTomorrow);
 
         //yesterday
         ValueEventListener postListenerYesterDay = new ValueEventListener() {
@@ -1272,7 +1276,7 @@ public class HomeScreen extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+        databaseReference.child("Zodiac").child("Capricorn").child("Daily").child(getYesterdayDate()).addListenerForSingleValueEvent(postListenerYesterDay);
 
         //monthly
         ValueEventListener postListenerMonthly = new ValueEventListener() {
@@ -1318,7 +1322,10 @@ public class HomeScreen extends AppCompatActivity {
             }
         };
         databaseReference.child("Zodiac").child("Capricorn").child("Yearly").addListenerForSingleValueEvent(postListenerYearly);
+    }
 
+    public void setDatawidgetsChinese()
+    {
         //chinese Zodiac
 
         //current year
@@ -1515,8 +1522,57 @@ public class HomeScreen extends AppCompatActivity {
             }
         };
         databaseReference.child("Chinese").child("Pig").child("Yearly").child(year).addListenerForSingleValueEvent(pigChinesecurrentYear);
+
+
     }
 
+
+
+    //Zodiac
+
+
+    //Zodiac get Yesterday's Today
+    private  String getYesterdayDate()
+    {
+        Calendar cal  = Calendar.getInstance();
+        //subtracting a day
+        cal.add(Calendar.DATE,-1);
+
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        String result = s.format(new Date(cal.getTimeInMillis()));
+        return result;
+
+    }
+
+    // get Today's date
+    private  String getTodaysDate()
+    {
+        Calendar cal  = Calendar.getInstance();
+        //subtracting a day
+        cal.add(Calendar.DATE,0);
+
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        String result = s.format(new Date(cal.getTimeInMillis()));
+        return result;
+
+    }
+
+    //Zodiac get Tommorrow's
+    private  String getTomorrowDate()
+    {
+        Calendar cal  = Calendar.getInstance();
+        //subtracting a day
+        cal.add(Calendar.DATE,1);
+
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        String result = s.format(new Date(cal.getTimeInMillis()));
+        return result;
+
+    }
+
+
+
+    //chinese get years
     private static int getPreviousYear() {
         Calendar prevYear = Calendar.getInstance();
         prevYear.add(Calendar.YEAR, -1);
@@ -1536,6 +1592,7 @@ public class HomeScreen extends AppCompatActivity {
         Calendar prevYear = Calendar.getInstance();
         prevYear.add(Calendar.YEAR, +1);
         return prevYear.get(Calendar.YEAR);
+
     }
 
 }

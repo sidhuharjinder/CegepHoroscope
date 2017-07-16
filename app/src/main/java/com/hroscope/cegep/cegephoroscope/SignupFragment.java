@@ -56,14 +56,14 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     {
        facebook_login=(LoginButton)view.findViewById(R.id.facebook_login);
         facebook_login_button =(Button) view.findViewById(R.id.facebook_button);
-        google_login_button =(Button) view.findViewById(R.id.googlePlus);
+
 
         email_login_button =(Button)view.findViewById(R.id.email);
         phone_login_Button =(Button)view.findViewById(R.id.phoneNumber);
         register=(TextView)view.findViewById(R.id.register);
 
         facebook_login_button.setOnClickListener(this);
-        google_login_button.setOnClickListener(this);
+
         email_login_button.setOnClickListener(this);
         phone_login_Button.setOnClickListener(this);
         register.setOnClickListener(this);
