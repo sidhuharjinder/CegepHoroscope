@@ -42,6 +42,7 @@
 
 
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Chinese_Zodiac_Detail.ChineseZodiaDetail"></activity>
         <activity android:name=".FacebookProfileActivity"></activity>
         <activity android:name=".FacebookLoginActivity"></activity>
         <activity android:name=".GoogleLoginActivity"></activity>

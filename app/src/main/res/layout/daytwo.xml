@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3D3D3D">
+
+
+    <TextView
+        android:id="@+id/daytwoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Yesterday"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/daytwoDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Saturday Jun 03 2017"
+        android:textColor="#fff"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tdaytwoInfo"
+            android:layout_width="match_parent"
+            android:layout_height="283dp"
+            android:text="Today The Sun and Mercury move into your solar fourth house today, dear Aries, and after a hectic period, you now seek out more familiarity, comfort, quiet, and private time. Mars is already in this sector of your chart, and with so much attention to--and investment of energy in -- your personal life, this is a good time to improve relations with family and living conditions. Today, there can be big ideas and meaningful conversations or ideas related to long-term projects, improving security, family, and home"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>
