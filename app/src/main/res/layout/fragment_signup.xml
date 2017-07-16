@@ -70,19 +70,6 @@
             android:text="Email Login"
             android:textColor="#ffffff"
             android:textSize="18sp" />
-        <Button
-            android:id="@+id/googlePlus"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/rbuttongoogleplus"
-            android:gravity="center"
-            android:text="Google +"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-
 
 
         <TextView

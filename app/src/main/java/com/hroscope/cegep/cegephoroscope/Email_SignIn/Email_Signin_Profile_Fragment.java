@@ -40,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hroscope.cegep.cegephoroscope.Chinese_Zodiac_Detail.ChineseZodiaDetail;
 import com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList.FriendLIstActivity;
 import com.hroscope.cegep.cegephoroscope.HomeScreen;
 import com.hroscope.cegep.cegephoroscope.R;
@@ -723,8 +724,109 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
         if(view==forward_chinese)
         {
+        if(storechzodName.equals("Rat"))
+        {
+
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Rat");
+                intent.putExtra("current", HomeScreen.ratCurrentYear);
+                startActivity(intent);
+
+            }
+        else if(storechzodName.equals("Ox"))
+        {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Ox");
+                intent.putExtra("current", HomeScreen.oxCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Tiger"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Tiger");
+                intent.putExtra("current", HomeScreen.tigerCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Rabbit"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Rabbit");
+                intent.putExtra("current", HomeScreen.rabbitCurrentYear);
+                startActivity(intent);
+
+            }
+
+         else if(storechzodName.equals("Dragon"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("current", HomeScreen.dragonCurrentYear);
+                intent.putExtra("text", "Dragon");
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Snake"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Snake");
+                intent.putExtra("current", HomeScreen.snakeCurrentYear);
+                startActivity(intent);
+
+            }
+
+         else if(storechzodName.equals("Horse"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Horse");
+                intent.putExtra("current", HomeScreen.horseCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Sheep"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Sheep");
+                intent.putExtra("current", HomeScreen.goatCurrentYear);
+                startActivity(intent);
+
+            }
+
+         else if(storechzodName.equals("Monkey"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Monkey");
+                intent.putExtra("current", HomeScreen.monkeyCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Rooster"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Rooster");
+                intent.putExtra("current", HomeScreen.roosterCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Dog"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Dog");
+                intent.putExtra("current", HomeScreen.dogCurrentYear);
+                startActivity(intent);
+
+            }
+         else if(storechzodName.equals("Pig"))
+         {
+                Intent intent = new Intent(getActivity(),ChineseZodiaDetail.class);
+                intent.putExtra("text", "Pig");
+                intent.putExtra("current", HomeScreen.pigCurrentYear);
+                startActivity(intent);
+
+            }
 
         }
+
         if(view==EditFriend)
         {
            /* Fragment fragment = new Friend_ListFragment();
