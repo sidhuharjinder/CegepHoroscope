@@ -8,16 +8,17 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="#3D3D3D">
+
     <TextView
         android:id="@+id/daythreetitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="three"
         android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Tomorrow"
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/daythreedate"

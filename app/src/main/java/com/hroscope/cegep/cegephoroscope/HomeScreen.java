@@ -30,7 +30,13 @@ public class HomeScreen extends AppCompatActivity {
     FirebaseDatabase database;
     private FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
-    public static String aries;
+    public static String ariesDailyCurrent;
+    public static String ariesDailyTomorrow;
+    public static String ariesDailyYesterday;
+    public static String ariesWeakly;
+    public static String ariesMonthly;
+    public static String ariesYearly;
+    private String[] zodiacName = {"Aries","Taurus"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +75,7 @@ public class HomeScreen extends AppCompatActivity {
         transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
         transaction.commit();
         initializeFirebase();
-        setDataToWidgets();
+        setDataToWidgetsARIES();
 
     }
     public void initializeFirebase()
@@ -82,25 +88,99 @@ public class HomeScreen extends AppCompatActivity {
         databaseReference = database.getReference("Horoscope");
 
     }
-    public void setDataToWidgets()
+    public void setDataToWidgetsARIES()
     {
-        //set data for Today
-        //Zodiac Title Text
-
-
-        ValueEventListener postListener = new ValueEventListener() {
+        ValueEventListener postListenerCurrent = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
-                aries = user.summary.toString();
+               Log.d("Hello",dataSnapshot.getValue().toString());
+               ariesDailyCurrent = dataSnapshot.getValue().toString();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
-        databaseReference.child("Zodiac").child("Aries").child("Daily").child("today").addListenerForSingleValueEvent(postListener);
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child("16-07-2017").addListenerForSingleValueEvent(postListenerCurrent);
 
-    }
+        //tomorrow
+        ValueEventListener postListenerTomorrow = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+               // ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+                Log.d("Hello",dataSnapshot.getValue().toString());
+                ariesDailyTomorrow = dataSnapshot.getValue().toString();;
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child("15-07-2017").addListenerForSingleValueEvent(postListenerTomorrow);
+
+        //yesterday
+               ValueEventListener postListenerYesterDay = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+                Log.d("Hello",dataSnapshot.getValue().toString());
+                ariesDailyYesterday = dataSnapshot.getValue().toString();;
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child("Aries").child("Daily").child("14-07-2017").addListenerForSingleValueEvent(postListenerYesterDay);
+
+        //monthly
+        ValueEventListener postListenerMonthly = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+                ariesMonthly = dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child("Aries").child("Monthly").addListenerForSingleValueEvent(postListenerMonthly);
+
+        //weekly
+        ValueEventListener postListenerWeekly = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+                ariesWeakly = dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child("Aries").child("Weekly").addListenerForSingleValueEvent(postListenerWeekly);
+
+        //yearly
+        ValueEventListener postListenerYearly = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
+                ariesYearly = dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child("Zodiac").child("Aries").child("Yearly").addListenerForSingleValueEvent(postListenerYearly);
+
+        }
+
 }

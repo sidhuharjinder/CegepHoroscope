@@ -9,12 +9,12 @@
         android:id="@+id/dayfiveTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="five"
         android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Monthly"
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/dayfiveDate"

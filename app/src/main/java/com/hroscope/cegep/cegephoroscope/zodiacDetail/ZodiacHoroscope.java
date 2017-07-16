@@ -88,7 +88,12 @@ public class ZodiacHoroscope extends Fragment implements View.OnClickListener{
 
             Intent intent = new Intent(getActivity(),ZodiaDetail.class);
             intent.putExtra("text", "Aries");
-            intent.putExtra("data", HomeScreen.aries);
+            intent.putExtra("current", HomeScreen.ariesDailyCurrent);
+            intent.putExtra("tomorrow", HomeScreen.ariesDailyTomorrow);
+            intent.putExtra("yesterday", HomeScreen.ariesDailyYesterday);
+            intent.putExtra("monthly", HomeScreen.ariesMonthly);
+            intent.putExtra("yearly", HomeScreen.ariesYearly);
+            intent.putExtra("weekly", HomeScreen.ariesWeakly);
             startActivity(intent);
         }
         if(view==taurusButton)

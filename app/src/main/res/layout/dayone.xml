@@ -13,12 +13,12 @@
         android:id="@+id/dayOneTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="one"
         android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Today"
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/dayOneDate"

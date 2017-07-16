@@ -17,7 +17,10 @@ public class ZodiacTodayList {
   //To retrieve data following variable name must matches with the firebase key.
     public String fullDetail;
     public String summary;
-    public String Email;
+    public String today;
+    public String tomorrow;
+    public String yesterday;
+    public String Monthly;
     public String date_of_birth;
     public String zodiac_sign;
     public String chinese_zodiac_sign;

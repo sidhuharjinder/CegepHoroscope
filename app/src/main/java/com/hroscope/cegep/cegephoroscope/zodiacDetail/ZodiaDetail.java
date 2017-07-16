@@ -49,7 +49,7 @@ public class ZodiaDetail extends Activity {
     public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,titlezod,weekdate;
     public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
     public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
-    String zod_info="";
+    String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
 
     View  dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week;
     PagerContainer mContainer;
@@ -61,9 +61,7 @@ public class ZodiaDetail extends Activity {
             R.layout.daythree,
             R.layout.dayfour,
             R.layout.dayfive,
-            R.layout.daysix,
-            R.layout.dayseven,
-            R.layout.week};
+            R.layout.daysix};
      String zodiac_title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +73,14 @@ public class ZodiaDetail extends Activity {
         todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
         todayShare = (ImageView)findViewById(R.id.todayimgeshare);
         todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
-         zodiac_title = getIntent().getStringExtra("text");
-        zod_info = getIntent().getStringExtra("data");
+        zodiac_title = getIntent().getStringExtra("text");
+        zod_current = getIntent().getStringExtra("current");
+        zodTomorrow = getIntent().getStringExtra("tomorrow");
+        zodYesterday = getIntent().getStringExtra("yesterday");
+        zodWeekly = getIntent().getStringExtra("weekly");
+        zodMonthly = getIntent().getStringExtra("monthly");
+        zodYearly = getIntent().getStringExtra("yearly");
+
         initializeviews();
         titlezod.setGravity(Gravity.CENTER);
         titlezod.setTextSize(30);
@@ -97,7 +101,7 @@ public class ZodiaDetail extends Activity {
 
         mContainer = (PagerContainer) findViewById(R.id.pager_container);
         pager = mContainer.getViewPager();
-        adapter = new MyPagerAdapter(this,zod_info);
+        adapter = new MyPagerAdapter(this,zod_current,zodYesterday,zodTomorrow,zodWeekly,zodMonthly,zodYearly);
         pager.setAdapter(adapter);
         //Necessary or the pager will only have one extra page to show
         // make this at least however many pages you can see
@@ -151,10 +155,15 @@ public class ZodiaDetail extends Activity {
 
         Context mContext;
         LayoutInflater mLayoutInflater;
-        String zod_info;
-        public MyPagerAdapter(Context context,String zod_info) {
+        String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
+        public MyPagerAdapter(Context context,String zod_current,String zodYesterday,String zodTomorrow,String zodWeekly,String zodMonthly,String zodYearly) {
             mContext = context;
-            this.zod_info = zod_info;
+            this.zod_current = zod_current;
+            this.zodYesterday=zodYesterday;
+            this.zodTomorrow=zodTomorrow;
+            this.zodWeekly=zodWeekly;
+            this.zodMonthly=zodMonthly;
+            this.zodYearly=zodYearly;
             mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         @Override
@@ -194,14 +203,14 @@ public class ZodiaDetail extends Activity {
             daySixTitle = (TextView)daysix.findViewById(R.id.daysixTitle);
             daysixInfo = (TextView)daysix.findViewById(R.id.daysixinfo);
             datesixDate = (TextView)daysix.findViewById(R.id.daysixDate);
-            //day seven
-            daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
-            daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
-            daysevenDate = (TextView)dayseven.findViewById(R.id.daysevenDate);
-            //week
-            weektitle= (TextView)dayseven.findViewById(R.id.weekTitle);
-            weekinfo = (TextView)dayseven.findViewById(R.id.weekInfo);
-            weekdate = (TextView)dayseven.findViewById(R.id.weekdate);
+//            //day seven
+//            daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
+//            daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
+//            daysevenDate = (TextView)dayseven.findViewById(R.id.daysevenDate);
+//            //week
+//            weektitle= (TextView)dayseven.findViewById(R.id.weekTitle);
+//            weekinfo = (TextView)dayseven.findViewById(R.id.weekInfo);
+//            weekdate = (TextView)dayseven.findViewById(R.id.weekdate);
 
         }
         @Override
@@ -212,12 +221,17 @@ public class ZodiaDetail extends Activity {
             dayfour = mLayoutInflater.inflate(R.layout.dayfour, container, false);
             dayfive = mLayoutInflater.inflate(R.layout.dayfive, container, false);
             daysix = mLayoutInflater.inflate(R.layout.daysix, container, false);
-            dayseven = mLayoutInflater.inflate(R.layout.dayseven, container, false);
-            week = mLayoutInflater.inflate(R.layout.week, container, false);
-            View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week};
+           // dayseven = mLayoutInflater.inflate(R.layout.dayseven, container, false);
+            //week = mLayoutInflater.inflate(R.layout.week, container, false);
+            View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix};
 
             setContolls();
-            dayoneInfo.setText(zod_info);
+            dayoneInfo.setText(zod_current);
+            daytwoInfo.setText(zodYesterday);
+            daythreeInfo.setText(zodTomorrow);
+            dayfourInfo.setText(zodWeekly);
+            dayfiveInfo.setText(zodMonthly);
+            daysixInfo.setText(zodYearly);
 
             container.addView(viewrrr[position]);
 
