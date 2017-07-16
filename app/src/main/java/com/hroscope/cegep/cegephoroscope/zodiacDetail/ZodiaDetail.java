@@ -69,10 +69,10 @@ public class ZodiaDetail extends Activity {
         setContentView(R.layout.activity_zodia_detail);
 
 
-        titlezod = (TextView)findViewById(R.id.titlezod);
-        todayPersonProfile = (ImageView)findViewById(R.id.todaypersonimg);
-        todayShare = (ImageView)findViewById(R.id.todayimgeshare);
-        todayZodImage = (ImageView)findViewById(R.id.todayzodimage);
+        titlezod = (TextView) findViewById(R.id.titlezod);
+        todayPersonProfile = (ImageView) findViewById(R.id.todaypersonimg);
+        todayShare = (ImageView) findViewById(R.id.todayimgeshare);
+        todayZodImage = (ImageView) findViewById(R.id.todayzodimage);
         zodiac_title = getIntent().getStringExtra("text");
         zod_current = getIntent().getStringExtra("current");
         zodTomorrow = getIntent().getStringExtra("tomorrow");
@@ -84,7 +84,7 @@ public class ZodiaDetail extends Activity {
         initializeviews();
         titlezod.setGravity(Gravity.CENTER);
         titlezod.setTextSize(30);
-        titlezod.setTextColor(Color.rgb(255,255,255));
+        titlezod.setTextColor(Color.rgb(255, 255, 255));
         //make title Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(zodiac_title);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
@@ -93,11 +93,34 @@ public class ZodiaDetail extends Activity {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
-        titlezod.setText(zodiac_title );
-        todayZodImage.setImageResource(R.mipmap.aries);
+        titlezod.setText(zodiac_title);
+        if (zodiac_title.equals("Aries"))
+            todayZodImage.setImageResource(R.mipmap.aries);
+        else if (zodiac_title.equals("Taurus"))
+            todayZodImage.setImageResource(R.mipmap.taurus);
+        else if (zodiac_title.equals("Gemini"))
+            todayZodImage.setImageResource(R.mipmap.gemini);
+        else if (zodiac_title.equals("Cancer"))
+            todayZodImage.setImageResource(R.mipmap.cancer);
+        else if (zodiac_title.equals("Leo"))
+            todayZodImage.setImageResource(R.mipmap.leo);
+        else if (zodiac_title.equals("Virgo"))
+            todayZodImage.setImageResource(R.mipmap.virgo);
+        else if (zodiac_title.equals("Libra"))
+            todayZodImage.setImageResource(R.mipmap.libra);
+        else if (zodiac_title.equals("Scorpio"))
+            todayZodImage.setImageResource(R.mipmap.scorpio);
+        else if (zodiac_title.equals("Sagittarus"))
+            todayZodImage.setImageResource(R.mipmap.sagittarius);
+        else if (zodiac_title.equals("Capricorn"))
+            todayZodImage.setImageResource(R.mipmap.capricorn);
+        else if (zodiac_title.equals("Aquarius"))
+            todayZodImage.setImageResource(R.mipmap.aquarius);
+        else if (zodiac_title.equals("Pisces"))
+            todayZodImage.setImageResource(R.mipmap.pisces);
 
     }
-    private void initializeviews() {
+        private void initializeviews() {
 
         mContainer = (PagerContainer) findViewById(R.id.pager_container);
         pager = mContainer.getViewPager();
