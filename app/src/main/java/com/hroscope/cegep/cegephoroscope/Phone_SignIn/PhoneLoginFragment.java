@@ -263,7 +263,9 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
             case verify_success:
                 disableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
                         mVerificationField);
+                phoneLoginStatus=true;
                 Toast.makeText(getContext(), "Verifification Succeeded",
+
                         Toast.LENGTH_SHORT).show();
               //  mDetailText.setText("status_verification_succeeded");
                 if (cred != null) {
@@ -300,6 +302,7 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
             enableViews(mPhoneNumberField, mVerificationField);
             mPhoneNumberField.setText(null);
             mVerificationField.setText(null);
+            phoneLoginStatus=true;
             Toast.makeText(getContext(), "Signed In Successful",
                     Toast.LENGTH_SHORT).show();
             //mStatusText.setText("signed_in");

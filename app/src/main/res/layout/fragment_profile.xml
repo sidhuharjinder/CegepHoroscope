@@ -26,7 +26,11 @@
                 android:layout_marginLeft="15dp"
                 android:src="@drawable/user"
                 app:civ_border_width="4dp"
-                app:civ_border_color="#fff"/>
+                app:civ_border_color="#fff"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
 
             <!--<ImageView-->
@@ -48,18 +52,31 @@
                     android:id="@+id/imageView4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    app:srcCompat="@android:drawable/ic_notification_overlay" />
+                    app:srcCompat="@android:drawable/ic_notification_overlay"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <EditText
                     android:id="@+id/editText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="77dp"
                     android:ems="10"
+                    android:text="USER IS OFFLINE"
+                    android:textStyle="bold"
+                    android:gravity="fill"
+                    android:textColorHint="#ffffff"
                     android:background="@color/trans"
                     android:inputType="text"
                     android:textColor="#fff"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp"
+
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +89,11 @@
                     android:id="@+id/calender"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    app:srcCompat="@drawable/calendar" />
+                    app:srcCompat="@drawable/calendar"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <EditText
                     android:id="@+id/dateOfBirth"
                     android:layout_width="wrap_content"
@@ -83,13 +104,21 @@
                     android:background="@color/trans"
                     android:inputType="date"
                     android:textColor="#fff"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <ImageView
                     android:id="@+id/EditDate"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/pencil" />
+                    app:srcCompat="@drawable/pencil"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
             </LinearLayout>
 
             <LinearLayout
@@ -104,18 +133,26 @@
                     android:id="@+id/zodSign"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/taurus" />
+                    android:src="@mipmap/taurus"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
                 <TextView
-                    android:id="@+id/zodiac"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
                     android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
                     android:background="@color/trans"
-                    android:text="Aries"
+                    android:ems="10"
+
                     android:textColor="#fff"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -131,12 +168,20 @@
                 android:background="#434343"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false">
                 <ImageView
                     android:id="@+id/chineseSign"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/rat" />
+                    android:src="@mipmap/rat"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <TextView
                     android:id="@+id/chineseHoroscope"
                     android:layout_width="wrap_content"
@@ -145,14 +190,22 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
-                    android:text="Rat"
+
                     android:textSize="20sp"
-                    android:textColor="#fff"/>
+                    android:textColor="#fff"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/next"
                     android:layout_marginRight="20dp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
 
                     />
             </LinearLayout>
@@ -163,32 +216,48 @@
                 android:background="#434343"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false">
                 <ImageView
                     android:id="@+id/friendsimage"
 
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/friends" />
+                    android:src="@mipmap/friends"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <TextView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:text="Friends"
+
                     android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
 
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/next"
                     android:layout_marginRight="20dp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
 
                     />
             </LinearLayout>

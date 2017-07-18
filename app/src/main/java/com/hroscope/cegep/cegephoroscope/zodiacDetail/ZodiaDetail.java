@@ -19,7 +19,10 @@ import android.widget.TextView;
 import com.hroscope.cegep.cegephoroscope.PagerContainer;
 import com.hroscope.cegep.cegephoroscope.R;
 
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -29,7 +32,7 @@ public class ZodiaDetail extends Activity {
 
     //widets for dayone
     public ImageView todayPersonProfile,todayShare,todayZodImage;
-    public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,titlezod,weekdate;
+    public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate, daysixthDate,daysevenDate,titlezod,weekdate;
     public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
     public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
     String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
@@ -208,7 +211,7 @@ public class ZodiaDetail extends Activity {
             //day six
             daySixTitle = (TextView)daysix.findViewById(R.id.daysixTitle);
             daysixInfo = (TextView)daysix.findViewById(R.id.daysixinfo);
-            datesixDate = (TextView)daysix.findViewById(R.id.daysixDate);
+            daysixthDate = (TextView)daysix.findViewById(R.id.daysixDate);
 //            //day seven
 //            daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
 //            daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
@@ -232,11 +235,24 @@ public class ZodiaDetail extends Activity {
             View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix};
 
             setContolls();
+            //today
+            dayoneDate.setText(getToday());
             dayoneInfo.setText(zod_current);
+           //yesterday
+            daytwoDate.setText(getYesterdayDateString());
             daytwoInfo.setText(zodYesterday);
+
+            daythreeDate.setText(getTomorrowDateString());
             daythreeInfo.setText(zodTomorrow);
+
+
+            dayfourDate.setText(getWeeklyDateString());
             dayfourInfo.setText(zodWeekly);
+
+            dayfiveDate.setText(getcuttentMonthString());
             dayfiveInfo.setText(zodMonthly);
+
+            daysixthDate.setText(getcuttentYearString());
             daysixInfo.setText(zodYearly);
 
             container.addView(viewrrr[position]);
@@ -252,4 +268,97 @@ public class ZodiaDetail extends Activity {
         }
 
     }
+
+    public String getToday()
+    {
+        Format formatter = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        String today = formatter.format(new Date());
+        return today;
+    }
+
+    private Date yesterday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
+
+    }
+
+    private String getYesterdayDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        return dateFormat.format(yesterday());
+    }
+
+
+    private Date tomorrowday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+        return cal.getTime();
+
+    }
+
+    private String getTomorrowDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        return dateFormat.format(tomorrowday());
+    }
+
+    private Date weeklyStartDate() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+        c.add(Calendar.DATE, -i - 7);
+        Date start = c.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("EE, MM dd");
+        dateFormat.format(start);
+
+        return start;
+
+    }
+
+    private Date weeklyEndDate() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+
+        c.add(Calendar.DATE, -1);
+        Date end = c.getTime();
+        DateFormat dateFormat1 = new SimpleDateFormat("EE, MM dd");
+        dateFormat1.format(end);
+        return end;
+
+    }
+
+
+
+    private String getWeeklyDateString() {
+
+        DateFormat dateFormat = new SimpleDateFormat("EE MMM dd");
+        String start_date=dateFormat.format(weeklyStartDate());
+        String end_date=dateFormat.format(weeklyEndDate());
+        return start_date+" - "+end_date;
+
+    }
+
+    private String  getcuttentMonthString()
+    {
+        Format formatter = new SimpleDateFormat("MMMM yyyy");
+        String currentMonth = formatter.format(new Date());
+        return currentMonth;
+
+
+
+    }
+
+    private String getcuttentYearString()
+    {
+        Format formatter = new SimpleDateFormat("yyyy");
+        String currentYear = formatter.format(new Date());
+        return currentYear;
+
+
+
+    }
+
+
 }

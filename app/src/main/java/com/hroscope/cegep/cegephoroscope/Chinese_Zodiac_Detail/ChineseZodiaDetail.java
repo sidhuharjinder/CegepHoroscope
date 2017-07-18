@@ -114,8 +114,6 @@ public class ChineseZodiaDetail extends Activity {
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
 
         todayTitlezod.setText(zodiac_title );
-
-
         zod_name=zodiac_title.toLowerCase();
 
         Calendar now = Calendar.getInstance();   // Gets the current date and time
@@ -127,6 +125,7 @@ public class ChineseZodiaDetail extends Activity {
         yearTextview.setText(Syear);
 
         currentYear = getIntent().getStringExtra("current");
+
          todayzodinfo.setText(currentYear);
 
         if (zodiac_title.equals("Rat"))
