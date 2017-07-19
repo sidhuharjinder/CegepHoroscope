@@ -20,7 +20,7 @@
             android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
+
             android:text="Compatibility" />
 
         <LinearLayout
@@ -44,11 +44,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="And"
-                android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="#fff"
                 android:gravity="center"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="19dp"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/goatCompatibilityButton"
@@ -103,7 +102,7 @@
                         android:text="Aries"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,7 +129,7 @@
                         android:text="Taurus"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -157,7 +156,7 @@
                         android:text="Gemini"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -203,7 +202,7 @@
                         android:text="Cancer"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -230,7 +229,7 @@
                         android:text="Leo"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -257,7 +256,7 @@
                         android:text="Virgo"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
 
@@ -301,7 +300,7 @@
                         android:text="Libra"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -328,7 +327,7 @@
                         android:text="Scorpio"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -355,7 +354,7 @@
                         android:text="Sagittarius"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -399,7 +398,7 @@
                         android:text="Capricon"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -426,7 +425,7 @@
                         android:text="Aquarius"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -453,7 +452,7 @@
                         android:text="Pisces"
                         android:textColor="#fff"
 
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>

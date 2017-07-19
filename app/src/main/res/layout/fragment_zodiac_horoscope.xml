@@ -57,7 +57,7 @@
 
                         android:src="@mipmap/aries"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -85,7 +85,7 @@
 
                         android:src="@mipmap/taurus"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textTaurus"
@@ -112,7 +112,7 @@
 
                         android:src="@mipmap/gemini"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textGemini"
@@ -157,7 +157,7 @@
 
                         android:src="@mipmap/cancer"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textCancer"
@@ -185,7 +185,7 @@
 
                         android:src="@mipmap/leo"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textLeo"
@@ -212,7 +212,7 @@
 
                         android:src="@mipmap/virgo"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textVirgo"
@@ -255,7 +255,7 @@
 
                         android:src="@mipmap/libra"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textLibra"
@@ -283,7 +283,7 @@
 
                         android:src="@mipmap/scorpio"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textScorpio"
@@ -310,7 +310,7 @@
 
                         android:src="@mipmap/sagittarius"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textSagittarius"
@@ -353,7 +353,7 @@
 
                         android:src="@mipmap/capricorn"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textCapricorn"
@@ -381,7 +381,7 @@
 
                         android:src="@mipmap/aquarius"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textAquarius"
@@ -408,7 +408,7 @@
 
                         android:src="@mipmap/pisces"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textPisces"

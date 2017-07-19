@@ -17,8 +17,8 @@
         android:gravity="center"
         android:text="Tomorrow"
         android:textColor="#fff"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="18sp"
+        />
 
     <TextView
         android:id="@+id/daythreedate"
@@ -28,8 +28,8 @@
         android:gravity="center"
         android:text="Saturday Jun 03 2017"
         android:textColor="#fff"
-        android:textSize="23sp"
-        android:textStyle="bold" />
+        android:textSize="19sp"
+        />
 
 
     <LinearLayout

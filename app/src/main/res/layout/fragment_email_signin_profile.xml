@@ -109,8 +109,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
 
                     app:srcCompat="@drawable/filled_circle" />
@@ -120,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="S"
+                    android:text=""
                     android:layout_marginTop="-3dp"
                     android:gravity="center"
                     android:layout_marginLeft="-40dp"
@@ -157,8 +157,9 @@
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/calender"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
                     app:srcCompat="@drawable/calendar" />
                 <EditText
                     android:id="@+id/dateOfBirth"
@@ -189,8 +190,9 @@
 
                 <ImageView
                     android:id="@+id/zodSign"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@mipmap/taurus" />
                 <EditText
                     android:id="@+id/zodiac"
@@ -199,15 +201,19 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:layout_marginLeft="30dp"
+                    android:hint="Zodiac"
                     android:background="@color/trans"
                     android:inputType="text"
                     android:textColor="#fff"
-                    android:textSize="20sp"/>
+                    android:textColorHint="#fff"
+                    android:textSize="20sp"
+                    android:editable="false"/>
 
                 <ImageView
                     android:id="@+id/forwardzodiac"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_gravity="center"
 
                     android:layout_weight="1"
@@ -224,8 +230,9 @@
 
                 <ImageView
                     android:id="@+id/chineseSign"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@mipmap/rat" />
                 <EditText
                     android:id="@+id/chineseHoroscope"
@@ -235,14 +242,16 @@
                     android:ems="10"
                     android:layout_marginLeft="30dp"
                     android:background="@color/trans"
+                    android:editable="false"
                     android:inputType="text"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
 
                 <ImageView
                     android:id="@+id/forwardchinese"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@mipmap/next" />
@@ -259,8 +268,9 @@
                 <ImageView
                     android:id="@+id/friendsimage"
 
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@mipmap/friends" />
                 <TextView
                     android:id="@+id/friends"
@@ -279,8 +289,9 @@
 
                 <ImageView
                     android:id="@+id/EditFreinds"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@mipmap/next" />

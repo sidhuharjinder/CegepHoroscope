@@ -32,7 +32,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
 
 
@@ -55,7 +55,7 @@
 
                         android:src="@mipmap/rat"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -83,7 +83,7 @@
 
                         android:src="@mipmap/ox"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textOx"
@@ -110,7 +110,7 @@
 
                         android:src="@mipmap/tiger"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textTiger"
@@ -155,7 +155,7 @@
 
                         android:src="@mipmap/rabbit"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textRabbit"
@@ -183,7 +183,7 @@
 
                         android:src="@mipmap/dragon"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textDragon"
@@ -210,7 +210,7 @@
 
                         android:src="@mipmap/snake"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textSnake"
@@ -253,7 +253,7 @@
 
                         android:src="@mipmap/horse"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textHorse"
@@ -281,7 +281,7 @@
 
                         android:src="@mipmap/goat"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textGoat"
@@ -308,7 +308,7 @@
 
                         android:src="@mipmap/monkey"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textMonkey"
@@ -351,7 +351,7 @@
 
                         android:src="@mipmap/rooster"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textRooster"
@@ -379,7 +379,7 @@
 
                         android:src="@mipmap/dog"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textDog"
@@ -406,7 +406,7 @@
 
                         android:src="@mipmap/pig"
                         app:civ_border_color="#FFF"
-                        app:civ_border_width="4dp" />
+                        app:civ_border_width="2dp" />
 
                     <TextView
                         android:id="@+id/textPig"

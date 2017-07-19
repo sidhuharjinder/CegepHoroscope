@@ -100,6 +100,7 @@
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
                             android:textColorHint="#ffffff"
+                            android:textColor="#ffffff"
                             android:inputType="phone" />
 
                         <EditText
@@ -109,6 +110,7 @@
                             android:layout_weight="1.0"
                             android:hint="One time password"
                             android:textColorHint="#ffffff"
+                            android:textColor="#ffffff"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
                             android:layout_marginBottom="10dp"
@@ -129,6 +131,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:text="Send Password"
+                            android:textColor="#ffffff"
                             android:layout_marginLeft="40dp"
                            android:layout_marginRight="40dp"
                            android:layout_marginBottom="10dp"
@@ -141,6 +144,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:text="Verify Password"
+                            android:textColor="#ffffff"
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
@@ -153,6 +157,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:text="Resend Password"
+                            android:textColor="#ffffff"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
                             android:background="@drawable/rbuttonfacebook"/>

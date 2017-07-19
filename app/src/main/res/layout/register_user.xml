@@ -30,9 +30,9 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="REGISTER"
-            android:textColorHint="#ffffff"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+             />
 
 
         <EditText
@@ -41,10 +41,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="First Name"
+            android:textSize="16sp"
             android:inputType="textPersonName" />
 
         <EditText
@@ -56,7 +58,9 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:hint="Last Name"
+            android:textSize="16sp"
             android:inputType="textPersonName" />
 
         <EditText
@@ -68,7 +72,9 @@
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:hint="Sign Up Email"
+            android:textSize="16sp"
             android:inputType="textPersonName" />
 
         <EditText
@@ -80,7 +86,9 @@
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:hint="Phone"
+            android:textSize="16sp"
             android:inputType="textPersonName" />
 
 
@@ -93,7 +101,9 @@
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:hint="Password"
+            android:textSize="16sp"
             android:inputType="textPassword" />
 
         <EditText
@@ -105,7 +115,9 @@
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:hint="confirm password"
+            android:textSize="16sp"
 
             android:inputType="textPassword" />
 
@@ -114,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="90dp"
             android:text="REGISTER"
             android:textColor="#ffffff"
@@ -126,6 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:text="Already a Member ? Sign In"
             android:textColor="#ffffff"
