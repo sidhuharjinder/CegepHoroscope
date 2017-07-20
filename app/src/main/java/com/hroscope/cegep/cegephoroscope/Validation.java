@@ -9,14 +9,14 @@ import android.widget.EditText;
 public class Validation {
 
 
-    public boolean validationRegister(EditText firstname,EditText lastname,EditText email,EditText phone,EditText password,EditText repassword) {
+    public boolean validationRegister(EditText firstname,EditText lastname,EditText email,EditText password,EditText repassword) {
 
         boolean status = true;
 
         String first_name = firstname.getText().toString();
         String last_name=lastname.getText().toString();
         String user_email = email.getText().toString();
-        String user_phone = phone.getText().toString();
+      //  String user_phone = phone.getText().toString();
         String user_password = password.getText().toString();
         String confirm_password =repassword.getText().toString();
 
@@ -44,12 +44,12 @@ public class Validation {
         }
 
 
-        if (user_phone.isEmpty() || user_phone.length() < 10) {
+    /*    if (user_phone.isEmpty() || user_phone.length() < 10) {
             phone.setError("Phone no must be 10 numeric digits");
             status = false;
         } else {
             phone.setError(null);
-        }
+        }*/
 
 
         if (user_password.isEmpty() || user_password.length() < 5 || user_password.length() > 12) {

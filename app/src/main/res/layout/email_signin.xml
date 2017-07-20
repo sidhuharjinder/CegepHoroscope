@@ -65,8 +65,10 @@
            android:layout_marginLeft="90dp"
             android:layout_marginRight="90dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/rbuttonemail"
-            android:text="LOGIN" />
+            android:background="@drawable/roundbutton"
+            android:layout_marginTop="28dp"
+            android:text="LOGIN"
+            android:textColor="#ffffff"/>
 
         <TextView
             android:id="@+id/forgetPassword"

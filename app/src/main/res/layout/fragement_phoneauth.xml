@@ -113,7 +113,8 @@
                             android:layout_marginLeft="40dp"
                            android:layout_marginRight="40dp"
                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/rbuttonemail"/>
+                            android:background="@drawable/roundbutton"
+                            android:textColor="#ffffff"/>
 
                         <Button
 
@@ -125,7 +126,8 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
-                            android:background="@drawable/rbuttonphone"/>
+                            android:background="@drawable/roundbutton"
+                            android:textColor="#ffffff"/>
 
                         <Button
 
@@ -136,7 +138,8 @@
                             android:text="Resend Password"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
-                            android:background="@drawable/rbuttonfacebook"/>
+                            android:background="@drawable/roundbutton"
+                            android:textColor="#ffffff"/>
                     </LinearLayout>
 
                 </LinearLayout>

@@ -91,7 +91,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
             buttonNumber =1;
            Fragment fragment = new FacebookFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
 
          //  startActivity(new Intent(getActivity(), FacebookFragment.class));
 
@@ -108,7 +108,8 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
             buttonNumber =2;
             Fragment fragment = new Email_Sigin_Fragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
+
 
         }
         if(view== phone_login_Button)
@@ -117,7 +118,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
 
             Fragment fragment = new PhoneLoginFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
 
         }
         if(view==register)
@@ -125,7 +126,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
 
             Fragment fragment = new RegisterFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
         }
 
 
@@ -135,4 +136,6 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     {
         return buttonNumber;
     }
+
+
 }

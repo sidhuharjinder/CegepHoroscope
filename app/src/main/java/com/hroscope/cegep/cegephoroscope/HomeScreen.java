@@ -164,6 +164,7 @@ public class HomeScreen extends AppCompatActivity {
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout, selectedFragment);
                         transaction.commit();
+                        transaction.addToBackStack(null);
                         return true;
                     }
                 });
@@ -173,6 +174,7 @@ public class HomeScreen extends AppCompatActivity {
         if(Email_Sigin_Fragment.emailLoginStatus) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, Email_Signin_Profile_Fragment.newInstance());
+            transaction.addToBackStack(null);
             transaction.commit();
         }
 
@@ -180,6 +182,7 @@ public class HomeScreen extends AppCompatActivity {
         {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, Fb_Profile_Fragment.newInstance());
+            transaction.addToBackStack(null);
             transaction.commit();
         }
 
@@ -188,6 +191,7 @@ public class HomeScreen extends AppCompatActivity {
         {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, Phone_SignIn_Profile.newInstance());
+            transaction.addToBackStack(null);
             transaction.commit();
         }
 
@@ -195,6 +199,7 @@ public class HomeScreen extends AppCompatActivity {
         else {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
+            transaction.addToBackStack(null);
             transaction.commit();
         }
 

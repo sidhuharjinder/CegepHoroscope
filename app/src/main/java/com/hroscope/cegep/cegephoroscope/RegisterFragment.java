@@ -20,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Sigin_Fragment;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
     Validation vr=new Validation();
@@ -64,7 +65,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         editTextfirstname=(EditText)view.findViewById(R.id.first_name);
         editTextlastname=(EditText)view.findViewById(R.id.last_name);
         editTextemail =(EditText)view.findViewById(R.id.email);
-        ediTextphone=(EditText)view.findViewById(R.id.phone);
+       // ediTextphone=(EditText)view.findViewById(R.id.phone);
         editTextPassword=(EditText)view.findViewById(R.id.password);
         editTextrepassword  =(EditText)view.findViewById(R.id.repassword);
         textViewSignin=(TextView)view.findViewById(R.id.status);
@@ -77,12 +78,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     {
         final String firstname=editTextfirstname.getText().toString().trim();
         final String lastname=editTextlastname.getText().toString().trim();
-        final String phone=ediTextphone.getText().toString().trim();
+      //  final String phone=ediTextphone.getText().toString().trim();
         final String email= editTextemail.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
         String repassword=editTextrepassword.getText().toString().trim();
 
-        if(!vr.validationRegister(editTextfirstname,editTextlastname,editTextemail,ediTextphone,editTextPassword,editTextrepassword)) {
+        if(!vr.validationRegister(editTextfirstname,editTextlastname,editTextemail,editTextPassword,editTextrepassword)) {
             onSignupFailed();
             return;
         }
@@ -108,12 +109,13 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference databaseReference = database.getReference("Registration_Data").child(useruid);
                            // databaseReference.child("User_Id").setValue(useruid);
-                            databaseReference.child("fullDetail").setValue(firstname);
+                            databaseReference.child("First_Name").setValue(firstname);
                             databaseReference.child("Last_name").setValue(lastname);
                             databaseReference.child("Email").setValue(email);
-                            databaseReference.child("phone_no").setValue(phone);
+                          //  databaseReference.child("phone_no").setValue(phone);
 
-                            Fragment fragment = new ForgotPasswordFragment();
+                            Email_Sigin_Fragment.emailLoginStatus=true;
+                            Fragment fragment = new Email_Sigin_Fragment();
                             FragmentManager fragmentManager = getFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
@@ -157,7 +159,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }
         if(view==textViewSignin)
         {
-            Fragment fragment = new ForgotPasswordFragment();
+            Fragment fragment = new Email_Sigin_Fragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
