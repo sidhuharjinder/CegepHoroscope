@@ -2,15 +2,13 @@ package com.hroscope.cegep.cegephoroscope.zodiacDetail;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,38 +16,36 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.hroscope.cegep.cegephoroscope.PagerContainer;
 import com.hroscope.cegep.cegephoroscope.R;
-import com.squareup.picasso.Picasso;
+import com.hroscope.cegep.cegephoroscope.zodiacCompatibility.Comapatibity;
 
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-import static android.content.ContentValues.TAG;
 
-
-public class ZodiaDetail extends Activity {
+public class ZodiaDetail extends Activity implements View.OnClickListener {
    //firebase
 
 
     //widets for dayone
     public ImageView todayPersonProfile,todayShare,todayZodImage;
+<<<<<<< HEAD
     public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate,datesixDate,daysevenDate,titlezod,weekdate;
     public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
     public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
     String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
+=======
+    public TextView dayoneDate,daytwoDate,daythreeDate,dayfourDate,dayfiveDate, daysixthDate,daysevenDate,titlezod,weekdate;
+    public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
+    public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
+    String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
+    public static Intent intent;
+>>>>>>> Sachin_Fragment
 
     View  dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week;
     PagerContainer mContainer;
@@ -80,6 +76,10 @@ public class ZodiaDetail extends Activity {
         zodWeekly = getIntent().getStringExtra("weekly");
         zodMonthly = getIntent().getStringExtra("monthly");
         zodYearly = getIntent().getStringExtra("yearly");
+<<<<<<< HEAD
+=======
+        todayZodImage.setOnClickListener(this);
+>>>>>>> Sachin_Fragment
 
         initializeviews();
         titlezod.setGravity(Gravity.CENTER);
@@ -135,6 +135,22 @@ public class ZodiaDetail extends Activity {
         // clipping on the pager for its children.
         pager.setClipChildren(false);
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public void onClick(View view) {
+
+     if(view==todayZodImage)
+     {
+         Intent intent = new Intent(ZodiaDetail.this, Comapatibity.class);
+         intent.putExtra("zodiac_click",zodiac_title);
+         startActivity(intent);
+
+
+     }
+    }
+>>>>>>> Sachin_Fragment
 //    public void initializeFirebase()
 //    {
 //
@@ -225,7 +241,11 @@ public class ZodiaDetail extends Activity {
             //day six
             daySixTitle = (TextView)daysix.findViewById(R.id.daysixTitle);
             daysixInfo = (TextView)daysix.findViewById(R.id.daysixinfo);
+<<<<<<< HEAD
             datesixDate = (TextView)daysix.findViewById(R.id.daysixDate);
+=======
+            daysixthDate = (TextView)daysix.findViewById(R.id.daysixDate);
+>>>>>>> Sachin_Fragment
 //            //day seven
 //            daySevenTitle = (TextView)dayseven.findViewById(R.id.daysevenTitle);
 //            daysevenInfo = (TextView)dayseven.findViewById(R.id.dayseveninfo);
@@ -249,11 +269,32 @@ public class ZodiaDetail extends Activity {
             View viewrrr [] ={dayone,daytwo,daythree,dayfour,dayfive,daysix};
 
             setContolls();
+<<<<<<< HEAD
             dayoneInfo.setText(zod_current);
             daytwoInfo.setText(zodYesterday);
             daythreeInfo.setText(zodTomorrow);
             dayfourInfo.setText(zodWeekly);
             dayfiveInfo.setText(zodMonthly);
+=======
+            //today
+            dayoneDate.setText(getToday());
+            dayoneInfo.setText(zod_current);
+           //yesterday
+            daytwoDate.setText(getYesterdayDateString());
+            daytwoInfo.setText(zodYesterday);
+
+            daythreeDate.setText(getTomorrowDateString());
+            daythreeInfo.setText(zodTomorrow);
+
+
+            dayfourDate.setText(getWeeklyDateString());
+            dayfourInfo.setText(zodWeekly);
+
+            dayfiveDate.setText(getcuttentMonthString());
+            dayfiveInfo.setText(zodMonthly);
+
+            daysixthDate.setText(getcuttentYearString());
+>>>>>>> Sachin_Fragment
             daysixInfo.setText(zodYearly);
 
             container.addView(viewrrr[position]);
@@ -268,5 +309,101 @@ public class ZodiaDetail extends Activity {
             container.removeView((LinearLayout) object);
         }
 
+<<<<<<< HEAD
+=======
     }
+
+    public String getToday()
+    {
+        Format formatter = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        String today = formatter.format(new Date());
+        return today;
+    }
+
+    private Date yesterday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
+
+    }
+
+    private String getYesterdayDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        return dateFormat.format(yesterday());
+    }
+
+
+    private Date tomorrowday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+        return cal.getTime();
+
+    }
+
+    private String getTomorrowDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd  yyyy");
+        return dateFormat.format(tomorrowday());
+    }
+
+    private Date weeklyStartDate() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+        c.add(Calendar.DATE, -i - 7);
+        Date start = c.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("EE, MM dd");
+        dateFormat.format(start);
+
+        return start;
+
+    }
+
+    private Date weeklyEndDate() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+
+        c.add(Calendar.DATE, -1);
+        Date end = c.getTime();
+        DateFormat dateFormat1 = new SimpleDateFormat("EE, MM dd");
+        dateFormat1.format(end);
+        return end;
+
+    }
+
+
+
+    private String getWeeklyDateString() {
+
+        DateFormat dateFormat = new SimpleDateFormat("EE MMM dd");
+        String start_date=dateFormat.format(weeklyStartDate());
+        String end_date=dateFormat.format(weeklyEndDate());
+        return start_date+" - "+end_date;
+
+    }
+
+    private String  getcuttentMonthString()
+    {
+        Format formatter = new SimpleDateFormat("MMMM yyyy");
+        String currentMonth = formatter.format(new Date());
+        return currentMonth;
+
+
+
+>>>>>>> Sachin_Fragment
+    }
+
+    private String getcuttentYearString()
+    {
+        Format formatter = new SimpleDateFormat("yyyy");
+        String currentYear = formatter.format(new Date());
+        return currentYear;
+
+
+
+    }
+
+
 }

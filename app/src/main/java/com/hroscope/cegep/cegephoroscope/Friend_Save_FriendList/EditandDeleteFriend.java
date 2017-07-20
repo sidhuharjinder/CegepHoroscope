@@ -1,4 +1,4 @@
-package com.hroscope.cegep.cegephoroscope.Friends_List;
+package com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -9,14 +9,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,31 +35,27 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Registered_UserList;
 import com.hroscope.cegep.cegephoroscope.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
-/**
- * Created by SACHIN on 7/7/2017.
- */
+public class EditandDeleteFriend extends AppCompatActivity implements View.OnClickListener {
 
-
-public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClickListener  {
+    Button buttonsave,buttondelete;
+    String friend_date,friend_name;
     private CircleImageView profile_Image;
     private ImageView editName,calender,editDate,zodSign,editZodSign,chineseSign,editChineseSign;
 
     private TextView initials;
     private EditText name,dateOfBirth,zodiacName,chineseZodName;
-    private Button save,delete;
-    private View view;
 
     private FirebaseAuth firebaseAuth;
     private ImageButton button_gallary,button_upload;
@@ -81,44 +75,20 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
     String nme;
     String zodiac_sign_name,chi_zodiac_sign_name;
     String zod_name="",chi_name="";
-
-    public static Friend_Edit_DeleteFragment newInstance() {
-        Friend_Edit_DeleteFragment fragment = new Friend_Edit_DeleteFragment();
-        return fragment;
-    }
-
-    public Friend_Edit_DeleteFragment() {
-
-    }
-
-
+    String uid;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_editand_delete_friend);
 
-        view =  inflater.inflate(R.layout.activity_editand_delete_friend, container, false);
-         setControlls();
-       /* if (firebaseAuth.getCurrentUser() != null) {
-            //check image file is exist on location or not
-            storageRef.child("Email_Registration").child("Users_Friend_Images").child(userUID).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(profile_Image);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // File not found
-                }
-            });
-
-        }*/
-      //  ReadFirebase_setProfileData();
+        setControlls();
+        ReadFirebase_setProfileData();
         setDataTime();
         pd.dismiss();
-        return view;
+
+
     }
+
     public void setControlls()
     {
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -129,42 +99,45 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Registration_Data").child("Users_Friend_List").child(userUID);
 
-       //Imageview
-        profile_Image=(CircleImageView)view.findViewById(R.id.profile);
-        profile_Image.setOnClickListener(this);
-        editName=(ImageView)view.findViewById(R.id.editname);
-        editName.setOnClickListener(this);
-        calender=(ImageView)view.findViewById(R.id.EditDate);
-        calender.setOnClickListener(this);
-        editDate=(ImageView)view.findViewById(R.id.EditDate);
-        editDate.setOnClickListener(this);
-        zodSign=(ImageView)view.findViewById(R.id.zodSign);
-        zodSign.setOnClickListener(this);
-        editZodSign=(ImageView)view.findViewById(R.id.editzod);
-        editZodSign.setOnClickListener(this);
-        chineseSign=(ImageView)view.findViewById(R.id.chineseSign);
-        chineseSign.setOnClickListener(this);
-        editChineseSign=(ImageView)view.findViewById(R.id.editchinesezod);
-        editChineseSign.setOnClickListener(this);
-        save=(Button)view.findViewById(R.id.buttonSave);
-        save.setOnClickListener(this);
-        delete=(Button)view.findViewById(R.id.buttonDelete);
-        delete.setOnClickListener(this);
-        //Textview
-        initials=(TextView)view.findViewById(R.id.initials);
-        //Edittext
-        name=(EditText) view.findViewById(R.id.name);
-        dateOfBirth=(EditText) view.findViewById(R.id.dateOfBirth);
-        zodiacName=(EditText) view.findViewById(R.id.zodiac);
-        chineseZodName=(EditText) view.findViewById(R.id.chineseHoroscope);
+        buttonsave = (Button)findViewById(R.id.buttonSave);
+        buttonsave.setOnClickListener(this);
+        buttondelete=(Button)findViewById(R.id.buttonDelete);
+        buttondelete.setOnClickListener(this);
 
-        button_gallary =(ImageButton)view.findViewById(R.id.gallary);
+        profile_Image=(CircleImageView)findViewById(R.id.profile);
+        profile_Image.setOnClickListener(this);
+        editName=(ImageView)findViewById(R.id.editname);
+        editName.setOnClickListener(this);
+        calender=(ImageView)findViewById(R.id.EditDate);
+        calender.setOnClickListener(this);
+        editDate=(ImageView)findViewById(R.id.EditDate);
+        editDate.setOnClickListener(this);
+        zodSign=(ImageView)findViewById(R.id.zodSign);
+        zodSign.setOnClickListener(this);
+        editZodSign=(ImageView)findViewById(R.id.editzod);
+        editZodSign.setOnClickListener(this);
+        chineseSign=(ImageView)findViewById(R.id.chineseSign);
+        chineseSign.setOnClickListener(this);
+        editChineseSign=(ImageView)findViewById(R.id.editchinesezod);
+        editChineseSign.setOnClickListener(this);
+        buttonsave =(Button)findViewById(R.id.buttonSave);
+        buttonsave.setOnClickListener(this);
+
+        //Textview
+        initials=(TextView)findViewById(R.id.initials);
+        //Edittext
+        name=(EditText)findViewById(R.id.name);
+        dateOfBirth=(EditText)findViewById(R.id.dateOfBirth);
+        zodiacName=(EditText)findViewById(R.id.zodiac);
+        chineseZodName=(EditText)findViewById(R.id.chineseHoroscope);
+
+        button_gallary =(ImageButton)findViewById(R.id.gallary);
         button_gallary.setOnClickListener(this);
-        button_gallary.setVisibility(view.INVISIBLE);
-        button_upload=(ImageButton)view.findViewById(R.id.upload);
+        button_gallary.setVisibility(View.INVISIBLE);
+        button_upload=(ImageButton)findViewById(R.id.upload);
         button_gallary.setOnClickListener(this);
         button_upload.setOnClickListener(this);
-        button_upload.setVisibility(view.INVISIBLE);
+        button_upload.setVisibility(View.INVISIBLE);
 
 
 
@@ -175,11 +148,88 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         zodiacName.setEnabled(false);
         chineseZodName.setEnabled(false);
 
-        pd = new ProgressDialog(getActivity());
+        pd = new ProgressDialog(EditandDeleteFriend.this);
         pd.setMessage("Uploading....");
+
+    }
+    public void ReadFirebase_setProfileData()
+    {
+        Intent intent = getIntent();
+        friend_date = intent.getStringExtra("date");
+        friend_name = intent.getStringExtra("name");
+      //  name.setText(friend_name);
+         uid = friend_name.concat(friend_date);
+        dateOfBirth.setText(friend_date);
+
+
+        name.setGravity(Gravity.LEFT);
+        name.setText(friend_name);
+        //set initial
+        String nameInitial=friend_name.substring(0,1);
+        initials.setGravity(Gravity.CENTER);
+        initials.setTextSize(40);
+        initials.setTextColor(Color.rgb(255,255,255));
+        //make initial Bold
+        final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+        initials.setText(nameInitial.toUpperCase());
+
+        //Retrieve all set of data from firebase
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
+                if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
+                {
+                    dateOfBirth.setText(user.date_of_birth);
+                    zodiacName.setText(user.zodiac_sign);
+                    chineseZodName.setText(user.chinese_zodiac_sign);
+                    //using those string variable for child name to get zod and chinese zod sign image from database
+                    zod_name = user.zodiac_sign.toLowerCase();
+                    chi_name = user.chinese_zodiac_sign.toLowerCase();
+
+                    //load appropriate image to zodiac sign imageview
+                    storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Picasso.with(EditandDeleteFriend.this).load(uri.toString()).resize(600, 200).centerInside().into(zodSign);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // File not found
+                        }
+                    });
+
+                    //load appropriate image to Chinese zodiac sign imageview
+                    storageRef.child("Signs").child("Chinese_Signs").child(chi_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Picasso.with(EditandDeleteFriend.this).load(uri.toString()).resize(600, 200).centerInside().into(chineseSign);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // File not found
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        databaseReference.child(uid).addValueEventListener(postListener);
+
+
+
     }
 
-
+    //update data
     public void fromGallary() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -205,18 +255,18 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     pd.dismiss();
-                    Toast.makeText(getActivity(), "Upload successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditandDeleteFriend.this, "Upload successful", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     pd.dismiss();
-                    Toast.makeText(getActivity(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditandDeleteFriend.this, "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
                 }
             });
         }
         else {
-            Toast.makeText(getActivity(), "Select an image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditandDeleteFriend.this, "Select an image", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -231,7 +281,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
 
             try {
                 //getting image from gallery
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(EditandDeleteFriend.this.getContentResolver(), filePath);
 
                 //Setting image to ImageView
                 profile_Image.setImageBitmap(bitmap);
@@ -241,11 +291,11 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         }
 
 
-        button_gallary.setVisibility(view.VISIBLE);
+        button_gallary.setVisibility(View.VISIBLE);
 
     }
 
-    public void updateData_loadTofirebase(String UniqueID)
+    public void updateData_loadTofirebase(final String UniqueID)
     {
 
         pd.setMessage("Saving....");
@@ -313,23 +363,30 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         chineseZodName.setText(chi_zodiac_sign_name);
 
         //update Firebase data storage
-
-      //  writeNewPost(updated_email,birthdate,zodiac_sign_name,chi_zodiac_sign_name);
         databaseReference.child(UniqueID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                /*for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                    Log.v(TAG, "key" + childDataSnapshot.getKey()); //displays the key for the node
+                    Log.v(TAG, "name" + childDataSnapshot.child("Name").getValue());
+                    if(childDataSnapshot.hasChild(UniqueID))
+                    {
+                        childDataSnapshot.getRef().child("Name").setValue(updated_email);
 
-                dataSnapshot.getRef().child("Name").setValue(updated_email);
-                dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
-                dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
-                dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
+                        childDataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
+                        childDataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
+                        childDataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);*/
 
 
+                   dataSnapshot.getRef().child("Name").setValue(updated_email);
+                    dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
+                    dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
+                    dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
 
 
-
-                pd.dismiss();
-                Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
+                    Toast.makeText(getApplicationContext(), "Data Updated", Toast.LENGTH_SHORT).show();
+              //  }
 
             }
             @Override
@@ -345,15 +402,17 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
     public void deleteFirebaseData(String UniqueID)
     {
 
-        databaseReference.child(UniqueID).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(UniqueID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               dataSnapshot.getRef().setValue(null);
+                dataSnapshot.getRef().child("Name").removeValue();
+                dataSnapshot.getRef().child("date_of_birth").removeValue();
+                dataSnapshot.getRef().child("zodiac_sign").removeValue();
+                dataSnapshot.getRef().child("chinese_zodiac_sign").removeValue();
 
+               Toast.makeText(EditandDeleteFriend.this, "Data Deleted", Toast.LENGTH_SHORT).show();
 
-                pd.dismiss();
-                Toast.makeText(getActivity(), "User Record Deleted", Toast.LENGTH_SHORT).show();
 
             }
             @Override
@@ -362,33 +421,12 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 pd.dismiss();
             }
         });
-
-    }
-
-    private void writeNewPost(String Name, String date_of_birth, String zodiac_sign, String chinese_zodiac_sign) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
-        String fname=name.getText().toString();
-        String uniqueID = fname.concat(birthdate);
-        String key = databaseReference.child(uniqueID).push().getKey();
-        Registered_FriendList friend=new Registered_FriendList(Name,date_of_birth,zodiac_sign,chinese_zodiac_sign);
-
-        Map<String, Object> postValues = friend.toMap();
-
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/Name/" + key, postValues);
-        childUpdates.put("/date_of_birth/"  + key, postValues);
-        childUpdates.put("/zodiac_sign/" + key, postValues);
-        childUpdates.put("/chinese_zodiac_sign/"  + key, postValues);
-
-
-        databaseReference.updateChildren(childUpdates);
     }
 
     private void setDataTime() {
         //   fromDateEtxt.setOnClickListener(this);
         final Calendar newCalendar = Calendar.getInstance();
-        fromDatePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        fromDatePickerDialog = new DatePickerDialog(EditandDeleteFriend.this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
@@ -408,7 +446,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
 
     }
 
-        @Override
+    @Override
     public void onClick(View view) {
         if(view==profile_Image)
         {
@@ -482,7 +520,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
             chineseZodName.setEnabled(true);
 
         }
-        if(view==save)
+        if(view== buttonsave)
         {
 
             name.setEnabled(false);
@@ -497,13 +535,13 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
 
                 name.setError("Please Provide your Friend Name");
             }
-                 if(birthdate.isEmpty())
-                {
+            if(birthdate.isEmpty())
+            {
 
-                    dateOfBirth.setError("Please Select Friend's Birthdate");
-                }
+                dateOfBirth.setError("Please Select Friend's Birthdate");
+            }
 
-             else {
+            else {
 
 
                 String uniqueID = fname.concat(birthdate);
@@ -511,21 +549,20 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
                 dateOfBirth.setError(null);
                 upload(uniqueID);
                 updateData_loadTofirebase(uniqueID);
+                startActivity(new Intent(EditandDeleteFriend.this,FriendLIstActivity.class));
 
 
             }
 
         }
-        if(view==delete)
+        if(view==buttondelete)
         {
-            String fname=name.getText().toString();
-            String uniqueID = fname.concat(birthdate);
-            deleteFirebaseData(uniqueID);
 
+            String uniqueID =   name.getText().toString().concat(dateOfBirth.getText().toString());
+                deleteFirebaseData(uniqueID);
+            startActivity(new Intent(EditandDeleteFriend.this,FriendLIstActivity.class));
         }
 
 
     }
 }
-
-

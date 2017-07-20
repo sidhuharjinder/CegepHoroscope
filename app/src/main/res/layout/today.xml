@@ -1,0 +1,113 @@
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#3D3D3D">
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+
+
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+           android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/todaypersonimg"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+
+                app:srcCompat="@mipmap/connection" />
+
+            <TextView
+                android:id="@+id/todaytitlezod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Aries"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/todayimgeshare"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+
+
+                app:srcCompat="@mipmap/share" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/todayzodimage"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            app:srcCompat="@mipmap/aries" />
+
+        <TextView
+            android:id="@+id/todaydate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="3/21 to 4/19"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Today"
+            android:layout_marginTop="10dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/todaydate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Saturday Jun 03 2017"
+            android:textColor="#fff"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+           android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/todayzodinfo"
+                android:layout_width="match_parent"
+                android:layout_height="283dp"
+
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

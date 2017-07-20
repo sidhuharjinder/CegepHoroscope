@@ -38,7 +38,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class FacebookFragment extends Fragment {
     LoginButton loginButton;
-
+    public static boolean facebookLoginStatus;
     TextView textView;
     private CallbackManager callbackManager;
     private FirebaseAuth firebaseAuth;
@@ -133,7 +133,7 @@ public class FacebookFragment extends Fragment {
                 {
                     Log.d(",","onAuthStateChanged_signed_in"+firebaseuser.getUid());
 
-
+                     facebookLoginStatus=true;
                     Fragment fragment = new Fb_Profile_Fragment();
                     FragmentManager fragmentManager = getFragmentManager();
 
@@ -154,6 +154,7 @@ public class FacebookFragment extends Fragment {
 
                 else{
 
+                    facebookLoginStatus=false;
                     Log.d("Lable","Signed Out");
                 }
 

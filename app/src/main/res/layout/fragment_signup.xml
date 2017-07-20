@@ -69,6 +69,7 @@
             android:gravity="center"
             android:text="Email Login"
             android:textColor="#ffffff"
+<<<<<<< HEAD
             android:textSize="16sp" />
         <Button
             android:id="@+id/googlePlus"
@@ -83,6 +84,9 @@
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
+=======
+            android:textSize="18sp" />
+>>>>>>> Sachin_Fragment
 
 
         <TextView

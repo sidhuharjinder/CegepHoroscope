@@ -1,18 +1,17 @@
-package com.hroscope.cegep.cegephoroscope.Facebook_SignIn;
+package com.hroscope.cegep.cegephoroscope.Phone_SignIn;
+
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
-import android.text.SpannableStringBuilder;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,19 +20,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.hroscope.cegep.cegephoroscope.Chinese_Zodiac_Detail.ChineseZodiaDetail;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Registered_UserList;
 import com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList.FriendLIstActivity;
@@ -56,186 +52,138 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
-/**
- * Created by SACHIN on 6/24/2017.
- */
 
-public class Fb_Profile_Fragment extends Fragment implements View.OnClickListener // implements FragmentCommunicator
-{
-    private FirebaseAuth.AuthStateListener firebaseauthlistener;
-    private GoogleApiClient googleApiClient;
-    private View view;
-    private Context context;
-    static boolean clicked=false;
-    private Button facebook_logout;
-    private EditText username;
-    private CircleImageView faebookimage;
-    public static String name;
-    public static Uri photo;
+public class Phone_SignIn_Profile extends Fragment implements View.OnClickListener{
 
-    //for profile
+    private Button mSignOutButton;
+    private EditText currentUserEmail;
+
     private CircleImageView profile;
-
-    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
-    private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
+    private View view;
+    private ImageView editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
+    private EditText dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
-
+    private ImageButton button_gallary,button_capture,button_upload;
+    private static final int PICK_IMAGE_REQUEST = 111,CAPTURE_IMG_REQUEST=120;
     int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
     ProgressDialog pd;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    FirebaseDatabase database;
+
+    DatabaseReference databaseReference;
+    String userUID,birthdate,updated_email;
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
     FirebaseUser user;
     String nme;
     String zodiac_sign_name,chi_zodiac_sign_name;
     String zod_name="",chi_name="";
-   //firebase
-    FirebaseStorage storage;
-    StorageReference storageRef;
-    FirebaseDatabase database;
-    DatabaseReference databaseReference;
-    String userUID,birthdate,updated_email;
-    private static String storechzodName,storezodiacName;
+    private static String storezodiacName,storechzodName;
 
-
-
-
-
-    public static Fb_Profile_Fragment newInstance() {
-        Fb_Profile_Fragment fragment = new Fb_Profile_Fragment();
+    public static Phone_SignIn_Profile newInstance() {
+        Phone_SignIn_Profile fragment = new Phone_SignIn_Profile();
         return fragment;
     }
 
-    public Fb_Profile_Fragment() {
+    public Phone_SignIn_Profile() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(firebaseauthlistener);
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_facebook_signin_profile, container, false);
+        view= inflater.inflate(R.layout.fragment_phone_signin_profile, container, false);
+         firebaseAuth = FirebaseAuth.getInstance();
 
-       setControlls();
+       setControll();
 
-        facebook_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (firebaseAuth.getCurrentUser() != null) {
+            //check image file is exist on location or not
+            storageRef.child("Email_Registration").child(userUID).child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.with(getActivity()).load(uri.toString()).resize(600,200).centerInside().into(profile);
+                    //
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // File not found
+                }
+            });
 
-                firebaseAuth.signOut();
-                LoginManager.getInstance().logOut();
-                clicked=true;
-                Fragment fragment = new SignupFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
-
-            }
-        });
-
-           setFacebookProfileData();
-            setDataTime();
-
+        }
+        ReadFirebase_setProfileData();
+        setDataTime();
 
 
         return view;
     }
+    public void setControll()
+    {
+        firebaseAuth = FirebaseAuth.getInstance();
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        firebaseAuth= FirebaseAuth.getInstance();
+        userUID=firebaseAuth.getCurrentUser().getUid();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Registration_Data").child(userUID);
 
-    public void setControlls()
-   {
-    FacebookSdk.sdkInitialize(getApplicationContext());
-    firebaseAuth=FirebaseAuth.getInstance();
-    facebook_logout=(LoginButton)view.findViewById(R.id.fb);
-    username=(EditText) view.findViewById(R.id.email);
-    faebookimage=(CircleImageView) view.findViewById(R.id.rabbitButton);
+        mSignOutButton = (Button)view. findViewById(R.id.phonesignout);
+        mSignOutButton.setOnClickListener(this);
+        currentUserEmail = (EditText) view.findViewById(R.id.email);
+        button_gallary =(ImageButton)view.findViewById(R.id.gallary);
+        button_gallary.setOnClickListener(this);
+        button_gallary.setVisibility(view.INVISIBLE);
+        profile=(CircleImageView) view.findViewById(R.id.rabbitButton);
+        profile.setOnClickListener(this);
 
-      //profile data
-       dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-       firebaseAuth= FirebaseAuth.getInstance();
-       userUID=firebaseAuth.getCurrentUser().getUid();
-       storage = FirebaseStorage.getInstance();
-       storageRef = storage.getReferenceFromUrl("gs://cegephoroscope-3dcdb.appspot.com/");
-       database = FirebaseDatabase.getInstance();
-       databaseReference = database.getReference("Registration_Data").child(userUID);
-
-
-       update_profile=(ImageView)view.findViewById(R.id.update);
-       initials=(TextView) view.findViewById(R.id.initials);
-       editEmail=(ImageView)view.findViewById(R.id.EditEmail);
-       calender=(ImageView)view.findViewById(R.id.calender);
-       editDate=(ImageView)view.findViewById(R.id.EditDate);
-       regZodiac =(ImageView)view.findViewById(R.id.zodSign);
-       ChiZodiac=(ImageView)view.findViewById(R.id.chineseSign);
-       friendImg=(ImageView)view.findViewById(R.id.friendsimage);
-       EditFriend=(ImageView)view.findViewById(R.id.EditFreinds);
-       forward_zodiac=(ImageView)view.findViewById(R.id.forwardzodiac);
-       forward_chinese=(ImageView)view.findViewById(R.id.forwardchinese);
-       currentUserEmail =(EditText)view.findViewById(R.id.email);
-
-       dateOfBirth=(EditText)view.findViewById(R.id.dateOfBirth);
-       dateOfBirth.setInputType(InputType.TYPE_NULL);
-       dateOfBirth.requestFocus();
-
-       regZodSign=(EditText)view.findViewById(R.id.zodiac);
-       chiZodSign=(EditText)view.findViewById(R.id.chineseHoroscope);
-       friend_email=(TextView)view.findViewById(R.id.friends);
-
-       profile=(CircleImageView) view.findViewById(R.id.rabbitButton);
+        update_profile=(ImageView)view.findViewById(R.id.update);
+        initials=(TextView) view.findViewById(R.id.initials);
+        editEmail=(ImageView)view.findViewById(R.id.EditEmail);
+        calender=(ImageView)view.findViewById(R.id.calender);
+        editDate=(ImageView)view.findViewById(R.id.EditDate);
+        regZodiac =(ImageView)view.findViewById(R.id.zodSign);
+        ChiZodiac=(ImageView)view.findViewById(R.id.chineseSign);
+        friendImg=(ImageView)view.findViewById(R.id.friendsimage);
+        EditFriend=(ImageView)view.findViewById(R.id.EditFreinds);
+        forward_zodiac=(ImageView)view.findViewById(R.id.forwardzodiac);
+        forward_chinese=(ImageView)view.findViewById(R.id.forwardchinese);
 
 
+        dateOfBirth=(EditText)view.findViewById(R.id.dateOfBirth);
+        dateOfBirth.setInputType(InputType.TYPE_NULL);
+        dateOfBirth.requestFocus();
 
-       profile.setOnClickListener(this);
+        regZodSign=(EditText)view.findViewById(R.id.zodiac);
+        chiZodSign=(EditText)view.findViewById(R.id.chineseHoroscope);
+        friend_email=(TextView)view.findViewById(R.id.friends);
 
-       calender.setOnClickListener(this);
-       editDate.setOnClickListener(this);
-       regZodiac.setOnClickListener(this);
-       ChiZodiac.setOnClickListener(this);
-       friendImg.setOnClickListener(this);
-       forward_zodiac.setOnClickListener(this);
-       forward_chinese.setOnClickListener(this);
-       EditFriend.setOnClickListener(this);
-       update_profile.setOnClickListener(this);
-       update_profile.setVisibility(view.INVISIBLE);
-       currentUserEmail.setEnabled(false);
+        editEmail.setOnClickListener(this);
+        calender.setOnClickListener(this);
+        editDate.setOnClickListener(this);
+        regZodiac.setOnClickListener(this);
+        ChiZodiac.setOnClickListener(this);
+        friendImg.setOnClickListener(this);
+        forward_zodiac.setOnClickListener(this);
+        forward_chinese.setOnClickListener(this);
+        EditFriend.setOnClickListener(this);
+        update_profile.setOnClickListener(this);
+        update_profile.setVisibility(view.INVISIBLE);
+        currentUserEmail.setEnabled(false);
 
-       pd = new ProgressDialog(getActivity());
-       pd.setMessage("Uploading....");
-    }
+        pd = new ProgressDialog(getActivity());
+        pd.setMessage("Uploading....");
 
-    private void setDataTime() {
-        //   fromDateEtxt.setOnClickListener(this);
-        final Calendar newCalendar = Calendar.getInstance();
-        fromDatePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-                dateOfBirth.setGravity(Gravity.LEFT);
-                dateFormatter.format(newDate.getTime());
-                int month = Calendar.MONTH;
-                newCalendar.get(month);
-
-                dateOfBirth.setText( dateFormatter.format(newDate.getTime()));
-
-
-
-            }
-
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
     }
 
@@ -243,7 +191,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Updating....");
         birthdate=dateOfBirth.getText().toString();
-
+        updated_email=currentUserEmail.getText().toString();
 
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
@@ -316,50 +264,14 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
 
 
 
+        //update Email in firebase authentication Section
+
     }
 
 
-
-    public void setFacebookProfileData()
+    public void ReadFirebase_setProfileData()
     {
-        firebaseauthlistener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-                FirebaseUser firebaseuser=firebaseAuth.getCurrentUser();
-                if(firebaseuser!=null)
-                {
-
-                    for(UserInfo userInfo:firebaseuser.getProviderData())
-                    {
-                        Log.d("TAG",userInfo.getProviderId());
-                    }
-
-                    name=firebaseuser.getDisplayName();
-                    photo=firebaseuser.getPhotoUrl();
-                    username.setText(firebaseuser.getDisplayName());
-                  //set initials
-                    String nameInitial=firebaseuser.getDisplayName().substring(0,1);
-                    initials.setGravity(Gravity.CENTER);
-                    initials.setTextSize(40);
-                    initials.setTextColor(Color.rgb(255,255,255));
-                    //make initial Bold
-                    final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
-                    final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-                    initials.setText(nameInitial.toUpperCase());
-                    Picasso.with(getActivity()).load(photo).resize(400,100).centerInside().into(faebookimage);
-
-                }
-                else if(firebaseuser==null){
-
-
-
-
-                }
-
-
-            }
-
-        };
+        currentUserEmail.setText(firebaseAuth.getCurrentUser().getPhoneNumber().toString());
 
         //Retrieve all set of data from firebase
         ValueEventListener postListener = new ValueEventListener() {
@@ -375,7 +287,6 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                     //using those string variable for child name to get zod and chinese zod sign image from database
                     zod_name = user.zodiac_sign.toLowerCase();
                     chi_name = user.chinese_zodiac_sign.toLowerCase();
-
                     storechzodName=user.chinese_zodiac_sign;
                     storezodiacName=user.zodiac_sign;
 
@@ -415,13 +326,138 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
         };
         databaseReference.addValueEventListener(postListener);
 
+        //load appropriate image into imageview
+
+        // storageRef.child("Signs").child("Zodiac_Sign").child("aries.png")
+
+    }
+
+    //choose pic from gallary
+    public void fromGallary()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_PICK);
+        //to receive image result call this activity
+        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+
+    }
+
+    public void upload()
+    {
+        if(filePath != null) {
+            pd.show();
+
+            String useruid=firebaseAuth.getCurrentUser().getUid();
+
+
+            StorageReference databaseReference = storageRef.child("Email_Registration").child(useruid).child("image.jpg");
+
+            // StorageReference childRef = storageRef.child("image.jpg");
+
+            //uploading the image
+            UploadTask uploadTask = databaseReference.putFile(filePath);
+
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Upload successful", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else {
+            Toast.makeText(getActivity(), "Select an image", Toast.LENGTH_SHORT).show();
+        }
+        pd.dismiss();
+
+    }
+
+    //Profile Picture Method
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+
+            try {
+                //getting image from gallery
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+
+                //Setting image to ImageView
+                profile.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (requestCode == CAPTURE_IMG_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            profile.setImageBitmap(photo);
+        }
+        button_gallary.setVisibility(view.VISIBLE);
+
+
+    }
+
+    private void setDataTime() {
+        //   fromDateEtxt.setOnClickListener(this);
+        final Calendar newCalendar = Calendar.getInstance();
+        fromDatePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                dateOfBirth.setGravity(Gravity.LEFT);
+                dateFormatter.format(newDate.getTime());
+                int month = Calendar.MONTH;
+                newCalendar.get(month);
+
+                dateOfBirth.setText( dateFormatter.format(newDate.getTime()));
+
+
+
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
     }
 
 
     @Override
     public void onClick(View view) {
+        if(view==mSignOutButton)
+        {
+            firebaseAuth.signOut();
+            Fragment fragment = new SignupFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+            Toast.makeText(getActivity(), "Logout Successfully", Toast.LENGTH_SHORT).show();
 
+        }
+        if(view==profile)
+        {
+            button_gallary.setVisibility(view.VISIBLE);
+
+
+
+        }
+
+        if(view==button_gallary)
+        {
+            fromGallary();
+          //  button_capture.setVisibility(view.INVISIBLE);
+            //button_upload.setVisibility(view.VISIBLE);
+
+
+        }
 
         if(view==calender)
         {
@@ -715,9 +751,10 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
             }
 
         }
+
         if(view==EditFriend)
         {
-           /* Fragment fragment = new Friend_ListFragment();
+          /*  Fragment fragment = new Friend_ListFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();*/
             startActivity(new Intent(getActivity(),FriendLIstActivity.class));
@@ -732,14 +769,24 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 dateOfBirth.setError("Choose your Birthdate");
             }
             else {
+                upload();
                 updateData_loadTofirebase();
             }
+          /*  Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
+            pd = new ProgressDialog(getActivity());
+
+
+            date_of_birth=dateOfBirth.getText().toString();
+           // databaseReference.child("date_of_birth").setValue(date_of_birth);
+
+            updated_email=currentUserEmail.getText().toString();
+
+            databaseReference.child("date_of_birth").setValue(date_of_birth);
+            databaseReference.child("user_name").setValue(updated_email);*/
 
 
             pd.dismiss();
 
         }
-
-
     }
 }

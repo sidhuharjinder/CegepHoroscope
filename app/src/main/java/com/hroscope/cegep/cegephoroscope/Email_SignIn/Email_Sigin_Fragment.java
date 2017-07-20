@@ -34,6 +34,7 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
     private TextView textViewNo_member,textViewForgot_passsword;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    public static boolean emailLoginStatus;
 
     public static Email_Sigin_Fragment newInstance() {
         Email_Sigin_Fragment fragment = new Email_Sigin_Fragment();
@@ -106,6 +107,7 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Login Successfull",
                                     Toast.LENGTH_SHORT).show();
+                            emailLoginStatus=true;
                             Fragment fragment = new Email_Signin_Profile_Fragment();
                             FragmentManager fragmentManager = getFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
@@ -113,6 +115,7 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
 
                         else
                         {
+                            emailLoginStatus=false;
                             Toast.makeText(getActivity(), "Registration Failed",
                                     Toast.LENGTH_SHORT).show();
                             buttonLogin.setEnabled(true);

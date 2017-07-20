@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATEE" />
+
+
 
     <application
         android:allowBackup="true"
@@ -34,6 +38,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
+<<<<<<< HEAD
         <activity android:name=".MainActivity" />
         <activity android:name=".FacebookProfileActivity" />
         <activity android:name=".FacebookLoginActivity" />
@@ -42,6 +47,24 @@
         <activity android:name=".FriendLIstActivity" />
         <activity android:name=".EditandDeleteFriend" />
         <activity android:name=".SaveFriend"></activity>
+=======
+
+
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Chinese_Zodiac_Detail.ChineseZodiaDetail"></activity>
+        <activity android:name=".FacebookProfileActivity"></activity>
+        <activity android:name=".FacebookLoginActivity"></activity>
+        <activity android:name=".GoogleLoginActivity"></activity>
+
+        <activity android:name=".Friend_Save_FriendList.FriendLIstActivity"></activity>
+
+        <activity android:name=".FriendList"></activity>
+       <activity android:name=".Friend_Save_FriendList.EditandDeleteFriend"></activity>
+        <activity android:name=".Friend_Save_FriendList.SaveFriend"></activity>
+        <activity android:name=".zodiacCompatibility.Comapatibity"></activity>
+        <activity android:name=".zodiacCompatibility.CompatibilityResult"></activity>
+
+>>>>>>> Sachin_Fragment
     </application>
 
 </manifest>
