@@ -63,10 +63,6 @@ public class CompatibilityResult extends AppCompatActivity {
         zodiac_title = getIntent().getStringExtra("friend_sign");
         friend_zodiac_tile=getIntent().getStringExtra("text");
 
-
-
-
-
          //Set Zodiac Image
         if (zodiac_title.equals("Aries"))
             userzodiacImage.setImageResource(R.mipmap.aries);
