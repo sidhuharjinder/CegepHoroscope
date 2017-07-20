@@ -63,10 +63,6 @@ public class CompatibilityResult extends AppCompatActivity {
         zodiac_title = getIntent().getStringExtra("friend_sign");
         friend_zodiac_tile=getIntent().getStringExtra("text");
 
-
-
-
-
          //Set Zodiac Image
         if (zodiac_title.equals("Aries"))
             userzodiacImage.setImageResource(R.mipmap.aries);
@@ -149,6 +145,7 @@ public class CompatibilityResult extends AppCompatActivity {
 
                 //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
                 compresult = dataSnapshot.getValue().toString();
+                compatibleresultTextviewl.setText(compresult);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -157,7 +154,7 @@ public class CompatibilityResult extends AppCompatActivity {
         };
         databaseReference.child("Compatibility").child(zodiac_title).child(friend_zodiac_tile).addListenerForSingleValueEvent(postListenerYearly);
 
-       compatibleresultTextviewl.setText(compresult);
+
 
     }
 
