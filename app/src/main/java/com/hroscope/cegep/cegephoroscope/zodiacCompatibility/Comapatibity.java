@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -116,8 +115,6 @@ public class Comapatibity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view==ariesButton)
         {
-            Toast.makeText(Comapatibity.this,"You are here1",Toast.LENGTH_SHORT).show();
-
 
            Intent intent = new Intent(Comapatibity.this,CompatibilityResult.class);
             intent.putExtra("text", "Aries");
@@ -185,7 +182,7 @@ public class Comapatibity extends AppCompatActivity implements View.OnClickListe
 
             Intent intent = new Intent(Comapatibity.this,CompatibilityResult.class);
             intent.putExtra("friend_sign",zodiac_title);
-            intent.putExtra("text", "Sagittarus");
+            intent.putExtra("text", "Sagittarius");
             startActivity(intent);
         }
         if(view==capricornButton)

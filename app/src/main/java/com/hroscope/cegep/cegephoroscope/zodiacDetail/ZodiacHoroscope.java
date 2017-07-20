@@ -186,7 +186,7 @@ public class ZodiacHoroscope extends Fragment implements View.OnClickListener{
         {
 
             Intent intent = new Intent(getActivity(),ZodiaDetail.class);
-            intent.putExtra("text", "Sagittarus");
+            intent.putExtra("text", "Sagittarius");
             intent.putExtra("current", HomeScreen.sagittariusDailyCurrent);
             intent.putExtra("tomorrow", HomeScreen.sagittariusDailyTomorrow);
             intent.putExtra("yesterday", HomeScreen.sagittariusDailyYesterday);

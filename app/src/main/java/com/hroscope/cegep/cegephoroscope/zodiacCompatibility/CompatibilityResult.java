@@ -149,6 +149,7 @@ public class CompatibilityResult extends AppCompatActivity {
 
                 //ZodiacTodayList user = dataSnapshot.getValue(ZodiacTodayList.class);
                 compresult = dataSnapshot.getValue().toString();
+                compatibleresultTextviewl.setText(compresult);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -157,7 +158,7 @@ public class CompatibilityResult extends AppCompatActivity {
         };
         databaseReference.child("Compatibility").child(zodiac_title).child(friend_zodiac_tile).addListenerForSingleValueEvent(postListenerYearly);
 
-       compatibleresultTextviewl.setText(compresult);
+
 
     }
 

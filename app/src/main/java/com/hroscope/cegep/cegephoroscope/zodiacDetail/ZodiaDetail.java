@@ -69,7 +69,7 @@ public class ZodiaDetail extends Activity implements View.OnClickListener {
         zodWeekly = getIntent().getStringExtra("weekly");
         zodMonthly = getIntent().getStringExtra("monthly");
         zodYearly = getIntent().getStringExtra("yearly");
-        todayZodImage.setOnClickListener(this);
+        todayPersonProfile.setOnClickListener(this);
 
         initializeviews();
         titlezod.setGravity(Gravity.CENTER);
@@ -100,7 +100,7 @@ public class ZodiaDetail extends Activity implements View.OnClickListener {
             todayZodImage.setImageResource(R.mipmap.libra);
         else if (zodiac_title.equals("Scorpio"))
             todayZodImage.setImageResource(R.mipmap.scorpio);
-        else if (zodiac_title.equals("Sagittarus"))
+        else if (zodiac_title.equals("Sagittarius"))
             todayZodImage.setImageResource(R.mipmap.sagittarius);
         else if (zodiac_title.equals("Capricorn"))
             todayZodImage.setImageResource(R.mipmap.capricorn);
@@ -129,7 +129,7 @@ public class ZodiaDetail extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-     if(view==todayZodImage)
+     if(view==todayPersonProfile)
      {
          Intent intent = new Intent(ZodiaDetail.this, Comapatibity.class);
          intent.putExtra("zodiac_click",zodiac_title);
