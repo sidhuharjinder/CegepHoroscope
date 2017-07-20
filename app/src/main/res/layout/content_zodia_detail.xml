@@ -24,7 +24,7 @@
                 android:id="@+id/todaypersonimg"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 app:srcCompat="@mipmap/connection" />
 
             <TextView
@@ -41,7 +41,7 @@
                 android:id="@+id/todayimgeshare"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 app:srcCompat="@mipmap/share" />
 
         </LinearLayout>

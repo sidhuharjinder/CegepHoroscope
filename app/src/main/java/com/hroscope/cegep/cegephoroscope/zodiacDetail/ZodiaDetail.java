@@ -2,6 +2,7 @@ package com.hroscope.cegep.cegephoroscope.zodiacDetail;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.hroscope.cegep.cegephoroscope.PagerContainer;
 import com.hroscope.cegep.cegephoroscope.R;
+import com.hroscope.cegep.cegephoroscope.zodiacCompatibility.Comapatibity;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -26,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class ZodiaDetail extends Activity {
+public class ZodiaDetail extends Activity implements View.OnClickListener {
    //firebase
 
 
@@ -36,6 +38,7 @@ public class ZodiaDetail extends Activity {
     public TextView dayoneInfo,daytwoInfo,daythreeInfo,dayfourInfo,dayfiveInfo,daysixInfo,daysevenInfo,weekinfo;
     public TextView dayOneTitle,dayTwoTitle,dayThreeTitle,dayFourTitle,dayFiveTitle,daySixTitle,daySevenTitle,weektitle;
     String zod_current="",zodYesterday="",zodTomorrow="",zodMonthly="",zodYearly="",zodWeekly="";
+    public static Intent intent;
 
     View  dayone,daytwo,daythree,dayfour,dayfive,daysix,dayseven,week;
     PagerContainer mContainer;
@@ -66,6 +69,7 @@ public class ZodiaDetail extends Activity {
         zodWeekly = getIntent().getStringExtra("weekly");
         zodMonthly = getIntent().getStringExtra("monthly");
         zodYearly = getIntent().getStringExtra("yearly");
+        todayZodImage.setOnClickListener(this);
 
         initializeviews();
         titlezod.setGravity(Gravity.CENTER);
@@ -120,6 +124,19 @@ public class ZodiaDetail extends Activity {
         //If hardware acceleration is enabled, you should also remove
         // clipping on the pager for its children.
         pager.setClipChildren(false);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+     if(view==todayZodImage)
+     {
+         Intent intent = new Intent(ZodiaDetail.this, Comapatibity.class);
+         intent.putExtra("zodiac_click",zodiac_title);
+         startActivity(intent);
+
+
+     }
     }
 //    public void initializeFirebase()
 //    {

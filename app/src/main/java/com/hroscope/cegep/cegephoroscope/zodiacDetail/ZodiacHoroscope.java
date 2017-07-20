@@ -49,27 +49,22 @@ public class ZodiacHoroscope extends Fragment implements View.OnClickListener{
         ariesButton.setOnClickListener(this);
         taurusButton = (CircleImageView)view.findViewById(R.id.taurusButton);
         taurusButton.setOnClickListener(this);
-
         geminiButton = (CircleImageView)view.findViewById(R.id.geminiButton);
         geminiButton.setOnClickListener(this);
         cancerButton = (CircleImageView)view.findViewById(R.id.cancerButton);
         cancerButton.setOnClickListener(this);
-
         leoButton = (CircleImageView)view.findViewById(R.id.leoButton);
         leoButton.setOnClickListener(this);
         virgoButton = (CircleImageView)view.findViewById(R.id.virgoButton);
         virgoButton.setOnClickListener(this);
-
         libraButton = (CircleImageView)view.findViewById(R.id.libraButton);
         libraButton.setOnClickListener(this);
         scorpioButton = (CircleImageView)view.findViewById(R.id.scorpioButton);
         scorpioButton.setOnClickListener(this);
-
         sagittarusButton = (CircleImageView)view.findViewById(R.id.sagittariusButton);
         sagittarusButton.setOnClickListener(this);
         capricornButton = (CircleImageView)view.findViewById(R.id.capricornButton);
         capricornButton.setOnClickListener(this);
-
         aquariusButton = (CircleImageView)view.findViewById(R.id.aquariusButton);
         aquariusButton.setOnClickListener(this);
         piscesButton = (CircleImageView)view.findViewById(R.id.piscesButton);

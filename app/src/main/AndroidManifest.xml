@@ -52,6 +52,8 @@
         <activity android:name=".FriendList"></activity>
        <activity android:name=".Friend_Save_FriendList.EditandDeleteFriend"></activity>
         <activity android:name=".Friend_Save_FriendList.SaveFriend"></activity>
+        <activity android:name=".zodiacCompatibility.Comapatibity"></activity>
+        <activity android:name=".zodiacCompatibility.CompatibilityResult"></activity>
 
     </application>
 
