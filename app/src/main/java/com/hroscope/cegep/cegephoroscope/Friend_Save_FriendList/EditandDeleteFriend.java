@@ -99,8 +99,8 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Registration_Data").child("Users_Friend_List").child(userUID);
 
-        buttonsave = (Button)findViewById(R.id.buttonSave);
-        buttonsave.setOnClickListener(this);
+     //   buttonsave = (Button)findViewById(R.id.buttonSave);
+       // buttonsave.setOnClickListener(this);
         buttondelete=(Button)findViewById(R.id.buttonDelete);
         buttondelete.setOnClickListener(this);
 
@@ -120,8 +120,8 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
         chineseSign.setOnClickListener(this);
         editChineseSign=(ImageView)findViewById(R.id.editchinesezod);
         editChineseSign.setOnClickListener(this);
-        buttonsave =(Button)findViewById(R.id.buttonSave);
-        buttonsave.setOnClickListener(this);
+       // buttonsave =(Button)findViewById(R.id.buttonSave);
+       // buttonsave.setOnClickListener(this);
 
         //Textview
         initials=(TextView)findViewById(R.id.initials);
@@ -167,8 +167,8 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
         //set initial
         String nameInitial=friend_name.substring(0,1);
         initials.setGravity(Gravity.CENTER);
-        initials.setTextSize(40);
-        initials.setTextColor(Color.rgb(255,255,255));
+        initials.setTextSize(30);
+        initials.setTextColor(Color.parseColor("#000000"));
         //make initial Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
@@ -304,8 +304,8 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
 
         String nameInitial=updated_email.substring(0,1);
         initials.setGravity(Gravity.CENTER);
-        initials.setTextSize(40);
-        initials.setTextColor(Color.rgb(255,255,255));
+        initials.setTextSize(30);
+        initials.setTextColor(Color.parseColor("#000000"));
         //make initial Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
@@ -520,7 +520,7 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
             chineseZodName.setEnabled(true);
 
         }
-        if(view== buttonsave)
+      /*  if(view== buttonsave)
         {
 
             name.setEnabled(false);
@@ -554,7 +554,7 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
 
             }
 
-        }
+        }*/
         if(view==buttondelete)
         {
 

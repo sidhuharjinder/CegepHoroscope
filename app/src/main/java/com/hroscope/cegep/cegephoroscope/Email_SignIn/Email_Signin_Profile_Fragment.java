@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -65,7 +66,8 @@ import static android.content.ContentValues.TAG;
 public class Email_Signin_Profile_Fragment extends Fragment implements View.OnClickListener{
     private CircleImageView profile;
     private View view;
-    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
+    private ImageView editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,forward_zodiac,forward_chinese;
+    private Button signout,update_profile;
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
@@ -138,7 +140,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         databaseReference = database.getReference("Registration_Data").child(userUID);
 
 
-        update_profile=(ImageView)view.findViewById(R.id.update);
+        update_profile=(Button) view.findViewById(R.id.update);
         initials=(TextView) view.findViewById(R.id.initials);
         editEmail=(ImageView)view.findViewById(R.id.EditEmail);
         calender=(ImageView)view.findViewById(R.id.calender);
@@ -163,7 +165,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         button_gallary =(ImageButton)view.findViewById(R.id.gallary);
         button_capture=(ImageButton)view.findViewById(R.id.capture);
         button_upload=(ImageButton)view.findViewById(R.id.upload);
-        signout=(ImageView)view.findViewById(R.id.signout);
+        signout=(Button) view.findViewById(R.id.signout);
         button_gallary.setOnClickListener(this);
         button_capture.setVisibility(view.INVISIBLE);
         button_gallary.setVisibility(view.INVISIBLE);
@@ -317,8 +319,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
       //set initial
       String nameInitial=current_userEmail.substring(0,1);
         initials.setGravity(Gravity.CENTER);
-        initials.setTextSize(40);
-        initials.setTextColor(Color.rgb(255,255,255));
+        initials.setTextSize(30);
+        initials.setTextColor(Color.parseColor("#000000"));
        //make initial Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);

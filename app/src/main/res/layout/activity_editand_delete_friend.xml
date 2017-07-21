@@ -74,7 +74,7 @@
                 android:layout_marginLeft="-12dp"
                 android:layout_weight="1"
 
-                app:srcCompat="@drawable/filled_circle" />
+                app:srcCompat="@drawable/circle" />
 
             <TextView
                 android:id="@+id/initials"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="S"
-                android:textColor="#92dc5b"
+                android:textColor="#ffffff"
                 android:layout_marginTop="-3dp"
                 android:gravity="center"
                 android:layout_marginLeft="-55dp"
@@ -219,19 +219,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/roundbutton"
-                android:text="Save"
-                android:textColor="#fff" />
-
-            <Button
                 android:id="@+id/buttonDelete"
                 android:layout_width="100dp"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="25dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundbutton"
+                android:gravity="center"
                 android:text="Delete"
                 android:textColor="#fff" />
         </LinearLayout>

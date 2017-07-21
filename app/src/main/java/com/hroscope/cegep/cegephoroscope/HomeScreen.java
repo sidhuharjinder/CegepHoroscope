@@ -199,7 +199,7 @@ public class HomeScreen extends AppCompatActivity {
         else {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, SignupFragment.newInstance());
-            transaction.addToBackStack(null);
+
             transaction.commit();
         }
 

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -281,6 +282,9 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
                 if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
                 {
+                    initials.setTextSize(30);
+                    initials.setTextColor(Color.parseColor("#000000"));
+                    initials.setText("P");
                     dateOfBirth.setText(user.date_of_birth);
                     regZodSign.setText(user.zodiac_sign);
                     chiZodSign.setText(user.chinese_zodiac_sign);

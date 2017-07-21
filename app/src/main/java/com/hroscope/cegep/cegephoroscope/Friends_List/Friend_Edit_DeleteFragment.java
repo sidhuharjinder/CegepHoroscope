@@ -255,11 +255,11 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         String nameInitial=updated_email.substring(0,1);
         initials.setGravity(Gravity.CENTER);
         initials.setTextSize(40);
-        initials.setTextColor(Color.rgb(255,255,255));
+        initials.setTextColor(Color.parseColor("#000000"));
         //make initial Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-        initials.setText(nameInitial.toUpperCase());
+      //  initials.setText(nameInitial.toUpperCase());
 
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));

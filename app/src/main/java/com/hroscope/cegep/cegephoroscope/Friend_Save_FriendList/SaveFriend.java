@@ -212,8 +212,8 @@ public class SaveFriend extends AppCompatActivity implements View.OnClickListene
 
         String nameInitial=updated_email.substring(0,1);
         initials.setGravity(Gravity.CENTER);
-        initials.setTextSize(40);
-        initials.setTextColor(Color.rgb(255,255,255));
+        initials.setTextSize(30);
+        initials.setTextColor(Color.parseColor("#000000"));
         //make initial Bold
         final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
         final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
