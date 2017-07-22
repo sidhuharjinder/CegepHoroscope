@@ -22,6 +22,7 @@
                 android:id="@+id/rabbitButton"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:src="@drawable/user"
                 app:civ_border_color="#fff"
@@ -99,6 +100,7 @@
                     android:layout_marginTop="-3dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="#ffffff"
                     android:text="S" />
 
 

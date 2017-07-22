@@ -59,12 +59,12 @@ import static android.content.ContentValues.TAG;
 
 public class Phone_SignIn_Profile extends Fragment implements View.OnClickListener{
 
-    private Button mSignOutButton;
+    private Button mSignOutButton,update_profile;
     private EditText currentUserEmail;
 
     private CircleImageView profile;
     private View view;
-    private ImageView editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
+    private ImageView editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,forward_zodiac,forward_chinese;
     private EditText dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
@@ -148,7 +148,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         profile=(CircleImageView) view.findViewById(R.id.rabbitButton);
         profile.setOnClickListener(this);
 
-        update_profile=(ImageView)view.findViewById(R.id.update);
+        update_profile=(Button)view.findViewById(R.id.update);
         initials=(TextView) view.findViewById(R.id.initials);
         editEmail=(ImageView)view.findViewById(R.id.EditEmail);
         calender=(ImageView)view.findViewById(R.id.calender);

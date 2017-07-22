@@ -60,7 +60,7 @@ public class FacebookProfileFragment extends Fragment // implements FragmentComm
         Uri photo= Uri.parse(bundle.getString("photo"));
 
 
-        facebook_logout=(LoginButton)view.findViewById(R.id.fb);
+        facebook_logout=(LoginButton)view.findViewById(R.id.fbb);
       //  google_logout=(Button)view.findViewById(R.id.google_signout) ;
 
         User_name =(EditText) view.findViewById(R.id.email);

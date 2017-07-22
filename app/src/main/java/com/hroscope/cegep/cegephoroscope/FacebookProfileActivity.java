@@ -58,7 +58,7 @@ public class FacebookProfileActivity extends AppCompatActivity{
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.facebook_profile);
         firebaseAuth=FirebaseAuth.getInstance();
-        facebook_logout=(LoginButton)findViewById(R.id.fb);
+        facebook_logout=(LoginButton)findViewById(R.id.fbb);
         google_logout=(Button)findViewById(R.id.google_signout) ;
         username=(TextView)findViewById(R.id.username);
         email=(TextView)findViewById(R.id.email);

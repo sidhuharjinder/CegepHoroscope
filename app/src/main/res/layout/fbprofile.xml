@@ -43,7 +43,7 @@
                 android:text="Sign Out" />
 
             <com.facebook.login.widget.LoginButton
-                android:id="@+id/fb"
+                android:id="@+id/fbb"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:id="@+id/facebook_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fb"
+                android:layout_below="@id/fbb"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/com_facebook_profile_picture_blank_square" />
 

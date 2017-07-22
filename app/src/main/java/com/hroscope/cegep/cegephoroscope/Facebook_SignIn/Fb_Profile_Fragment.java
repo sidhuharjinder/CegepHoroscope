@@ -27,7 +27,6 @@ import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -79,10 +78,11 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
     //for profile
     private CircleImageView profile;
 
-    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,update_profile,forward_zodiac,forward_chinese;
+    private ImageView signout,editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,forward_zodiac,forward_chinese;
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
+    Button update_profile;
 
     int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
@@ -139,6 +139,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 firebaseAuth.signOut();
                 LoginManager.getInstance().logOut();
                 clicked=true;
+                Toast.makeText(getActivity(), "Signed out Successfully", Toast.LENGTH_SHORT).show();
                 Fragment fragment = new SignupFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
@@ -159,7 +160,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
    {
     FacebookSdk.sdkInitialize(getApplicationContext());
     firebaseAuth=FirebaseAuth.getInstance();
-    facebook_logout=(LoginButton)view.findViewById(R.id.fb);
+    facebook_logout=(Button) view.findViewById(R.id.fb);
     username=(EditText) view.findViewById(R.id.email);
     faebookimage=(CircleImageView) view.findViewById(R.id.rabbitButton);
 
@@ -173,7 +174,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
        databaseReference = database.getReference("Registration_Data").child(userUID);
 
 
-       update_profile=(ImageView)view.findViewById(R.id.update);
+       update_profile=(Button)view.findViewById(R.id.update);
        initials=(TextView) view.findViewById(R.id.initials);
        editEmail=(ImageView)view.findViewById(R.id.EditEmail);
        calender=(ImageView)view.findViewById(R.id.calender);

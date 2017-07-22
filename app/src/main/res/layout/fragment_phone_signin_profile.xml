@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/user"
                 app:civ_border_width="4dp"
                 app:civ_border_color="#fff"/>
@@ -46,40 +47,22 @@
 
                 <ImageButton
                     android:id="@+id/gallary"
-                    android:layout_width="0dp"
+                    android:layout_width="5dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
                     android:layout_weight="1"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/image_gallery" />
 
-                <Button
-                    android:id="@+id/phonesignout"
-                    android:layout_width="15dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-2dp"
-                    android:layout_weight="1"
-                    android:text="Sign Out" />
             </LinearLayout>
 
-
-            <ImageButton
-                android:id="@+id/update"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="-120dp"
-                android:layout_marginTop="-75dp"
-                android:layout_weight="1"
-                android:background="#3D3D3D"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/update" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:background="#434343"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -90,7 +73,7 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
 
-                    app:srcCompat="@drawable/filled_circle" />
+                    app:srcCompat="@drawable/circle" />
 
                 <TextView
                     android:id="@+id/initials"
@@ -98,11 +81,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="S"
+                    android:textColor="#ffffff"
                     android:layout_marginTop="-3dp"
                     android:gravity="center"
                     android:layout_marginLeft="-40dp"
                     />
-
 
 
                 <EditText
@@ -262,6 +245,36 @@
                     android:layout_weight="1"
                     android:src="@mipmap/next" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/phonesignout"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundbutton"
+                    android:text="Logout"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundbutton"
+                    android:text="Update"
+                    android:textColor="#fff" />
             </LinearLayout>
 
         </LinearLayout>

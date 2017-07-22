@@ -18,12 +18,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/rabbitButton"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/user"
                 app:civ_border_width="4dp"
                 app:civ_border_color="#fff"/>
@@ -36,38 +38,6 @@
 
             <!--app:srcCompat="@drawable/user" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#3D3D3D"
-                android:layout_marginLeft="120dp"
-                android:layout_marginRight="90dp"
-                android:orientation="horizontal">
-
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/fb"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="7dp" />
-
-            </LinearLayout>
-
-
-            <ImageButton
-                android:id="@+id/update"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="-120dp"
-                android:layout_marginTop="-75dp"
-                android:layout_weight="1"
-                android:background="#3D3D3D"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/update" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,7 +53,7 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
 
-                    app:srcCompat="@drawable/filled_circle" />
+                    app:srcCompat="@drawable/circle" />
 
                 <TextView
                     android:id="@+id/initials"
@@ -91,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="S"
+                    android:textColor="#ffffff"
                     android:layout_marginTop="-3dp"
                     android:gravity="center"
                     android:layout_marginLeft="-40dp"
@@ -256,6 +227,38 @@
                     android:src="@mipmap/next" />
 
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/fb"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundbutton"
+                    android:text="Logout"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundbutton"
+                    android:text="Update"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </RelativeLayout>

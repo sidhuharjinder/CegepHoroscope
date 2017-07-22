@@ -78,7 +78,7 @@ public class Google_SignIn_Profile extends Fragment // implements FragmentCommun
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         firebaseAuth=FirebaseAuth.getInstance();
-        facebook_logout=(LoginButton)view.findViewById(R.id.fb);
+        facebook_logout=(LoginButton)view.findViewById(R.id.fbb);
         // google_logout=(Button) view.findViewById(R.id.google_signout) ;
         username=(EditText) view.findViewById(R.id.email);
         faebookimage=(CircleImageView) view.findViewById(R.id.rabbitButton);
