@@ -254,10 +254,10 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
             case code_sent:
                 enableViews(mVerifyButton, mResendButton, mPhoneNumberField, mVerificationField);
                 disableViews(mStartButton);
-
+               // clickcheck=true;
                 Toast.makeText(getContext(), "OTP SENT",
                         Toast.LENGTH_SHORT).show();
-
+              //   mStartButton.setText("Verify Password");
               //  mDetailText.setText("status_code_sent");
                 break;
             case verify_fail:
@@ -344,7 +344,8 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+       switch (view.getId())
+       {
             case R.id.button_start_verification:
 
                 if (!validatePhoneNumber()) {
@@ -370,24 +371,27 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
                 break;
         }
 
-      /* if(view==mStartButton)
+    /*  if(view==mStartButton)
        {
               if (!validatePhoneNumber()) {
+                  clickcheck=false;
                   return;
               }
 
-              startPhoneNumberVerification(mPhoneNumberField.getText().toString());
-          }
-          else
-       {
-           String code = mVerificationField.getText().toString();
-           if (TextUtils.isEmpty(code)) {
-               mVerificationField.setError("Cannot be empty.");
-               return;
-           }
 
-           verifyPhoneNumberWithCode(mVerificationId, code);
-       }
+              startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+           if(clickcheck)
+           {
+               String code = mVerificationField.getText().toString();
+               if (TextUtils.isEmpty(code)) {
+                   mVerificationField.setError("Cannot be empty.");
+                   return;
+               }
+
+               verifyPhoneNumberWithCode(mVerificationId, code);
+
+           }
+          }
 
 
 

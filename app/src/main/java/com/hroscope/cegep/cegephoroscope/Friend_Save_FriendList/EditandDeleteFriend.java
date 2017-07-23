@@ -155,24 +155,34 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
     public void ReadFirebase_setProfileData()
     {
         Intent intent = getIntent();
-        friend_date = intent.getStringExtra("date");
-        friend_name = intent.getStringExtra("name");
-      //  name.setText(friend_name);
-         uid = friend_name.concat(friend_date);
-        dateOfBirth.setText(friend_date);
 
 
-        name.setGravity(Gravity.LEFT);
-        name.setText(friend_name);
-        //set initial
-        String nameInitial=friend_name.substring(0,1);
-        initials.setGravity(Gravity.CENTER);
-        initials.setTextSize(30);
-        initials.setTextColor(Color.parseColor("#000000"));
-        //make initial Bold
-        final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
-        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-        initials.setText(nameInitial.toUpperCase());
+            //do here
+
+            friend_date = intent.getStringExtra("date");
+            friend_name = intent.getStringExtra("name");
+         Bundle extra=intent.getExtras();
+
+            //  name.setText(friend_name);
+            if(friend_date!=null&friend_name!=null)
+            {
+                uid = friend_name.concat(friend_date);
+                dateOfBirth.setText(friend_date);
+
+
+                name.setGravity(Gravity.LEFT);
+                name.setText(friend_name);
+                //set initial
+                String nameInitial = friend_name.substring(0, 1);
+                initials.setGravity(Gravity.CENTER);
+                initials.setTextSize(30);
+                initials.setTextColor(Color.parseColor("#000000"));
+                //make initial Bold
+                final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
+                final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+                initials.setText(nameInitial.toUpperCase());
+
+
 
         //Retrieve all set of data from firebase
         ValueEventListener postListener = new ValueEventListener() {
@@ -224,6 +234,29 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
             }
         };
         databaseReference.child(uid).addValueEventListener(postListener);
+
+            }
+
+            else
+            {
+
+
+               name.setEnabled(false);
+                dateOfBirth.setEnabled(false);
+                zodiacName.setEnabled(false);
+                chineseZodName.setEnabled(false);
+
+                dateOfBirth.setVisibility(View.INVISIBLE);
+                zodiacName.setVisibility(View.INVISIBLE);
+                chineseZodName.setVisibility(View.INVISIBLE);
+
+                name.setText("Empty List");
+               buttondelete.setText("Back");
+
+
+
+
+            }
 
 
 
@@ -411,7 +444,7 @@ public class EditandDeleteFriend extends AppCompatActivity implements View.OnCli
                 dataSnapshot.getRef().child("zodiac_sign").removeValue();
                 dataSnapshot.getRef().child("chinese_zodiac_sign").removeValue();
 
-               Toast.makeText(EditandDeleteFriend.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+              // Toast.makeText(EditandDeleteFriend.this, "Data Deleted", Toast.LENGTH_SHORT).show();
 
 
             }

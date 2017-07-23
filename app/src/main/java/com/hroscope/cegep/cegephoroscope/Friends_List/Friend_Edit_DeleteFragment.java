@@ -177,6 +177,11 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Uploading....");
+
+        name.setEnabled(false);
+        dateOfBirth.setEnabled(false);
+        zodiacName.setEnabled(false);
+        chineseZodName.setEnabled(false);
     }
 
 
@@ -263,7 +268,18 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
 
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
-        int year=Integer.parseInt(birthdate.substring(6,10));
+        int year=Integer.parseInt(birthdate.substring(6,10));  // compare with current date
+        Calendar cal = Calendar.getInstance();
+        int currentDate=cal.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = cal.get(Calendar.MONTH)+1;
+        int currentyear=cal.get(Calendar.YEAR);
+
+        if(year<currentyear||year==currentyear&&month<=currentMonth&&day<=currentDate)
+
+        {
+            dateOfBirth.setError(null);
+
+
 
         //Get date wise zodiac Sign
         if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
@@ -339,6 +355,14 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
             }
         });
 
+        }
+        else
+        {
+
+
+
+            dateOfBirth.setError("Invalid Birth Date");
+        }
 
     }
 
@@ -520,6 +544,7 @@ public class Friend_Edit_DeleteFragment extends Fragment implements View.OnClick
         {
             String fname=name.getText().toString();
             String uniqueID = fname.concat(birthdate);
+
             deleteFirebaseData(uniqueID);
 
         }
