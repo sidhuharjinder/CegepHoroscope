@@ -1,5 +1,6 @@
 package com.hroscope.cegep.cegephoroscope.Facebook_SignIn;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -45,6 +46,7 @@ public class FacebookFragment extends Fragment {
     String Birthday;
     boolean clicked=false;
     private FirebaseAuth.AuthStateListener firebaseauthlistener;
+    private ProgressDialog progressDialog;
     Fb_Profile_Fragment fba=new Fb_Profile_Fragment();
 
     private View view;
@@ -91,11 +93,14 @@ public class FacebookFragment extends Fragment {
 
         //with set fragment it goes to fragment by default OnActivityResult redirect to activity
         loginButton.setFragment(this);
+        progressDialog = new ProgressDialog(getActivity());
 
     }
 
     private void LoginFacebook()
     {
+        progressDialog.setMessage("Signing User..");
+        progressDialog.show();
 
 
         loginButton.setReadPermissions("email","user_birthday","public_profile");
@@ -148,7 +153,7 @@ public class FacebookFragment extends Fragment {
                    // finish();
                     Toast.makeText(getActivity(), "Facebook Login Successfull", Toast.LENGTH_LONG).show();
 
-
+                    progressDialog.dismiss();
 
                 }
 
@@ -190,6 +195,7 @@ public class FacebookFragment extends Fragment {
                 Log.d(",","signInWithCredentialonComplete"+task.isSuccessful());
                 if(task.isSuccessful())
                 {
+                    facebookLoginStatus=true;
                   //  Toast.makeText(getActivity(),"Authentication Successful",Toast.LENGTH_SHORT).show();
                     Log.v(",","signInWithCredential",task.getException());
                  //

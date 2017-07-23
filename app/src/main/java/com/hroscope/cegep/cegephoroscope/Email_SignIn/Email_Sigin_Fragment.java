@@ -54,6 +54,7 @@ public class Email_Sigin_Fragment extends Fragment implements View.OnClickListen
 
 
        if (firebaseAuth.getCurrentUser() != null) {
+           emailLoginStatus=true;
             Fragment fragment = new Email_Signin_Profile_Fragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();

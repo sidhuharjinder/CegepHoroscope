@@ -75,11 +75,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
-                            android:hint="+15142911809"
+                            android:hint="+15145555555"
                             android:gravity="center"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
-                            android:textColorHint="#ffffff"
+                            android:textColor="#ffffff"
                             android:inputType="phone" />
 
                         <EditText

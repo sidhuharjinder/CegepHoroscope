@@ -23,6 +23,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +60,7 @@ import static android.content.ContentValues.TAG;
 
 public class Phone_SignIn_Profile extends Fragment implements View.OnClickListener{
 
-    private Button mSignOutButton,update_profile;
+    private Button mSignOutButton;//update_profile;
     private EditText currentUserEmail;
 
     private CircleImageView profile;
@@ -86,6 +87,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
     String zodiac_sign_name,chi_zodiac_sign_name;
     String zod_name="",chi_name="";
     private static String storezodiacName,storechzodName;
+    LinearLayout zodiacLayout,chineseLayout,friendsLayout;
 
     public static Phone_SignIn_Profile newInstance() {
         Phone_SignIn_Profile fragment = new Phone_SignIn_Profile();
@@ -139,7 +141,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Registration_Data").child(userUID);
 
-        mSignOutButton = (Button)view. findViewById(R.id.phonesignout);
+        mSignOutButton = (Button)view. findViewById(R.id.signout);
         mSignOutButton.setOnClickListener(this);
         currentUserEmail = (EditText) view.findViewById(R.id.email);
         button_gallary =(ImageButton)view.findViewById(R.id.gallary);
@@ -148,7 +150,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         profile=(CircleImageView) view.findViewById(R.id.rabbitButton);
         profile.setOnClickListener(this);
 
-        update_profile=(Button)view.findViewById(R.id.update);
+       // update_profile=(Button)view.findViewById(R.id.update);
         initials=(TextView) view.findViewById(R.id.initials);
         editEmail=(ImageView)view.findViewById(R.id.EditEmail);
         calender=(ImageView)view.findViewById(R.id.calender);
@@ -159,6 +161,11 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         EditFriend=(ImageView)view.findViewById(R.id.EditFreinds);
         forward_zodiac=(ImageView)view.findViewById(R.id.forwardzodiac);
         forward_chinese=(ImageView)view.findViewById(R.id.forwardchinese);
+
+        zodiacLayout=(LinearLayout)view.findViewById(R.id.zodiaclayout);
+        chineseLayout=(LinearLayout)view.findViewById(R.id.chineselayout);
+        friendsLayout=(LinearLayout)view.findViewById(R.id.friendslayout);
+
 
 
         dateOfBirth=(EditText)view.findViewById(R.id.dateOfBirth);
@@ -178,8 +185,8 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         forward_zodiac.setOnClickListener(this);
         forward_chinese.setOnClickListener(this);
         EditFriend.setOnClickListener(this);
-        update_profile.setOnClickListener(this);
-        update_profile.setVisibility(view.INVISIBLE);
+       // update_profile.setOnClickListener(this);
+       // update_profile.setVisibility(view.INVISIBLE);
         currentUserEmail.setEnabled(false);
 
         pd = new ProgressDialog(getActivity());
@@ -197,6 +204,17 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
         int year=Integer.parseInt(birthdate.substring(6,10));
+
+        // compare with current date
+        Calendar cal = Calendar.getInstance();
+        int currentDate=cal.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = cal.get(Calendar.MONTH)+1;
+        int currentyear=cal.get(Calendar.YEAR);
+
+        if(year<currentyear||year==currentyear&&month<=currentMonth&&day<=currentDate)
+
+        {
+            dateOfBirth.setError(null);
 
         //Get date wise zodiac Sign
         if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
@@ -263,7 +281,14 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
             }
         });
 
+        }
+        else
+        {
 
+
+
+            dateOfBirth.setError("Invalid Birth Date");
+        }
 
         //update Email in firebase authentication Section
 
@@ -282,6 +307,10 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
                 if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
                 {
+                    zodiacLayout.setVisibility(view.VISIBLE);
+                    chineseLayout.setVisibility(view.VISIBLE);
+                    friendsLayout.setVisibility(view.VISIBLE);
+
                     initials.setTextSize(30);
                     initials.setTextColor(Color.parseColor("#000000"));
                     initials.setText("P");
@@ -319,6 +348,12 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
                             // File not found
                         }
                     });
+                }
+                else
+                {
+                    zodiacLayout.setVisibility(view.INVISIBLE);
+                    chineseLayout.setVisibility(view.INVISIBLE);
+                    friendsLayout.setVisibility(view.INVISIBLE);
                 }
 
             }
@@ -426,6 +461,17 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
 
                 dateOfBirth.setText( dateFormatter.format(newDate.getTime()));
 
+                String date_of_birth=dateOfBirth.getText().toString();
+                if (date_of_birth.isEmpty()) {
+
+
+                    dateOfBirth.setError("Choose your Birthdate");
+                }
+                else {
+                    upload();
+                    updateData_loadTofirebase();
+                }
+
 
 
             }
@@ -465,13 +511,13 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
 
         if(view==calender)
         {
-            update_profile.setVisibility(view.VISIBLE);
+         //   update_profile.setVisibility(view.VISIBLE);
 
             fromDatePickerDialog.show();
         }
         if(view==editDate)
         {
-            update_profile.setVisibility(view.VISIBLE);
+           // update_profile.setVisibility(view.VISIBLE);
             fromDatePickerDialog.show();
 
         }
@@ -764,7 +810,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
             startActivity(new Intent(getActivity(),FriendLIstActivity.class));
 
         }
-        if(view==update_profile)
+      /*  if(view==update_profile)
         {
             String date_of_birth=dateOfBirth.getText().toString();
             if (date_of_birth.isEmpty()) {
@@ -776,7 +822,7 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
                 upload();
                 updateData_loadTofirebase();
             }
-          /*  Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
+           Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
             pd = new ProgressDialog(getActivity());
 
 
@@ -786,11 +832,11 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
             updated_email=currentUserEmail.getText().toString();
 
             databaseReference.child("date_of_birth").setValue(date_of_birth);
-            databaseReference.child("user_name").setValue(updated_email);*/
+            databaseReference.child("user_name").setValue(updated_email);
 
 
             pd.dismiss();
 
-        }
+        }*/
     }
 }

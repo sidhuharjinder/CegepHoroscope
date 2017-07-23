@@ -79,6 +79,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
    int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
     ProgressDialog pd;
+    private ProgressDialog progressDialog;
     FirebaseStorage storage;
     StorageReference storageRef;
     FirebaseDatabase database;
@@ -197,8 +198,11 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         //update_profile.setVisibility(view.INVISIBLE);
         currentUserEmail.setEnabled(false);
 
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Uploading....");
+       // pd = new ProgressDialog(getActivity());
+       // pd.setMessage("Uploading....");
+        progressDialog = new ProgressDialog(getActivity());
+
+
 
         currentUserEmail.setEnabled(false);
         dateOfBirth.setEnabled(false);
@@ -208,8 +212,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     }
 
     private void updateData_loadTofirebase() {
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Updating....");
+        progressDialog.setMessage("Updating..");
+        progressDialog.show();
 
         birthdate=dateOfBirth.getText().toString();
         updated_email=currentUserEmail.getText().toString();
@@ -281,7 +285,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                     dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
                     dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
                     dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
-                    pd.dismiss();
+//                    pd.dismiss();
                     Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
                 }
@@ -313,6 +317,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
             dateOfBirth.setError("Invalid Birth Date");
         }
+        progressDialog.dismiss();
     }
 
 
@@ -385,7 +390,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                     zodiacLayout.setVisibility(view.VISIBLE);
                     chineseLayout.setVisibility(view.VISIBLE);
                     friendsLayout.setVisibility(view.VISIBLE);
-                    
+
                     dateOfBirth.setText(user.date_of_birth);
                 regZodSign.setText(user.zodiac_sign);
 
@@ -466,7 +471,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     public void upload()
     {
         if(filePath != null) {
-            pd.show();
+            progressDialog.setMessage("Uploading..");
+            progressDialog.show();
 
             String useruid=firebaseAuth.getCurrentUser().getUid();
 
@@ -481,20 +487,27 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    pd.dismiss();
+                 //   pd.dismiss();
                     Toast.makeText(getActivity(), "Upload successful", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    pd.dismiss();
+                  //  pd.dismiss();
                     Toast.makeText(getActivity(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
                 }
             });
+
+            progressDialog.setMessage("Uploaded Successfully..");
+            progressDialog.dismiss();
         }
         else {
+            progressDialog.dismiss();
             Toast.makeText(getActivity(), "Select an image", Toast.LENGTH_SHORT).show();
+
         }
+        progressDialog.dismiss();
+
 
     }
 
@@ -529,11 +542,15 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
     public void emailSignout()
     {
+        progressDialog.setMessage("Please Wait..");
+        progressDialog.show();
+
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getActivity(), "User Sign out Successfully", Toast.LENGTH_LONG).show();
         Fragment fragment = new SignupFragment();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+        progressDialog.dismiss();
     }
 
 
@@ -611,6 +628,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
             if(storezodiacName.equals("Aries"))
             {
+                progressDialog.setMessage("Please Wait..");
+                progressDialog.show();
 
                 Intent intent = new Intent(getActivity(),ZodiaDetail.class);
                 intent.putExtra("text", "Aries");
@@ -621,6 +640,8 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 intent.putExtra("yearly", HomeScreen.ariesYearly);
                 intent.putExtra("weekly", HomeScreen.ariesWeakly);
                 startActivity(intent);
+                progressDialog.dismiss();
+
             }
           else  if(storezodiacName.equals("Taurus"))
             {

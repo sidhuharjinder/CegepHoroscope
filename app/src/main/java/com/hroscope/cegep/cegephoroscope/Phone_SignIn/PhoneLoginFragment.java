@@ -56,7 +56,8 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
     private Button mResendButton;
     private Button mSignOutButton;
     private View view;
-    public static boolean phoneLoginStatus;
+    public static boolean phoneLoginStatus,clickcheck=false;
+
 
 
     public static PhoneLoginFragment newInstance() {
@@ -77,6 +78,7 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
         setControlls();
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
+            phoneLoginStatus=true;
         }
         InitialCodeVerification();
 
@@ -144,6 +146,7 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
         updateUI(currentUser);
         if (mVerificationInProgress && validatePhoneNumber()) {
             startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+            clickcheck=true;
         }
     }
 
@@ -169,10 +172,12 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
                 getActivity(),
                 mCallbacks);
         mVerificationInProgress = true;
+        clickcheck=true;
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+        clickcheck=false;
         signInWithPhoneAuthCredential(credential);
     }
 
@@ -249,8 +254,10 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
             case code_sent:
                 enableViews(mVerifyButton, mResendButton, mPhoneNumberField, mVerificationField);
                 disableViews(mStartButton);
+
                 Toast.makeText(getContext(), "OTP SENT",
                         Toast.LENGTH_SHORT).show();
+
               //  mDetailText.setText("status_code_sent");
                 break;
             case verify_fail:
@@ -273,8 +280,8 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
                         mVerificationField.setText(cred.getSmsCode());
                     } else {
                        // mVerificationField.setText("instant_validation");
-                        Toast.makeText(getContext(), "Instant Verification",
-                                Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(getContext(), "Instant Verification",
+                       //         Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -290,8 +297,8 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
         if (user == null) {
             mPhoneNumberViews.setVisibility(View.VISIBLE);
             mSignedInViews.setVisibility(View.GONE);
-            Toast.makeText(getContext(), "Signed Out",
-                    Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getContext(), "Signed Out",
+            //        Toast.LENGTH_SHORT).show();
 
            // mStatusText.setText("signed_out");;
         } else {
@@ -303,8 +310,8 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
             mPhoneNumberField.setText(null);
             mVerificationField.setText(null);
             phoneLoginStatus=true;
-            Toast.makeText(getContext(), "Signed In Successful",
-                    Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(getContext(), "Signed In Successful",
+           //         Toast.LENGTH_SHORT).show();
             //mStatusText.setText("signed_in");
             Fragment fragment = new Phone_SignIn_Profile();
             FragmentManager fragmentManager = getFragmentManager();
@@ -362,5 +369,35 @@ public class PhoneLoginFragment extends Fragment implements View.OnClickListener
                 signOut();
                 break;
         }
+
+      /* if(view==mStartButton)
+       {
+              if (!validatePhoneNumber()) {
+                  return;
+              }
+
+              startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+          }
+          else
+       {
+           String code = mVerificationField.getText().toString();
+           if (TextUtils.isEmpty(code)) {
+               mVerificationField.setError("Cannot be empty.");
+               return;
+           }
+
+           verifyPhoneNumberWithCode(mVerificationId, code);
+       }
+
+
+
+       if(view==mResendButton)
+       {
+           resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
+       }
+       if(view==mSignOutButton)
+       {
+           signOut();
+       }*/
     }
 }

@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +83,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
-    Button update_profile;
+    //Button update_profile;
 
     int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
@@ -100,6 +101,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
     DatabaseReference databaseReference;
     String userUID,birthdate,updated_email;
     private static String storechzodName,storezodiacName;
+    LinearLayout zodiacLayout,chineseLayout,friendsLayout;
 
 
 
@@ -173,8 +175,10 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
        database = FirebaseDatabase.getInstance();
        databaseReference = database.getReference("Registration_Data").child(userUID);
 
-
-       update_profile=(Button)view.findViewById(R.id.update);
+       zodiacLayout=(LinearLayout)view.findViewById(R.id.zodiaclayout);
+       chineseLayout=(LinearLayout)view.findViewById(R.id.chineselayout);
+       friendsLayout=(LinearLayout)view.findViewById(R.id.friendslayout);
+    //   update_profile=(Button)view.findViewById(R.id.update);
        initials=(TextView) view.findViewById(R.id.initials);
        editEmail=(ImageView)view.findViewById(R.id.EditEmail);
        calender=(ImageView)view.findViewById(R.id.calender);
@@ -209,12 +213,17 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
        forward_zodiac.setOnClickListener(this);
        forward_chinese.setOnClickListener(this);
        EditFriend.setOnClickListener(this);
-       update_profile.setOnClickListener(this);
-       update_profile.setVisibility(view.INVISIBLE);
+      // update_profile.setOnClickListener(this);
+      // update_profile.setVisibility(view.INVISIBLE);
        currentUserEmail.setEnabled(false);
 
        pd = new ProgressDialog(getActivity());
        pd.setMessage("Uploading....");
+
+       currentUserEmail.setEnabled(false);
+       dateOfBirth.setEnabled(false);
+       regZodSign.setEnabled(false);
+       chiZodSign.setEnabled(false);
     }
 
     private void setDataTime() {
@@ -231,6 +240,16 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 newCalendar.get(month);
 
                 dateOfBirth.setText( dateFormatter.format(newDate.getTime()));
+
+                String date_of_birth=dateOfBirth.getText().toString();
+                if (date_of_birth.isEmpty()) {
+
+
+                    dateOfBirth.setError("Choose your Birthdate");
+                }
+                else {
+                    updateData_loadTofirebase();
+                }
 
 
 
@@ -249,72 +268,89 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
         int day=Integer.parseInt(birthdate.substring(0,2));
         int month= Integer.parseInt(birthdate.substring(3,5));
         int year=Integer.parseInt(birthdate.substring(6,10));
+        // compare with current date
+        Calendar cal = Calendar.getInstance();
+        int currentDate=cal.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = cal.get(Calendar.MONTH)+1;
+        int currentyear=cal.get(Calendar.YEAR);
 
-        //Get date wise zodiac Sign
-        if ((month == 12 && day >= 22 && day <= 31) || (month ==  1 && day >= 01 && day <= 19))
-            zodiac_sign_name="Capricorn";
+        if(year<currentyear||year==currentyear&&month<=currentMonth&&day<=currentDate)
 
-        else if ((month ==  01 && day >= 20 && day <= 31) || (month ==  2 && day >= 01 && day <= 17))
-            zodiac_sign_name="Aquarius";
-        else if ((month ==  02 && day >= 18 && day <= 29) || (month ==  3 && day >= 01 && day <= 19))
-            zodiac_sign_name="Pisces";
-        else if ((month ==  03 && day >= 20 && day <= 31) || (month ==  4 && day >= 01 && day <= 19))
-            zodiac_sign_name="Aries";
-        else if ((month ==  04 && day >= 20 && day <= 30) || (month ==  5 && day >= 01 && day <= 20))
-            zodiac_sign_name="Taurus";
-        else if ((month ==  05 && day >= 21 && day <= 31) || (month ==  6 && day >= 01 && day <= 20))
-            zodiac_sign_name="Gemini";
-        else if ((month ==  06 && day >= 21 && day <= 30) || (month ==  7 && day >= 01 && day <= 22))
-            zodiac_sign_name="Cancer";
-        else if ((month ==  07 && day >= 23 && day <= 31) || (month ==  8 && day >= 01 && day <= 22))
-            zodiac_sign_name="Leo";
-        else if ((month ==  8 && day >= 23 && day <= 31) || (month ==  9 && day >= 01 && day <= 22))
-            zodiac_sign_name="Virgo";
-        else if ((month ==  9 && day >= 23 && day <= 30) || (month == 10 && day >= 01 && day <= 22))
-            zodiac_sign_name="Libra";
-        else if ((month == 10 && day >= 23 && day <= 31) || (month == 11 && day >= 01 && day <= 21))
-            zodiac_sign_name="Scorpio";
-        else if ((month == 11 && day >= 22 && day <= 30) || (month == 12 && day >= 01 && day <= 21))
-            zodiac_sign_name="Sagittarius";
-
-        //Get Chinese Zodiac Sign
-        String[] chinese_zodiac_name={"Monkey","Rooster","Dog","Pig","Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Sheep"};
-        int count=0;
-        for(int i=1920;i<=year;i++)
         {
-            if(year==i)
-            {
-                chi_zodiac_sign_name=chinese_zodiac_name[count];
-                if(count==0) {
-                    chinese_img=R.mipmap.monkey;
+            dateOfBirth.setError(null);
+
+            //Get date wise zodiac Sign
+            if ((month == 12 && day >= 22 && day <= 31) || (month == 1 && day >= 01 && day <= 19))
+                zodiac_sign_name = "Capricorn";
+
+            else if ((month == 01 && day >= 20 && day <= 31) || (month == 2 && day >= 01 && day <= 17))
+                zodiac_sign_name = "Aquarius";
+            else if ((month == 02 && day >= 18 && day <= 29) || (month == 3 && day >= 01 && day <= 19))
+                zodiac_sign_name = "Pisces";
+            else if ((month == 03 && day >= 20 && day <= 31) || (month == 4 && day >= 01 && day <= 19))
+                zodiac_sign_name = "Aries";
+            else if ((month == 04 && day >= 20 && day <= 30) || (month == 5 && day >= 01 && day <= 20))
+                zodiac_sign_name = "Taurus";
+            else if ((month == 05 && day >= 21 && day <= 31) || (month == 6 && day >= 01 && day <= 20))
+                zodiac_sign_name = "Gemini";
+            else if ((month == 06 && day >= 21 && day <= 30) || (month == 7 && day >= 01 && day <= 22))
+                zodiac_sign_name = "Cancer";
+            else if ((month == 07 && day >= 23 && day <= 31) || (month == 8 && day >= 01 && day <= 22))
+                zodiac_sign_name = "Leo";
+            else if ((month == 8 && day >= 23 && day <= 31) || (month == 9 && day >= 01 && day <= 22))
+                zodiac_sign_name = "Virgo";
+            else if ((month == 9 && day >= 23 && day <= 30) || (month == 10 && day >= 01 && day <= 22))
+                zodiac_sign_name = "Libra";
+            else if ((month == 10 && day >= 23 && day <= 31) || (month == 11 && day >= 01 && day <= 21))
+                zodiac_sign_name = "Scorpio";
+            else if ((month == 11 && day >= 22 && day <= 30) || (month == 12 && day >= 01 && day <= 21))
+                zodiac_sign_name = "Sagittarius";
+
+            //Get Chinese Zodiac Sign
+            String[] chinese_zodiac_name = {"Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep"};
+            int count = 0;
+            for (int i = 1920; i <= year; i++) {
+                if (year == i) {
+                    chi_zodiac_sign_name = chinese_zodiac_name[count];
+                    if (count == 0) {
+                        chinese_img = R.mipmap.monkey;
+                    }
+
+                }
+                count++;
+                if (count > 11)
+                    count = 0;
+            }
+            regZodSign.setText(zodiac_sign_name);
+            chiZodSign.setText(chi_zodiac_sign_name);
+
+            //update Firebase data storage
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
+                    dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
+                    dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
+                    pd.dismiss();
+                    Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
+
                 }
 
-            }
-            count++;
-            if(count>11)
-                count=0;
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("User", databaseError.getMessage());
+                }
+            });
+
         }
-        regZodSign.setText(zodiac_sign_name);
-        chiZodSign.setText(chi_zodiac_sign_name);
+        else
+        {
 
-        //update Firebase data storage
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                dataSnapshot.getRef().child("date_of_birth").setValue(birthdate);
-                dataSnapshot.getRef().child("zodiac_sign").setValue(zodiac_sign_name);
-                dataSnapshot.getRef().child("chinese_zodiac_sign").setValue(chi_zodiac_sign_name);
-                pd.dismiss();
-                Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
 
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("User", databaseError.getMessage());
-            }
-        });
-
+            dateOfBirth.setError("Invalid Birth Date");
+        }
 
 
     }
@@ -334,6 +370,8 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                     {
                         Log.d("TAG",userInfo.getProviderId());
                     }
+
+
 
                     name=firebaseuser.getDisplayName();
                     photo=firebaseuser.getPhotoUrl();
@@ -370,6 +408,11 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
                 if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
                 {
+
+                    zodiacLayout.setVisibility(view.VISIBLE);
+                    chineseLayout.setVisibility(view.VISIBLE);
+                    friendsLayout.setVisibility(view.VISIBLE);
+
                     dateOfBirth.setText(user.date_of_birth);
                     regZodSign.setText(user.zodiac_sign);
                     chiZodSign.setText(user.chinese_zodiac_sign);
@@ -406,6 +449,12 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
                         }
                     });
                 }
+                else
+                {
+                    zodiacLayout.setVisibility(view.INVISIBLE);
+                    chineseLayout.setVisibility(view.INVISIBLE);
+                    friendsLayout.setVisibility(view.INVISIBLE);
+                }
 
             }
 
@@ -426,13 +475,13 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
 
         if(view==calender)
         {
-            update_profile.setVisibility(view.VISIBLE);
+           // update_profile.setVisibility(view.VISIBLE);
 
             fromDatePickerDialog.show();
         }
         if(view==editDate)
         {
-            update_profile.setVisibility(view.VISIBLE);
+           // update_profile.setVisibility(view.VISIBLE);
             fromDatePickerDialog.show();
 
         }
@@ -724,7 +773,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
             startActivity(new Intent(getActivity(),FriendLIstActivity.class));
 
         }
-        if(view==update_profile)
+       /* if(view==update_profile)
         {
             String date_of_birth=dateOfBirth.getText().toString();
             if (date_of_birth.isEmpty()) {
@@ -740,7 +789,7 @@ public class Fb_Profile_Fragment extends Fragment implements View.OnClickListene
             pd.dismiss();
 
         }
-
+         */
 
     }
 }

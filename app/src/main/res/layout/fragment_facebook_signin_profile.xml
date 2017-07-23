@@ -121,11 +121,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/zodiaclayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="10dp"
                 android:background="#434343"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -133,17 +134,18 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/taurus" />
+
                 <EditText
                     android:id="@+id/zodiac"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
                     android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
                     android:background="@color/trans"
+                    android:ems="10"
                     android:inputType="text"
                     android:textColor="#fff"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/forwardzodiac"
@@ -156,10 +158,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/chineselayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#434343"
                 android:layout_marginTop="10dp"
+                android:background="#434343"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -168,17 +171,18 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/rat" />
+
                 <EditText
                     android:id="@+id/chineseHoroscope"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
                     android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
                     android:background="@color/trans"
+                    android:ems="10"
                     android:inputType="text"
-                    android:textSize="20sp"
-                    android:textColor="#fff"/>
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/forwardchinese"
@@ -190,10 +194,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/friendslayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#434343"
                 android:layout_marginTop="10dp"
+                android:background="#434343"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -203,20 +208,21 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/friends" />
+
                 <TextView
                     android:id="@+id/friends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:text="Friends"
                     android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
-
+                    android:layout_weight="1"
                     android:background="@color/trans"
-                    android:inputType="date" />
+                    android:ems="10"
+                    android:inputType="date"
+                    android:text="Friends"
+
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/EditFreinds"
@@ -238,25 +244,26 @@
 
                 <Button
                     android:id="@+id/fb"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="120dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundbutton"
                     android:text="Logout"
                     android:textColor="#fff" />
 
-                <Button
-                    android:id="@+id/update"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/roundbutton"
-                    android:text="Update"
-                    android:textColor="#fff" />
+                <!--   <Button
+                       android:id="@+id/update"
+                       android:layout_width="60dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="50dp"
+                       android:layout_marginRight="20dp"
+                       android:layout_weight="1"
+                       android:background="@drawable/roundbutton"
+                       android:text="Update"
+                       android:textColor="#fff" />
+                       -->
             </LinearLayout>
 
 
