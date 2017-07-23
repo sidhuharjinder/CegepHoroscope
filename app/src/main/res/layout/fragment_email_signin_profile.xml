@@ -152,6 +152,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/zodiaclayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -188,6 +189,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/chineselayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -223,6 +225,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/friendslayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"

@@ -24,6 +24,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +89,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private SimpleDateFormat dateFormatter;
     FirebaseUser user;
     String nme;
+    LinearLayout zodiacLayout,chineseLayout,friendsLayout;
    public static String zodiac_sign_name,chi_zodiac_sign_name,storezodiacName,storechzodName;
             String zod_name="",chi_name="";
 
@@ -142,7 +144,12 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         databaseReference = database.getReference("Registration_Data").child(userUID);
 
 
-       // update_profile=(Button) view.findViewById(R.id.update);
+       zodiacLayout=(LinearLayout)view.findViewById(R.id.zodiaclayout);
+        chineseLayout=(LinearLayout)view.findViewById(R.id.chineselayout);
+        friendsLayout=(LinearLayout)view.findViewById(R.id.friendslayout);
+
+
+        // update_profile=(Button) view.findViewById(R.id.update);
         initials=(TextView) view.findViewById(R.id.initials);
         editEmail=(ImageView)view.findViewById(R.id.EditEmail);
         calender=(ImageView)view.findViewById(R.id.calender);
@@ -203,6 +210,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private void updateData_loadTofirebase() {
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Updating....");
+
         birthdate=dateOfBirth.getText().toString();
         updated_email=currentUserEmail.getText().toString();
 
@@ -331,6 +339,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                     dateOfBirth.setError("Choose your Birthdate");
                 }
                 else {
+
                     updateData_loadTofirebase();
                 }
 
@@ -343,6 +352,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
     public void ReadFirebase_setProfileData()
     {
+
 
         //set email addess
         String current_userEmail=firebaseAuth.getCurrentUser().getEmail();
@@ -371,6 +381,11 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                 Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
                if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
                 {
+
+                    zodiacLayout.setVisibility(view.VISIBLE);
+                    chineseLayout.setVisibility(view.VISIBLE);
+                    friendsLayout.setVisibility(view.VISIBLE);
+                    
                     dateOfBirth.setText(user.date_of_birth);
                 regZodSign.setText(user.zodiac_sign);
 
@@ -409,6 +424,13 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
                     }
                 });
             }
+
+              else {
+                   zodiacLayout.setVisibility(view.INVISIBLE);
+                   chineseLayout.setVisibility(view.INVISIBLE);
+                   friendsLayout.setVisibility(view.INVISIBLE);
+               }
+
 
             }
 
