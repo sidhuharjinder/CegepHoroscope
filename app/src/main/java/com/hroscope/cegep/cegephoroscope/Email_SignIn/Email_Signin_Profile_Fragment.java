@@ -69,11 +69,11 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
     private CircleImageView profile;
     private View view;
     private ImageView editEmail,calender,editDate, regZodiac,ChiZodiac,friendImg,EditFriend,forward_zodiac,forward_chinese;
-    private Button signout,update_profile;
+    private Button signout;//update_profile;
     private EditText currentUserEmail,dateOfBirth,regZodSign,chiZodSign;
     private TextView friend_email,initials;
     private FirebaseAuth firebaseAuth;
-    private ImageButton button_gallary,button_capture,button_upload;
+    private ImageButton button_gallary,button_upload;
     private static final int PICK_IMAGE_REQUEST = 111,CAPTURE_IMG_REQUEST=120;
    int chinese_img,zodiac_imag;
     Uri filePath,zodiacImage;
@@ -142,7 +142,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         databaseReference = database.getReference("Registration_Data").child(userUID);
 
 
-        update_profile=(Button) view.findViewById(R.id.update);
+       // update_profile=(Button) view.findViewById(R.id.update);
         initials=(TextView) view.findViewById(R.id.initials);
         editEmail=(ImageView)view.findViewById(R.id.EditEmail);
         calender=(ImageView)view.findViewById(R.id.calender);
@@ -153,28 +153,27 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         EditFriend=(ImageView)view.findViewById(R.id.EditFreinds);
         forward_zodiac=(ImageView)view.findViewById(R.id.forwardzodiac);
         forward_chinese=(ImageView)view.findViewById(R.id.forwardchinese);
-        currentUserEmail =(EditText)view.findViewById(R.id.email);
 
+        currentUserEmail =(EditText)view.findViewById(R.id.email);
         dateOfBirth=(EditText)view.findViewById(R.id.dateOfBirth);
         dateOfBirth.setInputType(InputType.TYPE_NULL);
         dateOfBirth.requestFocus();
-
         regZodSign=(EditText)view.findViewById(R.id.zodiac);
         chiZodSign=(EditText)view.findViewById(R.id.chineseHoroscope);
         friend_email=(TextView)view.findViewById(R.id.friends);
 
         profile=(CircleImageView) view.findViewById(R.id.rabbitButton);
         button_gallary =(ImageButton)view.findViewById(R.id.gallary);
-        button_capture=(ImageButton)view.findViewById(R.id.capture);
+
         button_upload=(ImageButton)view.findViewById(R.id.upload);
         signout=(Button) view.findViewById(R.id.signout);
         button_gallary.setOnClickListener(this);
-        button_capture.setVisibility(view.INVISIBLE);
+
         button_gallary.setVisibility(view.INVISIBLE);
         button_upload.setVisibility(view.INVISIBLE);
         profile.setOnClickListener(this);
         button_gallary.setOnClickListener(this);
-        button_capture.setOnClickListener(this);
+
         button_upload.setOnClickListener(this);
         signout.setOnClickListener(this);
 
@@ -187,12 +186,17 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         forward_zodiac.setOnClickListener(this);
         forward_chinese.setOnClickListener(this);
         EditFriend.setOnClickListener(this);
-        update_profile.setOnClickListener(this);
-        update_profile.setVisibility(view.INVISIBLE);
+       // update_profile.setOnClickListener(this);
+        //update_profile.setVisibility(view.INVISIBLE);
         currentUserEmail.setEnabled(false);
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Uploading....");
+
+        currentUserEmail.setEnabled(false);
+        dateOfBirth.setEnabled(false);
+        regZodSign.setEnabled(false);
+        chiZodSign.setEnabled(false);
 
     }
 
@@ -435,12 +439,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
     }
 
-    public void fromCamera()
-    {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, CAPTURE_IMG_REQUEST);
-        button_upload.setVisibility(view.VISIBLE);
-    }
+
 
     public void upload()
     {
@@ -501,7 +500,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             profile.setImageBitmap(photo);
         }
         button_gallary.setVisibility(view.VISIBLE);
-        button_capture.setVisibility(view.VISIBLE);
+
 
 
     }
@@ -523,7 +522,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         if(view==profile)
         {
             button_gallary.setVisibility(view.VISIBLE);
-            button_capture.setVisibility(view.INVISIBLE);
+
 
 
         }
@@ -532,23 +531,17 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
 
             fromGallary();
-            button_capture.setVisibility(view.INVISIBLE);
+
             button_upload.setVisibility(view.VISIBLE);
 
         }
 
-        if(view==button_capture)
-        {
 
-            fromCamera();
-            button_gallary.setVisibility(view.INVISIBLE);
-            button_upload.setVisibility(view.VISIBLE);
-        }
         if(view==button_upload)
         {
             upload();
             button_gallary.setVisibility(view.VISIBLE);
-            button_capture.setVisibility(view.VISIBLE);
+
         }
 
 
@@ -559,7 +552,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
 
         if(view==editEmail)
         {
-            update_profile.setVisibility(view.VISIBLE);
+          //  update_profile.setVisibility(view.VISIBLE);
            // currentUserEmail.setText("");
             currentUserEmail.setEnabled(true);
             currentUserEmail.setHint("Add New Email Address");
@@ -567,13 +560,13 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
         }
         if(view==calender)
         {
-            update_profile.setVisibility(view.VISIBLE);
+          //  update_profile.setVisibility(view.VISIBLE);
 
             fromDatePickerDialog.show();
         }
         if(view==editDate)
         {
-            update_profile.setVisibility(view.VISIBLE);
+          //  update_profile.setVisibility(view.VISIBLE);
             fromDatePickerDialog.show();
 
         }
@@ -867,7 +860,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             startActivity(new Intent(getActivity(),FriendLIstActivity.class));
 
         }
-        if(view==update_profile)
+       /* if(view==update_profile)
         {
             String date_of_birth=dateOfBirth.getText().toString();
             if (date_of_birth.isEmpty()) {
@@ -878,7 +871,7 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             else {
                 updateData_loadTofirebase();
             }
-          /*  Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Click is happing", Toast.LENGTH_SHORT).show();
             pd = new ProgressDialog(getActivity());
 
 
@@ -888,12 +881,13 @@ public class Email_Signin_Profile_Fragment extends Fragment implements View.OnCl
             updated_email=currentUserEmail.getText().toString();
 
             databaseReference.child("date_of_birth").setValue(date_of_birth);
-            databaseReference.child("user_name").setValue(updated_email);*/
+            databaseReference.child("user_name").setValue(updated_email);
 
 
             pd.dismiss();
 
         }
+        */
 
     }
 

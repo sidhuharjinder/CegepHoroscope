@@ -65,14 +65,6 @@
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/upload_image" />
 
-                <ImageButton
-                    android:id="@+id/capture"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/capture" />
             </LinearLayout>
 
 
@@ -278,22 +270,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="12dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/signout"
-                        android:layout_width="60dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginRight="120dp"
                         android:layout_weight="1"
                         android:background="@drawable/roundbutton"
                         android:text="Logout"
                         android:textColor="#fff" />
 
-                    <Button
+                 <!--   <Button
                         android:id="@+id/update"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
@@ -303,6 +295,7 @@
                         android:background="@drawable/roundbutton"
                         android:text="Update"
                         android:textColor="#fff" />
+                        -->
                 </LinearLayout>
 
 
