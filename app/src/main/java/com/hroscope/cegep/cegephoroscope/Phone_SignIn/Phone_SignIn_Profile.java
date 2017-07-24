@@ -13,6 +13,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,6 +43,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.hroscope.cegep.cegephoroscope.Chinese_Zodiac_Detail.ChineseZodiaDetail;
 import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Registered_UserList;
+import com.hroscope.cegep.cegephoroscope.Email_SignIn.Email_Signin_Profile_Fragment;
 import com.hroscope.cegep.cegephoroscope.Friend_Save_FriendList.FriendLIstActivity;
 import com.hroscope.cegep.cegephoroscope.HomeScreen;
 import com.hroscope.cegep.cegephoroscope.R;
@@ -297,77 +300,96 @@ public class Phone_SignIn_Profile extends Fragment implements View.OnClickListen
 
     public void ReadFirebase_setProfileData()
     {
-        currentUserEmail.setText(firebaseAuth.getCurrentUser().getPhoneNumber().toString());
+             if(firebaseAuth.getCurrentUser().getPhoneNumber().toString()!=null) {
+                 currentUserEmail.setText(firebaseAuth.getCurrentUser().getPhoneNumber().toString());
 
-        //Retrieve all set of data from firebase
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+                 //Retrieve all set of data from firebase
+                 ValueEventListener postListener = new ValueEventListener() {
+                     @Override
+                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
-                if(dataSnapshot.hasChild("date_of_birth")&&dataSnapshot.hasChild("chinese_zodiac_sign"))
-                {
-                    zodiacLayout.setVisibility(view.VISIBLE);
-                    chineseLayout.setVisibility(view.VISIBLE);
-                    friendsLayout.setVisibility(view.VISIBLE);
+                         Email_Registered_UserList user = dataSnapshot.getValue(Email_Registered_UserList.class);
+                         if (dataSnapshot.hasChild("date_of_birth") && dataSnapshot.hasChild("chinese_zodiac_sign")) {
+                             zodiacLayout.setVisibility(view.VISIBLE);
+                             chineseLayout.setVisibility(view.VISIBLE);
+                             friendsLayout.setVisibility(view.VISIBLE);
 
-                    initials.setTextSize(30);
-                    initials.setTextColor(Color.parseColor("#000000"));
-                    initials.setText("P");
-                    dateOfBirth.setText(user.date_of_birth);
-                    regZodSign.setText(user.zodiac_sign);
-                    chiZodSign.setText(user.chinese_zodiac_sign);
-                    //using those string variable for child name to get zod and chinese zod sign image from database
-                    zod_name = user.zodiac_sign.toLowerCase();
-                    chi_name = user.chinese_zodiac_sign.toLowerCase();
-                    storechzodName=user.chinese_zodiac_sign;
-                    storezodiacName=user.zodiac_sign;
+                             initials.setTextSize(30);
+                             initials.setTextColor(Color.parseColor("#000000"));
+                             initials.setText("P");
+                             dateOfBirth.setText(user.date_of_birth);
+                             regZodSign.setText(user.zodiac_sign);
+                             chiZodSign.setText(user.chinese_zodiac_sign);
+                             //using those string variable for child name to get zod and chinese zod sign image from database
+                             zod_name = user.zodiac_sign.toLowerCase();
+                             chi_name = user.chinese_zodiac_sign.toLowerCase();
+                             storechzodName = user.chinese_zodiac_sign;
+                             storezodiacName = user.zodiac_sign;
 
-                    //load appropriate image to zodiac sign imageview
-                    storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(regZodiac);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // File not found
-                        }
-                    });
+                             //load appropriate image to zodiac sign imageview
+                             storageRef.child("Signs").child("Zodiac_Signs").child(zod_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                 @Override
+                                 public void onSuccess(Uri uri) {
+                                     Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(regZodiac);
+                                 }
+                             }).addOnFailureListener(new OnFailureListener() {
+                                 @Override
+                                 public void onFailure(@NonNull Exception exception) {
+                                     // File not found
+                                 }
+                             });
 
-                    //load appropriate image to Chinese zodiac sign imageview
-                    storageRef.child("Signs").child("Chinese_Signs").child(chi_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(ChiZodiac);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // File not found
-                        }
-                    });
-                }
-                else
-                {
-                    zodiacLayout.setVisibility(view.INVISIBLE);
-                    chineseLayout.setVisibility(view.INVISIBLE);
-                    friendsLayout.setVisibility(view.INVISIBLE);
-                }
+                             //load appropriate image to Chinese zodiac sign imageview
+                             storageRef.child("Signs").child("Chinese_Signs").child(chi_name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                 @Override
+                                 public void onSuccess(Uri uri) {
+                                     Picasso.with(getActivity()).load(uri.toString()).resize(600, 200).centerInside().into(ChiZodiac);
+                                 }
+                             }).addOnFailureListener(new OnFailureListener() {
+                                 @Override
+                                 public void onFailure(@NonNull Exception exception) {
+                                     // File not found
+                                 }
+                             });
+                         } else {
+                             zodiacLayout.setVisibility(view.INVISIBLE);
+                             chineseLayout.setVisibility(view.INVISIBLE);
+                             friendsLayout.setVisibility(view.INVISIBLE);
+                         }
 
-            }
+                     }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        databaseReference.addValueEventListener(postListener);
+                     @Override
+                     public void onCancelled(DatabaseError databaseError) {
+                         Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                     }
+                 };
+                 databaseReference.addValueEventListener(postListener);
 
-        //load appropriate image into imageview
+                 //load appropriate image into imageview
 
-        // storageRef.child("Signs").child("Zodiac_Sign").child("aries.png")
+                 // storageRef.child("Signs").child("Zodiac_Sign").child("aries.png")
+             }
+             else
+             {
+                 String current_userEmail=firebaseAuth.getCurrentUser().getEmail();
+                 String split_email = current_userEmail.substring(0, current_userEmail.indexOf("@"));
+                 currentUserEmail.setGravity(Gravity.LEFT);
+                 currentUserEmail.setText(split_email.toUpperCase());
+                 //set initial
+                 String nameInitial=current_userEmail.substring(0,1);
+                 initials.setGravity(Gravity.CENTER);
+                 initials.setTextSize(30);
+                 initials.setTextColor(Color.parseColor("#000000"));
+                 //make initial Bold
+                 final SpannableStringBuilder sb = new SpannableStringBuilder(nameInitial);
+                 final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
+                 initials.setText(nameInitial.toUpperCase());
+                 //Birthdate
+                 Fragment fragment = new Email_Signin_Profile_Fragment();
+                 FragmentManager fragmentManager = getFragmentManager();
+                 fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+             }
 
     }
 

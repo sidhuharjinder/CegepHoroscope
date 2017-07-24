@@ -128,7 +128,7 @@ public class CompatibilityResult extends AppCompatActivity {
             user_friendzodiacImage.setImageResource(R.mipmap.libra);
         else if(friend_zodiac_tile.equals("Scorpio"))
             user_friendzodiacImage.setImageResource(R.mipmap.scorpio);
-        else if(friend_zodiac_tile.equals("Sagittarus"))
+        else if(friend_zodiac_tile.equals("Sagittarius"))
             user_friendzodiacImage.setImageResource(R.mipmap.sagittarius);
         else if(friend_zodiac_tile.equals("Capricorn"))
             user_friendzodiacImage.setImageResource(R.mipmap.capricorn);

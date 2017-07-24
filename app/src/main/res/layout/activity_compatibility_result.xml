@@ -64,7 +64,7 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="70dp"
             android:orientation="horizontal">
 
             <TextView
