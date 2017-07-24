@@ -19,15 +19,15 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="-25dp"
             app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="-10dp"
             android:gravity="center"
             android:text="REGISTER"
             android:textColor="#ffffff"
